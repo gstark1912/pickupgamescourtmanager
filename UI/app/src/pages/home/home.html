@@ -1,0 +1,14 @@
+<section class="section container-fluid">
+    <a href="#/crearpartido/" class="btn btn-primary btn-block" style="font-weight: bold;">Crear Partido</a>
+    <br />
+    <div class="match-block">
+        <h2>Pendientes</h2>
+        <div class="match-row container-fluid scrollable-content" ng-repeat="m in pendingMatches">
+            <match-result m="m"></match-result>
+        </div>
+        <h2>Jugados</h2>
+        <div class="match-row container-fluid scrollable-content" ng-repeat="m in playedMatches">
+            <match-result m="m"></match-result>
+        </div>
+    </div>
+</section>

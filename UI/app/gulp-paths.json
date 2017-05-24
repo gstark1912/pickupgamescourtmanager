@@ -1,0 +1,7 @@
+{
+  "app": "./src/",
+  "index": "../Views/Home/",
+  "js": ["**/*.js"],
+  "css": ["**/*.css"],
+  "dist": "./dist/"
+}

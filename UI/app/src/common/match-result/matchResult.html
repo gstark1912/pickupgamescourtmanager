@@ -1,0 +1,24 @@
+﻿<div class="row">
+    <div class="col-xs-3">
+        <img src="http://icons.iconarchive.com/icons/blackvariant/button-ui-requests-9/512/Soccer-Football-icon.png" />
+    </div>
+    <div class="col-xs-6">
+        <div class="row">
+            <div class="col-xs-12">
+                <span class="date">{{m.matchDate | date:'yyyy-MM-dd HH:mm'}}</span>
+            </div>
+            <div class="col-xs-6">
+                <span class="goals">{{m.homeGoals}}</span>
+            </div>
+            <div class="col-xs-6">
+                <span class="goals">{{m.awayGoals}}</span>
+            </div>
+            <div class="col-xs-12">
+                <span class="name">{{m.matchName}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <span class="confirmed">{{m.confirmedPlayers}}/{{m.totalPlayers}}</span>
+    </div>
+</div>

@@ -1,0 +1,156 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/angular/files")
+        @Styles.Render("~/Content/bootstrap")*@
+
+    <script>
+
+        //// Load the SDK asynchronously
+        //(function (d, s, id) {
+        //    var js, fjs = d.getElementsByTagName(s)[0];
+        //    if (d.getElementById(id)) return;
+        //    js = d.createElement(s); js.id = id;
+        //    js.src = "//connect.facebook.net/en_US/sdk.js";
+        //    fjs.parentNode.insertBefore(js, fjs);
+        //}(document, 'script', 'facebook-jssdk'));
+
+        //window.fbAsyncInit = function () {
+        //    FB.init({
+        //        appId: '1756722441212827',
+        //        status: true,
+        //        cookie: true,
+        //        xfbml: true,
+        //        version: 'v2.7'
+        //    });
+        //};
+    </script>
+    <meta charset="utf-8" />
+    <title>Brapp</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <title>Index</title>
+
+    <!-- build:css css/vendor.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/../app/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/../app/bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.css" />
+    <link rel="stylesheet" href="/../app/bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.css" />
+    <link rel="stylesheet" href="/../app/bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css css/styles.min.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../app/src/pages/home/main.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+    <!-- build:js js/vendor.min.js -->
+    <!-- bower:js -->
+    <script src="/../app/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/../app/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/../app/bower_components/angular/angular.js"></script>
+    <script src="/../app/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/../app/bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.js"></script>
+    <script src="/../app/bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.gestures.js"></script>
+    <script src="/../app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js js/scripts.min.js -->
+    <!-- inject:js -->
+    <script src="../../app/src/pages/match-create/match-create.module.js"></script>
+    <script src="../../app/src/pages/match-create/match-create.route.js"></script>
+    <script src="../../app/src/pages/match-create/match-create.controller.js"></script>
+    <script src="../../app/src/pages/match-invite/match-invite.module.js"></script>
+    <script src="../../app/src/pages/match-invite/match-invite.route.js"></script>
+    <script src="../../app/src/pages/match-invite/match-invite.controller.js"></script>
+    <script src="../../app/src/pages/match-teams/match-teams.module.js"></script>
+    <script src="../../app/src/pages/match-teams/match-teams.route.js"></script>
+    <script src="../../app/src/pages/match-teams/match-teams.controller.js"></script>
+    <script src="../../app/src/pages/match-view/match-view.module.js"></script>
+    <script src="../../app/src/pages/match-view/match-view.route.js"></script>
+    <script src="../../app/src/pages/match-view/match-view.controller.js"></script>
+    <script src="../../app/src/pages/player-invite/player-invite.module.js"></script>    
+    <script src="../../app/src/pages/player-invite/player-invite.controller.js"></script>
+    <script src="../../app/src/pages/dashboard/dashboard.module.js"></script>
+    <script src="../../app/src/pages/dashboard/dashboard.route.js"></script>
+    <script src="../../app/src/pages/home/home.module.js"></script>
+    <script src="../../app/src/pages/home/home.route.js"></script>
+    <script src="../../app/src/pages/home/home.controller.js"></script>
+    <script src="../../app/src/common/core.module.js"></script>
+    <script src="../../app/src/common/match-result/matchResultDirective.js"></script>
+    <script src="../../app/src/common/invitation-status/invitationStatusDirective.js"></script>
+    <script src="../../app/src/common/core.route.js"></script>
+    <script src="../../app/src/dataservices/ValuesServices.js"></script>
+    <script src="../../app/src/dataservices/MatchesServices.js"></script>
+    <script src="../../app/src/dataservices/configurationLinks.js"></script>
+    <script src="../../app/src/dataservices/AuthAPIServices.js"></script>
+    <script src="../../app/src/app.module.js"></script>
+    <script src="../../app/src/app.config.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+
+</head>
+@*<body>
+        <div ng-app="Brapp">
+            <div ng-view class="container">
+            </div>
+        </div>
+    </body>*@
+<body ng-app="app">
+
+    <!-- Sidebars -->
+    <div ng-include="'/app/src/layout/sidebar.html'"
+         ui-turn-off='uiSidebarLeft'
+         class="sidebar sidebar-left"></div>
+
+    <div class="app">
+
+        <!-- Navbars -->
+
+        <div class="navbar navbar-app navbar-absolute-top">
+            <div class="navbar-brand navbar-brand-center" ui-yield-to="title" style="font-size:30px">
+                brapp
+            </div>
+            <div class="btn-group pull-left">
+                <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
+                    <i style="font-size:32px;color:white" class="fa fa-bars"></i>
+                </div>
+            </div>
+            @* This toggle right side bar. *@
+            @*<div class="btn-group pull-right" ui-yield-to="navbarAction">
+                  <div ui-toggle="uiSidebarRight" class="btn">
+                    <i class="fa fa-comment"></i> Chat
+                  </div>
+                </div>*@
+        </div>
+
+        <div class="navbar navbar-app navbar-absolute-bottom">
+            <div class="btn-group justified">
+                <a href="http://mobileangularui.com/" class="btn btn-navbar"><i class="fa fa-home fa-navbar"></i> Docs</a>
+                <a href="https://github.com/mcasimir/mobile-angular-ui" class="btn btn-navbar"><i class="fa fa-github fa-navbar"></i> Sources</a>
+                <a href="https://github.com/mcasimir/mobile-angular-ui/issues" class="btn btn-navbar"><i class="fa fa-exclamation-circle fa-navbar"></i> Issues</a>
+            </div>
+        </div>
+
+        <!-- App Body -->
+        <div class="app-body">
+            <div class="app-content">
+                @*<ng-view></ng-view>*@
+                <div ng-include="'/app/src/index.html'"></div>
+            </div>
+        </div>
+
+    </div><!-- ~ .app -->
+
+    <div ui-yield-to="modals"></div>
+</body>
+</html>

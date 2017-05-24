@@ -1,0 +1,70 @@
+﻿<h1>Projects {{project.description}}</h1>
+<form class="form-horizontal">
+    <br />
+    <div class="form-group">
+        <label for="description" class="col-sm-1 control-label">Description</label>
+        <div class="col-sm-10">
+            <input ng-model="project.description" type="text" class="form-control" id="description" placeholder="Description">
+        </div>
+    </div>
+    <div class="form-group">
+        <h3>Leads</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Action
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lead in project.leads">
+                    <td>
+                        {{lead.description}}
+                    </td>
+                    <td>
+                        <button ng-click="removeLead(lead.idLead)" class="default">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="default">Add Lead</button>
+    </div>
+    <div class="form-group">
+        <h3>Project Features</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>
+                        Mail Type
+                    </td>
+                    <td>
+                        Feature
+                    </td>
+                    <td>
+                        Action
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="feature in project.projectFeatures">
+                    <td>
+                        {{feature.mailtype}}
+                    </td>
+                    <td>
+                        {{feature.description}}
+                    </td>
+                    <td>
+                        <button ng-click="editFeature(feature.idProjectFeature)" class="default">Update</button>
+                        <button ng-click="removeFeature(feature.idProjectFeature)" class="default">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="default" ng-click="editFeature(0)">Add Feature</button>
+    </div>
+</form>
+<a href="#/projects">Go Back</a>

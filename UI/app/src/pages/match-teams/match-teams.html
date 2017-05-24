@@ -1,0 +1,43 @@
+﻿<div class="scrollable ng-scope">
+    <div class="scrollable-content section">
+        <fieldset>
+            <legend>"{{match.matchName}}"</legend>
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>{{homeTeam.name}}</b></div>
+                <table class="table">
+                    <tr ng-repeat="p in homeTeam.players">
+                        <td>
+                            <img ng-src="{{p.photoUrl}}" ng-if="p.fromFacebook" />
+                            <p>{{p.name}}</p>
+                        </td>
+                        <td><button ng-click="switchToAway(p.id)"><img ng-src="app/src/assets/img/switch.png"></button></td>
+                        <td><invitation-status i="p.invitationStatus"></invitation-status></td>
+                        <td><button ng-if="!p.isOwner" ng-click="deletePlayer(p.id)"><img ng-src="app/src/assets/img/delete.png"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button ng-click="invitePlayers()">+</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>{{awayTeam.name}}</b></div>
+                <table class="table">
+                    <tr ng-repeat="p in awayTeam.players">
+                        <td>
+                            <img ng-src="{{p.photoUrl}}" ng-if="p.fromFacebook" />
+                            <p>{{p.name}}</p>
+                        </td>
+                        <td><button ng-click="switchToHome(p.id)"><img ng-src="app/src/assets/img/switch.png"></button></td>
+                        <td><invitation-status i="p.invitationStatus"></invitation-status></td>
+                        <td><button ng-if="!p.isOwner" ng-click="deletePlayer(p.id)"><img ng-src="app/src/assets/img/delete.png"></button></td>
+                    </tr>
+                    <tr>
+                        <td><button>+</button></td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+        <hr>
+        <input type="button" class="btn btn-primary btn-block" value="Guardar" ng-click="updateMatch()" />
+    </div>
+</div>
