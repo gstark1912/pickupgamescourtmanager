@@ -1,0 +1,14 @@
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\DAL.dll.config
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\DAL.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\DAL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\IDAL.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\MODEL.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\IDAL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\MODEL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\obj\Debug\DAL.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\DAL\obj\Debug\DAL.pdb

@@ -1,0 +1,13 @@
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\BLL.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\BLL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\IBLL.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\IDAL.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\MODEL.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\EntityFramework.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\IBLL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\IDAL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\MODEL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\EntityFramework.xml
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\obj\Debug\BLL.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\obj\Debug\BLL.pdb
