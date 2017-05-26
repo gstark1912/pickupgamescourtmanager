@@ -10,3 +10,16 @@ C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IDAL\bin\Debug\EntityFra
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IDAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IDAL\obj\Debug\IDAL.dll
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IDAL\obj\Debug\IDAL.pdb
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\IDAL.dll.config
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\IDAL.dll
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\IDAL.pdb
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\EntityFramework.dll
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\MODEL.dll
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\MODEL.pdb
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\MODEL.dll.config
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\EntityFramework.xml
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\obj\Debug\IDAL.csprojResolveAssemblyReference.cache
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\obj\Debug\IDAL.dll
+C:\Users\gstark\Documents\pickupgamescourtmanager\IDAL\obj\Debug\IDAL.pdb

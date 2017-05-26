@@ -17,6 +17,11 @@ namespace BLL.Services
             _userRepository = userRepository;
         }
 
+        public User Authenticate(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public User LoginOrRegister(User user)
         {
             var existingUser = _userRepository.GetUserByEmail(user.Email);

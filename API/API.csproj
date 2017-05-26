@@ -191,6 +191,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AuthenticateController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Filters\ApiAuthenticationFilter.cs" />
+    <Compile Include="Filters\AuthorizationRequiredAttribute.cs" />
+    <Compile Include="Filters\BasicAuthenticationIdentity.cs" />
+    <Compile Include="Filters\GenericAuthenticationFilter.cs" />
     <Compile Include="Infraestructure\CamelCaseExceptDictionaryKeysResolver.cs" />
     <Compile Include="Infraestructure\PreflightRequestsHandler.cs" />
     <Compile Include="Models\RegisterUserViewModel.cs" />

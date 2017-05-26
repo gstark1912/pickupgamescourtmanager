@@ -10,5 +10,6 @@ namespace IBLL.Interfaces
     public interface IUserService
     {
         User LoginOrRegister(User user);
+        User Authenticate(string username, string password);
     }
 }

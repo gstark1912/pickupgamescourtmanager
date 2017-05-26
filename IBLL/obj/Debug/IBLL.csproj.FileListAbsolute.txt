@@ -7,3 +7,13 @@ C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IBLL\bin\Debug\EntityFra
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IBLL\obj\Debug\IBLL.csprojResolveAssemblyReference.cache
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IBLL\obj\Debug\IBLL.dll
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IBLL\obj\Debug\IBLL.pdb
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\bin\Debug\IBLL.dll
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\bin\Debug\IBLL.pdb
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\bin\Debug\MODEL.dll
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\bin\Debug\EntityFramework.dll
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\bin\Debug\MODEL.pdb
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\bin\Debug\MODEL.dll.config
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\bin\Debug\EntityFramework.xml
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\obj\Debug\IBLL.csprojResolveAssemblyReference.cache
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\obj\Debug\IBLL.dll
+C:\Users\gstark\Documents\pickupgamescourtmanager\IBLL\obj\Debug\IBLL.pdb
