@@ -10,7 +10,8 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    [AuthorizationRequiredAttribute]
+    [ApiAuthenticationFilter]
+    [RoutePrefix("authentication")]
     public class AuthenticateController : ApiController
     {
         #region Private variable.
@@ -40,6 +41,7 @@ namespace API.Controllers
         [POST("authenticate")]
         [POST("get/token")]
         */
+        [HttpPost]
         public HttpResponseMessage Authenticate()
         {
             if (System.Threading.Thread.CurrentPrincipal != null && System.Threading.Thread.CurrentPrincipal.Identity.IsAuthenticated)

@@ -14,7 +14,7 @@ namespace IDAL
         void Update(TEntity entity);
 
         void Delete(int id);
-
+        void Delete(TEntity entity);
         TEntity GetByID(int id);
 
         List<TEntity> GetAll();

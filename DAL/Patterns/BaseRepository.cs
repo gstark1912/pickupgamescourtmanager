@@ -36,6 +36,11 @@ namespace DAL
             _context.Entry(entity).State = EntityState.Modified;
         }
 
+        public void Delete(TEntity entity)
+        {
+            dbSet.Remove(entity);
+        }
+
         public void Delete(int id)
         {
             dbSet.Remove(this.GetByID(id));

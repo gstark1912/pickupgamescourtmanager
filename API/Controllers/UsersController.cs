@@ -9,6 +9,7 @@ namespace API.Controllers
     [RoutePrefix("api/users")]
     public class UsersController : ApiController
     {
+        /*
         IUserService _userService;
         public UsersController(IUserService userService)
         {
@@ -38,5 +39,6 @@ namespace API.Controllers
             entity.Password = viewModel.password;
             return entity;
         }
+        */
     }
 }

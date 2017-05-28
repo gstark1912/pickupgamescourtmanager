@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MODEL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace IBLL.Interfaces
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        object GenerateToken(int userId);
+        Token GenerateToken(int userId);
 
         /// <summary>
         /// Function to validate token againt expiry and existance in database.
@@ -36,7 +37,7 @@ namespace IBLL.Interfaces
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        bool DeleteByUserId(int userId);
+        bool DeleteByClientId(int userId);
         #endregion
     }
 }

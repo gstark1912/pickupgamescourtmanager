@@ -1,22 +1,238 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BrappDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="IDUser" />
-    </Key>
-    <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDFacebook" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Birthdate" Type="DateTime" Precision="0" />
-    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Gender" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="PhotoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityContainer Name="BrappContext" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="Cancha" EntityType="BrappDBModel.Cancha" />
+    <EntitySet Name="Cliente" EntityType="BrappDBModel.Cliente" />
+    <EntitySet Name="EstadoReserva" EntityType="BrappDBModel.EstadoReserva" />
+    <EntitySet Name="HorarioCliente" EntityType="BrappDBModel.HorarioCliente" />
+    <EntitySet Name="Reserva" EntityType="BrappDBModel.Reserva" />
+    <EntitySet Name="TipoCancha" EntityType="BrappDBModel.TipoCancha" />
+    <EntitySet Name="TipoPiso" EntityType="BrappDBModel.TipoPiso" />
+    <EntitySet Name="Token" EntityType="BrappDBModel.Token" />
+    <AssociationSet Name="FK_Cancha_Cliente" Association="BrappDBModel.FK_Cancha_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Cancha" EntitySet="Cancha" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cancha_TipoCancha" Association="BrappDBModel.FK_Cancha_TipoCancha">
+      <End Role="TipoCancha" EntitySet="TipoCancha" />
+      <End Role="Cancha" EntitySet="Cancha" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cancha_TipoPiso" Association="BrappDBModel.FK_Cancha_TipoPiso">
+      <End Role="TipoPiso" EntitySet="TipoPiso" />
+      <End Role="Cancha" EntitySet="Cancha" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reserva_Cancha" Association="BrappDBModel.FK_Reserva_Cancha">
+      <End Role="Cancha" EntitySet="Cancha" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HorarioCliente_Cliente" Association="BrappDBModel.FK_HorarioCliente_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="HorarioCliente" EntitySet="HorarioCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reserva_Cliente" Association="BrappDBModel.FK_Reserva_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Token_Cliente" Association="BrappDBModel.FK_Token_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Token" EntitySet="Token" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reserva_EstadoReserva" Association="BrappDBModel.FK_Reserva_EstadoReserva">
+      <End Role="EstadoReserva" EntitySet="EstadoReserva" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Cancha">
+    <Key>
+      <PropertyRef Name="IDCancha" />
+    </Key>
+    <Property Name="IDCancha" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IDTipoCancha" Type="Int32" Nullable="false" />
+    <Property Name="IDTipoPiso" Type="Int32" Nullable="false" />
+    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="Valor1" Type="Decimal" Precision="16" Scale="2" />
+    <Property Name="Valor2" Type="Decimal" Precision="16" Scale="2" />
+    <Property Name="Valor3" Type="Decimal" Precision="16" Scale="2" />
+    <Property Name="Valor4" Type="Decimal" Precision="16" Scale="2" />
+    <Property Name="EsFutbol" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="BrappDBModel.FK_Cancha_Cliente" FromRole="Cancha" ToRole="Cliente" />
+    <NavigationProperty Name="TipoCancha" Relationship="BrappDBModel.FK_Cancha_TipoCancha" FromRole="Cancha" ToRole="TipoCancha" />
+    <NavigationProperty Name="TipoPiso" Relationship="BrappDBModel.FK_Cancha_TipoPiso" FromRole="Cancha" ToRole="TipoPiso" />
+    <NavigationProperty Name="Reserva" Relationship="BrappDBModel.FK_Reserva_Cancha" FromRole="Cancha" ToRole="Reserva" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IDCliente" />
+    </Key>
+    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Dirección" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Coordenadas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cancha" Relationship="BrappDBModel.FK_Cancha_Cliente" FromRole="Cliente" ToRole="Cancha" />
+    <NavigationProperty Name="HorarioCliente" Relationship="BrappDBModel.FK_HorarioCliente_Cliente" FromRole="Cliente" ToRole="HorarioCliente" />
+    <NavigationProperty Name="Reserva" Relationship="BrappDBModel.FK_Reserva_Cliente" FromRole="Cliente" ToRole="Reserva" />
+    <NavigationProperty Name="Token" Relationship="BrappDBModel.FK_Token_Cliente" FromRole="Cliente" ToRole="Token" />
+  </EntityType>
+  <EntityType Name="EstadoReserva">
+    <Key>
+      <PropertyRef Name="IDEstadoReserva" />
+    </Key>
+    <Property Name="IDEstadoReserva" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reserva" Relationship="BrappDBModel.FK_Reserva_EstadoReserva" FromRole="EstadoReserva" ToRole="Reserva" />
+  </EntityType>
+  <EntityType Name="HorarioCliente">
+    <Key>
+      <PropertyRef Name="IDHorarioCliente" />
+    </Key>
+    <Property Name="IDHorarioCliente" Type="Int32" Nullable="false" />
+    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="Dia" Type="Int32" Nullable="false" />
+    <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hasta" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Cliente" Relationship="BrappDBModel.FK_HorarioCliente_Cliente" FromRole="HorarioCliente" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Reserva">
+    <Key>
+      <PropertyRef Name="IDReserva" />
+    </Key>
+    <Property Name="IDReserva" Type="Int32" Nullable="false" />
+    <Property Name="IDCancha" Type="Int32" Nullable="false" />
+    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="Reserva1" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+    <Property Name="IDEstadoReserva" Type="Int32" Nullable="false" />
+    <Property Name="NombreReserva" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Cancha" Relationship="BrappDBModel.FK_Reserva_Cancha" FromRole="Reserva" ToRole="Cancha" />
+    <NavigationProperty Name="Cliente" Relationship="BrappDBModel.FK_Reserva_Cliente" FromRole="Reserva" ToRole="Cliente" />
+    <NavigationProperty Name="EstadoReserva" Relationship="BrappDBModel.FK_Reserva_EstadoReserva" FromRole="Reserva" ToRole="EstadoReserva" />
+  </EntityType>
+  <EntityType Name="TipoCancha">
+    <Key>
+      <PropertyRef Name="IDTipoCancha" />
+    </Key>
+    <Property Name="IDTipoCancha" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CantJugadores" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cancha" Relationship="BrappDBModel.FK_Cancha_TipoCancha" FromRole="TipoCancha" ToRole="Cancha" />
+  </EntityType>
+  <EntityType Name="TipoPiso">
+    <Key>
+      <PropertyRef Name="IDTipoPiso" />
+    </Key>
+    <Property Name="IDTipoPiso" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cancha" Relationship="BrappDBModel.FK_Cancha_TipoPiso" FromRole="TipoPiso" ToRole="Cancha" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="IDToken" />
+    </Key>
+    <Property Name="IDToken" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="AuthToken" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IssuedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpiresOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Cliente" Relationship="BrappDBModel.FK_Token_Cliente" FromRole="Token" ToRole="Cliente" />
+  </EntityType>
+  <Association Name="FK_Cancha_Cliente">
+    <End Type="BrappDBModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="BrappDBModel.Cancha" Role="Cancha" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IDCliente" />
+      </Principal>
+      <Dependent Role="Cancha">
+        <PropertyRef Name="IDCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cancha_TipoCancha">
+    <End Type="BrappDBModel.TipoCancha" Role="TipoCancha" Multiplicity="1" />
+    <End Type="BrappDBModel.Cancha" Role="Cancha" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCancha">
+        <PropertyRef Name="IDTipoCancha" />
+      </Principal>
+      <Dependent Role="Cancha">
+        <PropertyRef Name="IDTipoCancha" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cancha_TipoPiso">
+    <End Type="BrappDBModel.TipoPiso" Role="TipoPiso" Multiplicity="1" />
+    <End Type="BrappDBModel.Cancha" Role="Cancha" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPiso">
+        <PropertyRef Name="IDTipoPiso" />
+      </Principal>
+      <Dependent Role="Cancha">
+        <PropertyRef Name="IDTipoPiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reserva_Cancha">
+    <End Type="BrappDBModel.Cancha" Role="Cancha" Multiplicity="1" />
+    <End Type="BrappDBModel.Reserva" Role="Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cancha">
+        <PropertyRef Name="IDCancha" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="IDCancha" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HorarioCliente_Cliente">
+    <End Type="BrappDBModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="BrappDBModel.HorarioCliente" Role="HorarioCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IDCliente" />
+      </Principal>
+      <Dependent Role="HorarioCliente">
+        <PropertyRef Name="IDCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reserva_Cliente">
+    <End Type="BrappDBModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="BrappDBModel.Reserva" Role="Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IDCliente" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="IDCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Token_Cliente">
+    <End Type="BrappDBModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="BrappDBModel.Token" Role="Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IDCliente" />
+      </Principal>
+      <Dependent Role="Token">
+        <PropertyRef Name="IDCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reserva_EstadoReserva">
+    <End Type="BrappDBModel.EstadoReserva" Role="EstadoReserva" Multiplicity="1" />
+    <End Type="BrappDBModel.Reserva" Role="Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoReserva">
+        <PropertyRef Name="IDEstadoReserva" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="IDEstadoReserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

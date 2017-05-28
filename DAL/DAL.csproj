@@ -77,7 +77,7 @@
     <Compile Include="Patterns\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patterns\BaseRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\TokenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -100,7 +100,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Brapp.bak" />
     <EntityDeploy Include="BrappDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BrappDataModel.Designer.cs</LastGenOutput>
@@ -108,6 +107,7 @@
     <None Include="BrappDataModel.edmx.diagram">
       <DependentUpon>BrappDataModel.edmx</DependentUpon>
     </None>
+    <None Include="canchas.bak" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

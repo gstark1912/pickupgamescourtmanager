@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace IBLL.Interfaces
 {
-    public interface IUserService
+    public interface IClientService
     {
-        User LoginOrRegister(User user);
-        User Authenticate(string username, string password);
+        Cliente Authenticate(string username, string password);
     }
 }
