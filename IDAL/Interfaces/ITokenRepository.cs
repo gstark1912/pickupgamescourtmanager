@@ -7,7 +7,7 @@ namespace IDAL.Interfaces
     {
         Token GetToken(string tokenId);
         Token GetTokenByAuthToken(string tokenId);
-        IEnumerable<Token> GetTokensByClient(string tokenId);
+        IEnumerable<Token> GetTokensByClient(int clientId);
         Token GetTokenByClientId(int clientId);
     }
 }

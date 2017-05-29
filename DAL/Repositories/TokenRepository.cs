@@ -30,7 +30,7 @@ namespace DAL.Repositories
         {
             return dbSet.Where(t => t.IDCliente == clientId).FirstOrDefault();
         }
-
+        
         public IEnumerable<Token> GetTokensByClient(int clientId)
         {
             return dbSet.Where(t => t.IDCliente == clientId);
