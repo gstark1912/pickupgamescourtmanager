@@ -42,6 +42,7 @@ namespace API.Controllers
         [POST("get/token")]
         */
         [HttpPost]
+        [Route("")]
         public HttpResponseMessage Authenticate()
         {
             if (System.Threading.Thread.CurrentPrincipal != null && System.Threading.Thread.CurrentPrincipal.Identity.IsAuthenticated)
@@ -65,7 +66,7 @@ namespace API.Controllers
         {
             var token = _tokenServices.GenerateToken(userId);
             var response = Request.CreateResponse(HttpStatusCode.OK, "Authorized");
-            response.Headers.Add("Token", "1");//token.AuthToken);
+            response.Headers.Add("Token", token.AuthToken);
             response.Headers.Add("TokenExpiry", ConfigurationManager.AppSettings["AuthTokenExpiry"]);
             response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry");
             return response;

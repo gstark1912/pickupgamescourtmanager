@@ -31,6 +31,7 @@ namespace INFRA
         {
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerResolveLifetimeManager());
             container.RegisterType<IClientService, ClientService>();
+            container.RegisterType<IClienteRepository, ClienteRepository>();
 
             container.RegisterTypes(AllClasses.FromLoadedAssemblies().Where(
                 t => t.Namespace == "BLL.Services"),

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IClienteRepository.cs" />
     <Compile Include="Interfaces\ITokenRepository.cs" />
     <Compile Include="Patterns\Interfaces\IBaseRepository.cs" />
     <Compile Include="Patterns\Interfaces\IUnitOfWork.cs" />

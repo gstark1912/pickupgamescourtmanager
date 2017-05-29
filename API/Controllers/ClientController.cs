@@ -10,7 +10,7 @@ using System.Web.Http;
 namespace API.Controllers
 {
     [RoutePrefix("clients")]
-    [ApiAuthenticationFilter]
+    [AuthorizationRequiredAttribute]
     public class ClientController : ApiController
     {
         public ClientController(IClientService c)

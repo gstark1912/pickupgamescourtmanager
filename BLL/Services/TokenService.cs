@@ -69,7 +69,7 @@ namespace BLL.Services
             var token = _tokenRepository.GetToken(tokenId);
             if (token != null && !(DateTime.Now > token.ExpiresOn))
             {
-                token.ExpiresOn = token.ExpiresOn.AddSeconds(
+                token.ExpiresOn = DateTime.Now.AddSeconds(
                 Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
                 _tokenRepository.Update(token);
                 _tokenRepository.SaveChanges();

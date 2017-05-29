@@ -1,4 +1,5 @@
 ﻿using IBLL.Interfaces;
+using IDAL.Interfaces;
 using MODEL;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,14 @@ namespace BLL.Services
 {
     public class ClientService : IClientService
     {
+        IClienteRepository _clienteRepository;
+        public ClientService(IClienteRepository clienteRepository)
+        {
+            _clienteRepository = clienteRepository;
+        }
         public Cliente Authenticate(string username, string password)
         {
-            return new Cliente
-            {
-                IDCliente = 1
-            };
+            return _clienteRepository.Authenticate(username, password);
         }
     }
 }
