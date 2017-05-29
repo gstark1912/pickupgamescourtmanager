@@ -10,5 +10,7 @@ namespace IBLL.Interfaces
     public interface IClientService
     {
         Cliente Authenticate(string username, string password);
+        Cliente GetClienteById(int clientId);
+        bool Insert(Cliente model);
     }
 }

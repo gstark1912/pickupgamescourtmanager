@@ -101,3 +101,5 @@ C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\INFRA\bin\Debug\System.W
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\INFRA\obj\Debug\INFRA.csprojResolveAssemblyReference.cache
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\INFRA\obj\Debug\INFRA.dll
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\INFRA\obj\Debug\INFRA.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\INFRA\bin\Debug\FluentValidation.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\INFRA\bin\Debug\FluentValidation.xml

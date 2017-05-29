@@ -220,3 +220,5 @@ C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\API\obj\Debug\API.dll
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\API\obj\Debug\API.pdb
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\API\bin\BLL.dll
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\API\bin\BLL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\API\bin\FluentValidation.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\API\bin\FluentValidation.xml

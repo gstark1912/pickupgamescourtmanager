@@ -26,3 +26,5 @@ C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\BLL\bin\Debug\EntityFram
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\BLL\obj\Debug\BLL.dll
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\BLL\obj\Debug\BLL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\FluentValidation.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\BLL\bin\Debug\FluentValidation.xml

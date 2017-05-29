@@ -17,3 +17,5 @@ C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\IBLL\bin\Debug\EntityFra
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\IBLL\obj\Debug\IBLL.csprojResolveAssemblyReference.cache
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\IBLL\obj\Debug\IBLL.dll
 C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\IBLL\obj\Debug\IBLL.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IBLL\bin\Debug\FluentValidation.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\IBLL\bin\Debug\FluentValidation.xml

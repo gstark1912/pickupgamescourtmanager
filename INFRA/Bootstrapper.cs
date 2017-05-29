@@ -9,6 +9,7 @@ using IBLL.Interfaces;
 using BLL.Services;
 using DAL.Repositories;
 using IDAL.Interfaces;
+using BLL.Validators;
 
 namespace INFRA
 {
@@ -31,7 +32,10 @@ namespace INFRA
         {
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerResolveLifetimeManager());
             container.RegisterType<IClientService, ClientService>();
+
             container.RegisterType<IClienteRepository, ClienteRepository>();
+
+            container.RegisterType<IClienteValidator, ClienteValidator>();
 
             container.RegisterTypes(AllClasses.FromLoadedAssemblies().Where(
                 t => t.Namespace == "BLL.Services"),

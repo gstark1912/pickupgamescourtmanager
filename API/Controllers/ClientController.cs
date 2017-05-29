@@ -1,5 +1,6 @@
 ﻿using API.Filters;
 using IBLL.Interfaces;
+using MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +14,34 @@ namespace API.Controllers
     [AuthorizationRequiredAttribute]
     public class ClientController : ApiController
     {
-        public ClientController(IClientService c)
+        IClientService _clienteService;
+        public ClientController(IClientService clienteService)
         {
-
+            _clienteService = clienteService;
         }
 
         [HttpGet]
-        [Route()]
-        public int Get()
+        [Route("{clientId}")]
+        public IHttpActionResult GetCliente(int clientId)
         {
-            return 1;
+            var cliente = _clienteService.GetClienteById(clientId);
+
+            if (cliente == null)
+                return NotFound();
+
+            return Ok(cliente);
         }
 
+        [HttpPost]
+        [Route("")]
+        public IHttpActionResult CreateClient(Cliente model)
+        {
+            var result = _clienteService.Insert(model);
+
+            if (result)
+                return Ok();
+            else
+                return BadRequest();
+        }
     }
 }
