@@ -1,4 +1,5 @@
 ﻿using API.Filters;
+using IBLL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,13 @@ namespace API.Controllers
     [ApiAuthenticationFilter]
     public class ClientController : ApiController
     {
+        public ClientController(IClientService c)
+        {
+
+        }
+
+        [HttpGet]
+        [Route()]
         public int Get()
         {
             return 1;
