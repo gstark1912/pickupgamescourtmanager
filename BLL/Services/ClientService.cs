@@ -37,5 +37,58 @@ namespace BLL.Services
             _clienteRepository.SaveChanges();
             return true;
         }
+
+        public bool Update(Cliente model)
+        {
+            var entity = _clienteRepository.GetByID(model.IDCliente);
+
+            if (entity == null)
+                return false;
+
+            entity.Nombre = model.Nombre;
+            entity.Dirección = model.Dirección;
+            entity.Coordenadas = model.Coordenadas;
+
+            if (!_clienteValidator.Validate(entity).IsValid)
+                return false;
+
+            _clienteRepository.Update(entity);
+            _clienteRepository.SaveChanges();
+            return true;
+        }
+
+        public bool UpdateCourts(int clientId, List<Cancha> courts)
+        {
+            var entity = _clienteRepository.GetByID(clientId);
+
+            if (entity == null)
+                return false;
+
+            var finalCourts = courts.Select(c => c.IDCancha);
+            var existingCourts = entity.Cancha.Where(c => !c.EsFutbol).Select(c => c.IDCancha);
+
+            foreach (var item in entity.Cancha.Where(c => !c.EsFutbol && finalCourts.Contains(c.IDCancha))) //updates
+            {
+                var aux = courts.FirstOrDefault(c => c.IDCancha == item.IDCancha);
+                item.Valor1 = aux.Valor1;
+                item.Valor2 = aux.Valor2;
+                item.Valor3 = aux.Valor3;
+                item.Valor4 = aux.Valor4;
+                item.IDTipoCancha = aux.IDTipoCancha;
+                item.Descripcion = aux.Descripcion;
+            }
+
+            foreach (var item in courts.Where(c => !existingCourts.Contains(c.IDCancha))) //insert
+            {
+                entity.Cancha.Add(item);
+            }
+
+            //foreach (var item in entity.Cancha.Where(c => !c.EsFutbol && !finalCourts.Contains(c.IDCancha))) //delete
+            //{
+            //    _rep
+            //}
+
+            return true;
+        }
     }
 }

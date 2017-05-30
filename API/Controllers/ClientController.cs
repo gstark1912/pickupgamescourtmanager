@@ -43,5 +43,31 @@ namespace API.Controllers
             else
                 return BadRequest();
         }
+
+        [HttpPut]
+        [Route("{clientId}")]
+        public IHttpActionResult UpdateClient(Cliente model, int clientId)
+        {
+            var result = _clienteService.Update(model);
+
+            if (result)
+                return Ok();
+            else
+                return BadRequest();
+        }
+
+        [HttpPut]
+        [Route("{clientId}/courts/")]
+        public IHttpActionResult CreateClient(int clientId, List<Cancha> courts)
+        {
+            var result = _clienteService.UpdateCourts(clientId, courts);
+
+            if (result)
+                return Ok();
+            else
+                return BadRequest();
+        }
+
+
     }
 }

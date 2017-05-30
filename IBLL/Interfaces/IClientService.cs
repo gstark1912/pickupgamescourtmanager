@@ -12,5 +12,7 @@ namespace IBLL.Interfaces
         Cliente Authenticate(string username, string password);
         Cliente GetClienteById(int clientId);
         bool Insert(Cliente model);
+        bool Update(Cliente model);
+        bool UpdateCourts(int clientId, List<Cancha> courts);
     }
 }
