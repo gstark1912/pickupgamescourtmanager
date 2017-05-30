@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d355a2288b48475c9c996e9de1ce05f1" Name="Diagram1" ZoomLevel="105">
-        <EntityTypeShape EntityType="BrappDBModel.Cancha" Width="1.5" PointX="3.75" PointY="3.25" />
+      <Diagram DiagramId="d355a2288b48475c9c996e9de1ce05f1" Name="Diagram1" ZoomLevel="79">
+        <EntityTypeShape EntityType="BrappDBModel.Cancha" Width="1.5" PointX="6" PointY="4.25" />
         <EntityTypeShape EntityType="BrappDBModel.Cliente" Width="1.5" PointX="0.75" PointY="4.625" />
         <EntityTypeShape EntityType="BrappDBModel.EstadoReserva" Width="1.5" PointX="6" PointY="1.25" />
-        <EntityTypeShape EntityType="BrappDBModel.HorarioCliente" Width="1.5" PointX="0.75" PointY="8.5" />
-        <EntityTypeShape EntityType="BrappDBModel.Reserva" Width="1.5" PointX="6" PointY="3.375" />
-        <EntityTypeShape EntityType="BrappDBModel.TipoCancha" Width="1.5" PointX="3.75" PointY="8.375" />
+        <EntityTypeShape EntityType="BrappDBModel.HorarioCliente" Width="1.5" PointX="3" PointY="10.875" />
+        <EntityTypeShape EntityType="BrappDBModel.Reserva" Width="1.5" PointX="8.25" PointY="4.5" />
+        <EntityTypeShape EntityType="BrappDBModel.TipoCancha" Width="1.5" PointX="3.75" PointY="7.375" />
         <EntityTypeShape EntityType="BrappDBModel.TipoPiso" Width="1.5" PointX="3.75" PointY="1" />
-        <EntityTypeShape EntityType="BrappDBModel.Token" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="BrappDBModel.Token" Width="1.5" PointX="3" PointY="3.5" />
         <AssociationConnector Association="BrappDBModel.FK_Cancha_Cliente" />
         <AssociationConnector Association="BrappDBModel.FK_Cancha_TipoCancha" />
         <AssociationConnector Association="BrappDBModel.FK_Cancha_TipoPiso" />

@@ -58,7 +58,7 @@ namespace API.Controllers
 
         [HttpPut]
         [Route("{clientId}/courts/")]
-        public IHttpActionResult CreateClient(int clientId, List<Cancha> courts)
+        public IHttpActionResult CreateClientCourts(int clientId, List<Cancha> courts)
         {
             var result = _clienteService.UpdateCourts(clientId, courts);
 

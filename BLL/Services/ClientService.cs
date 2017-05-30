@@ -13,11 +13,18 @@ namespace BLL.Services
     {
         IClienteRepository _clienteRepository;
         IClienteValidator _clienteValidator;
-        public ClientService(IClienteRepository clienteRepository, IClienteValidator clienteValidator)
+
+        ICanchaRepository _canchaRepository;
+        ICanchaValidator _canchaValidator;
+        public ClientService(IClienteRepository clienteRepository, IClienteValidator clienteValidator,
+            ICanchaRepository canchaRepository, ICanchaValidator canchaValidator)
         {
             _clienteRepository = clienteRepository;
             _clienteValidator = clienteValidator;
+            _canchaRepository = canchaRepository;
+            _canchaValidator = canchaValidator;
         }
+
         public Cliente Authenticate(string username, string password)
         {
             return _clienteRepository.Authenticate(username, password);
@@ -80,13 +87,18 @@ namespace BLL.Services
 
             foreach (var item in courts.Where(c => !existingCourts.Contains(c.IDCancha))) //insert
             {
-                entity.Cancha.Add(item);
+                if (_canchaValidator.Validate(item).IsValid)
+                    entity.Cancha.Add(item);
+                else
+                    throw new Exception("Se rompio todo wacho");//TODO
             }
 
-            //foreach (var item in entity.Cancha.Where(c => !c.EsFutbol && !finalCourts.Contains(c.IDCancha))) //delete
-            //{
-            //    _rep
-            //}
+            foreach (var item in entity.Cancha.Where(c => !c.EsFutbol && !finalCourts.Contains(c.IDCancha))) //delete
+            {
+                _canchaRepository.Delete(item.IDCancha);
+            }
+
+            _clienteRepository.SaveChanges();
 
             return true;
         }

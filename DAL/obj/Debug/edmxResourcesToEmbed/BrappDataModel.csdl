@@ -46,7 +46,7 @@
     <Key>
       <PropertyRef Name="IDCancha" />
     </Key>
-    <Property Name="IDCancha" Type="Int32" Nullable="false" />
+    <Property Name="IDCancha" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="IDTipoCancha" Type="Int32" Nullable="false" />
     <Property Name="IDTipoPiso" Type="Int32" Nullable="false" />
@@ -65,7 +65,7 @@
     <Key>
       <PropertyRef Name="IDCliente" />
     </Key>
-    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="IDCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Dirección" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -80,7 +80,7 @@
     <Key>
       <PropertyRef Name="IDEstadoReserva" />
     </Key>
-    <Property Name="IDEstadoReserva" Type="Int32" Nullable="false" />
+    <Property Name="IDEstadoReserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Reserva" Relationship="BrappDBModel.FK_Reserva_EstadoReserva" FromRole="EstadoReserva" ToRole="Reserva" />
   </EntityType>
@@ -88,7 +88,7 @@
     <Key>
       <PropertyRef Name="IDHorarioCliente" />
     </Key>
-    <Property Name="IDHorarioCliente" Type="Int32" Nullable="false" />
+    <Property Name="IDHorarioCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDCliente" Type="Int32" Nullable="false" />
     <Property Name="Dia" Type="Int32" Nullable="false" />
     <Property Name="Desde" Type="DateTime" Nullable="false" Precision="3" />
@@ -99,7 +99,7 @@
     <Key>
       <PropertyRef Name="IDReserva" />
     </Key>
-    <Property Name="IDReserva" Type="Int32" Nullable="false" />
+    <Property Name="IDReserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDCancha" Type="Int32" Nullable="false" />
     <Property Name="IDCliente" Type="Int32" Nullable="false" />
     <Property Name="Precio" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
@@ -115,7 +115,7 @@
     <Key>
       <PropertyRef Name="IDTipoCancha" />
     </Key>
-    <Property Name="IDTipoCancha" Type="Int32" Nullable="false" />
+    <Property Name="IDTipoCancha" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CantJugadores" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Cancha" Relationship="BrappDBModel.FK_Cancha_TipoCancha" FromRole="TipoCancha" ToRole="Cancha" />
@@ -124,7 +124,7 @@
     <Key>
       <PropertyRef Name="IDTipoPiso" />
     </Key>
-    <Property Name="IDTipoPiso" Type="Int32" Nullable="false" />
+    <Property Name="IDTipoPiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Cancha" Relationship="BrappDBModel.FK_Cancha_TipoPiso" FromRole="TipoPiso" ToRole="Cancha" />
   </EntityType>

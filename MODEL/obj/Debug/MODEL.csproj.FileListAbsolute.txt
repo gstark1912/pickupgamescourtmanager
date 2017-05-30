@@ -16,3 +16,4 @@ C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\MODEL\bin\Debug\EntityFr
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\MODEL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\MODEL\obj\Debug\MODEL.dll
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\MODEL\obj\Debug\MODEL.pdb
+C:\Users\Geerr\Documents\GitHub\pickupgamescourtmanager\MODEL\obj\Debug\MODEL.csprojResolveAssemblyReference.cache
