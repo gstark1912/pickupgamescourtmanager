@@ -42,12 +42,13 @@ namespace API.Filters
                                .DependencyResolver.GetService(typeof(IClientService)) as IClientService;
             if (provider != null)
             {
-                var userId = provider.Authenticate(username, password).IDCliente;
-                if (userId > 0)
+                var cliente = provider.Authenticate(username, password);
+
+                if (cliente != null)
                 {
                     var basicAuthenticationIdentity = Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
                     if (basicAuthenticationIdentity != null)
-                        basicAuthenticationIdentity.UserId = userId;
+                        basicAuthenticationIdentity.UserId = cliente.IDCliente;
                     return true;
                 }
             }

@@ -114,3 +114,5 @@ C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\UI\bin\System.Web.Mvc.xm
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\UI\obj\Debug\UI.dll
 C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\UI\obj\Debug\UI.pdb
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\UI\bin\System.Web.Http.WebHost.dll
+C:\Users\Geerr\Documents\Github\pickupgamescourtmanager\UI\bin\System.Web.Http.WebHost.xml

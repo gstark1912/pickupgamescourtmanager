@@ -3,11 +3,10 @@
     module.factory('configurationLinks', ConfigurationLinks);
 
     function ConfigurationLinks() {
-        var api = "http://localhost:55692/api"
+        var api = "http://localhost:55692"
         return {
-            matchesApi: api + "/matches",
-            usersApi: api + "/users",
-            valuesApi: api + "/values"
+            authorizationApi: api + "/authentication",
+            clientsApi: api + "/clients"
         }
     };
 

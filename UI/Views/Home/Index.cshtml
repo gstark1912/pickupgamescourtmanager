@@ -1,15 +1,9 @@
-﻿@using System.Web.Optimization
+@using System.Web.Optimization
 <!DOCTYPE html>
 
 <html>
 <head>
-    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/angular")
-        @Scripts.Render("~/bundles/bootstrap")
-        @Scripts.Render("~/bundles/angular/files")
-        @Styles.Render("~/Content/bootstrap")*@
 
     <script>
 
@@ -43,14 +37,11 @@
     <!-- build:css css/vendor.min.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/../app/bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/../app/bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.css" />
-    <link rel="stylesheet" href="/../app/bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.css" />
-    <link rel="stylesheet" href="/../app/bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css css/styles.min.css -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="../../app/src/pages/home/main.css">
+    <link rel="stylesheet" href="../../app/src/pages/login/signin.css">
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:js js/vendor.min.js -->
@@ -59,40 +50,23 @@
     <script src="/../app/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/../app/bower_components/angular/angular.js"></script>
     <script src="/../app/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="/../app/bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.js"></script>
-    <script src="/../app/bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.gestures.js"></script>
     <script src="/../app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/../app/bower_components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="/../app/bower_components/angular-base64/angular-base64.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js js/scripts.min.js -->
     <!-- inject:js -->
-    <script src="../../app/src/pages/match-create/match-create.module.js"></script>
-    <script src="../../app/src/pages/match-create/match-create.route.js"></script>
-    <script src="../../app/src/pages/match-create/match-create.controller.js"></script>
-    <script src="../../app/src/pages/match-invite/match-invite.module.js"></script>
-    <script src="../../app/src/pages/match-invite/match-invite.route.js"></script>
-    <script src="../../app/src/pages/match-invite/match-invite.controller.js"></script>
-    <script src="../../app/src/pages/match-teams/match-teams.module.js"></script>
-    <script src="../../app/src/pages/match-teams/match-teams.route.js"></script>
-    <script src="../../app/src/pages/match-teams/match-teams.controller.js"></script>
-    <script src="../../app/src/pages/match-view/match-view.module.js"></script>
-    <script src="../../app/src/pages/match-view/match-view.route.js"></script>
-    <script src="../../app/src/pages/match-view/match-view.controller.js"></script>
-    <script src="../../app/src/pages/player-invite/player-invite.module.js"></script>    
-    <script src="../../app/src/pages/player-invite/player-invite.controller.js"></script>
-    <script src="../../app/src/pages/dashboard/dashboard.module.js"></script>
-    <script src="../../app/src/pages/dashboard/dashboard.route.js"></script>
+    <script src="../../app/src/pages/login/login.module.js"></script>
+    <script src="../../app/src/pages/login/login.route.js"></script>
+    <script src="../../app/src/pages/login/login.controller.js"></script>
     <script src="../../app/src/pages/home/home.module.js"></script>
     <script src="../../app/src/pages/home/home.route.js"></script>
     <script src="../../app/src/pages/home/home.controller.js"></script>
     <script src="../../app/src/common/core.module.js"></script>
-    <script src="../../app/src/common/match-result/matchResultDirective.js"></script>
-    <script src="../../app/src/common/invitation-status/invitationStatusDirective.js"></script>
-    <script src="../../app/src/common/core.route.js"></script>
-    <script src="../../app/src/dataservices/ValuesServices.js"></script>
-    <script src="../../app/src/dataservices/MatchesServices.js"></script>
     <script src="../../app/src/dataservices/configurationLinks.js"></script>
     <script src="../../app/src/dataservices/AuthAPIServices.js"></script>
+    <script src="../../app/src/common/core.route.js"></script>
     <script src="../../app/src/app.module.js"></script>
     <script src="../../app/src/app.config.js"></script>
     <!-- endinject -->
@@ -115,31 +89,30 @@
     <div class="app">
 
         <!-- Navbars -->
-
-        <div class="navbar navbar-app navbar-absolute-top">
-            <div class="navbar-brand navbar-brand-center" ui-yield-to="title" style="font-size:30px">
-                brapp
-            </div>
-            <div class="btn-group pull-left">
-                <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
-                    <i style="font-size:32px;color:white" class="fa fa-bars"></i>
-                </div>
-            </div>
-            @* This toggle right side bar. *@
-            @*<div class="btn-group pull-right" ui-yield-to="navbarAction">
-                  <div ui-toggle="uiSidebarRight" class="btn">
-                    <i class="fa fa-comment"></i> Chat
-                  </div>
-                </div>*@
-        </div>
-
-        <div class="navbar navbar-app navbar-absolute-bottom">
-            <div class="btn-group justified">
-                <a href="http://mobileangularui.com/" class="btn btn-navbar"><i class="fa fa-home fa-navbar"></i> Docs</a>
-                <a href="https://github.com/mcasimir/mobile-angular-ui" class="btn btn-navbar"><i class="fa fa-github fa-navbar"></i> Sources</a>
-                <a href="https://github.com/mcasimir/mobile-angular-ui/issues" class="btn btn-navbar"><i class="fa fa-exclamation-circle fa-navbar"></i> Issues</a>
-            </div>
-        </div>
+        @*
+                <div class="navbar navbar-app navbar-absolute-top">
+                    <div class="navbar-brand navbar-brand-center" ui-yield-to="title" style="font-size:30px">
+                        brapp
+                    </div>
+                    <div class="btn-group pull-left">
+                        <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
+                            <i style="font-size:32px;color:white" class="fa fa-bars"></i>
+                        </div>
+                    </div>
+                    This toggle right side bar.
+                    @*<div class="btn-group pull-right" ui-yield-to="navbarAction">
+                          <div ui-toggle="uiSidebarRight" class="btn">
+                            <i class="fa fa-comment"></i> Chat
+                          </div>
+                        </div>
+                    </div>
+            <div class="navbar navbar-app navbar-absolute-bottom">
+                            <div class="btn-group justified">
+                                <a href="http://mobileangularui.com/" class="btn btn-navbar"><i class="fa fa-home fa-navbar"></i> Docs</a>
+                                <a href="https://github.com/mcasimir/mobile-angular-ui" class="btn btn-navbar"><i class="fa fa-github fa-navbar"></i> Sources</a>
+                                <a href="https://github.com/mcasimir/mobile-angular-ui/issues" class="btn btn-navbar"><i class="fa fa-exclamation-circle fa-navbar"></i> Issues</a>
+                            </div>
+                        </div>*@
 
         <!-- App Body -->
         <div class="app-body">

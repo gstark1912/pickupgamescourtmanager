@@ -2,23 +2,23 @@
     'use strict';
 
     angular
-      .module('app.matchView')
+      .module('app.login')
       .config(configuration)
       .run(runModule);
 
     /* @ngInject */
     function configuration($stateProvider, $urlRouterProvider) {
         $stateProvider
-          .state('matchView', {
-              url: '/partido/:matchId',
-              templateUrl: 'app/src/pages/match-view/match-view.html',
-              controller: 'MatchViewController',
+          .state('login', {
+              url: '/login',
+              templateUrl: 'app/src/pages/login/login.html',
+              controller: 'LoginController',
               data: {
-                  pageTitle: 'Partido'
+                  pageTitle: 'Login'
               }
           });
 
-        $urlRouterProvider.otherwise('/home');
+        //$urlRouterProvider.otherwise('/home');
     }
 
     /* @ngInject */

@@ -14,15 +14,17 @@
     "bootstrap": "^3.3.6",
     "angular": "1.5.0",
     "angular-ui-router": "^0.3.1",
-    "mobile-angular-ui": "1.2.x",
-    "angular-bootstrap": "^2.1.3"
+    "angular-bootstrap": "^2.1.3",
+    "angular-jwt": "^0.1.9",
+    "angular-base64": "^2.0.5"
   },
   "overrides": {
     "bootstrap": {
       "main": [
         "dist/js/bootstrap.js",
         "dist/css/bootstrap.css",
-        "less/bootstrap.less"
+        "less/bootstrap.less",
+        "dist/angular-jwt.min.js"
       ]
     }
   }
