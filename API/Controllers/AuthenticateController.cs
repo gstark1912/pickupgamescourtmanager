@@ -10,7 +10,6 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    [ApiAuthenticationFilter]
     [RoutePrefix("authentication")]
     public class AuthenticateController : ApiController
     {
@@ -43,6 +42,7 @@ namespace API.Controllers
         */
         [HttpPost]
         [Route("")]
+        [ApiAuthenticationFilter]
         public HttpResponseMessage Authenticate()
         {
             if (System.Threading.Thread.CurrentPrincipal != null && System.Threading.Thread.CurrentPrincipal.Identity.IsAuthenticated)
@@ -70,6 +70,14 @@ namespace API.Controllers
             response.Headers.Add("TokenExpiry", ConfigurationManager.AppSettings["AuthTokenExpiry"]);
             response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry");
             return response;
+        }
+
+        [HttpPost]
+        [Route("admin")]
+        [AdminApiAuthenticationFilter]
+        public IHttpActionResult AuthenticateAdmin()
+        {
+            return Ok();
         }
     }
 

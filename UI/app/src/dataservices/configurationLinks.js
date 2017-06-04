@@ -6,6 +6,7 @@
         var api = "http://localhost:55692"
         return {
             authorizationApi: api + "/authentication",
+            adminAuthorizationApi: api + "/authentication/admin",
             clientsApi: api + "/clients"
         }
     };
