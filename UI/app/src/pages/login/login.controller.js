@@ -8,14 +8,13 @@
         init();
 
         function init() {
-            if ($window.localStorage.token)
+            if ($window.localStorage.token !== undefined)
                 $location.path('/home');
         };
 
         $scope.login = function () {
             AuthAPIServices.login($scope.user)
             .then(function (response) {
-                debugger;
                 if (response)
                     $location.path('/home');
                 else

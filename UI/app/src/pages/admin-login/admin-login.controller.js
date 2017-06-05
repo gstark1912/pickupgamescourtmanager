@@ -5,18 +5,13 @@
         $scope.user = null;
         $scope.incorrectLogin = false;
 
-        init();
-
-        function init() {
-            if ($window.localStorage.token)
-                $location.path('admin/home');
-        };
-
         $scope.login = function () {
             AuthAPIServices.loginAdmin($scope.user)
             .then(function (response) {
-                if (response)
+                if (response) {
+                    $window.localStorage.role = 1; // hacer esto pero más lindo
                     $location.path('admin/home');
+                }
                 else
                     $scope.incorrectLogin = true;
             });

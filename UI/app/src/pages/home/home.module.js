@@ -9,5 +9,5 @@
    * @description
    * Module for the home section.
    */
-  angular.module('app.home', ['ui.router']);
+  angular.module('app.home', ['ui.router','app.core']);
 })();

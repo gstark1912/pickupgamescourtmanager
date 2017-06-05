@@ -7,14 +7,15 @@
       .run(runModule);
 
     /* @ngInject */
-    function configuration($stateProvider, $urlRouterProvider) {
+    function configuration($stateProvider, $urlRouterProvider, CONFIG, ROLES) {
         $stateProvider
           .state('login', {
               url: '/login',
               templateUrl: 'app/src/pages/login/login.html',
               controller: 'LoginController',
               data: {
-                  pageTitle: 'Login'
+                  pageTitle: 'Login',
+                  authorized: [ROLES.GUEST.ROL]
               }
           });
 
