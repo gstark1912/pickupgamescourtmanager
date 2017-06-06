@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/UI/obj/Debug
+/UI/bin
+/MODEL/obj/Debug
+/MODEL/bin/Debug
+/INFRA/obj/Debug
+/INFRA/bin/Debug
+/IDAL/obj/Debug
+/IDAL/bin/Debug
+/IBLL/obj/Debug
+/IBLL/bin/Debug
+/DAL/obj/Debug
+/DAL/bin/Debug
+/BLL/obj/Debug
+/BLL/bin/Debug
+/API/obj/Debug
+/API/bin
