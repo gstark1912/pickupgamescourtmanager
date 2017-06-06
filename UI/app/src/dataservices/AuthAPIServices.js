@@ -21,7 +21,7 @@
             return $http({ method: 'post', url: link, headers: headers })
                 .then(function (response) {
                     if (response.status == 200) {
-                        $window.localStorage.token = response.headers("Token");
+                        $window.sessionStorage.token = response.headers("Token");
                         return true;
                     }
                     else

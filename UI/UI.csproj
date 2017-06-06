@@ -423,6 +423,10 @@
     <Content Include="app\src\pages\admin-login\admin-login.module.js" />
     <Content Include="app\src\pages\admin-login\admin-login.route.js" />
     <Content Include="app\src\pages\admin-login\signin.css" />
+    <Content Include="app\src\pages\admin-home\admin-home.controller.js" />
+    <Content Include="app\src\pages\admin-home\admin-home.html" />
+    <Content Include="app\src\pages\admin-home\admin-home.module.js" />
+    <Content Include="app\src\pages\admin-home\admin-home.route.js" />
     <Content Include="app\src\pages\home\home.module.js" />
     <Content Include="app\src\pages\home\home.route.js" />
     <Content Include="app\src\pages\home\home.html" />

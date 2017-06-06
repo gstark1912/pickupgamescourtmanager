@@ -10,26 +10,26 @@
      */
     var app = angular.module('app', ['app.core', 'app.home', 'app.login'
         , 'ui.bootstrap', 'angular-jwt'
-        , 'app.admin.login']);
+        , 'app.admin.login', 'app.admin.home']);
     app
-        .run(["$rootScope", "$location", '$state', "CONFIG", "ROLES", function ($rootScope, $location, $state, CONFIG, ROLES) {
+        .run(["$rootScope", "$location", '$state', "$window", "ROLES", function ($rootScope, $location, $state, $window, ROLES) {
+            if ($window.sessionStorage.role == undefined)
+                $window.sessionStorage.role = 3;
             $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
+                debugger;
                 if (toState.data !== undefined && toState.data.authorized !== undefined) {
-                    if (toState.data.authorized.indexOf(CONFIG.ROL_CURRENT_USER) !== -1) {
-                        console.log("entra");
+                    if (toState.data.authorized.indexOf($window.sessionStorage.role) !== -1) {
+                        console.log("entró como anoche");
                     }
                     else {
                         e.preventDefault();
-                        if (CONFIG.ROL_CURRENT_USER == 1) {
-                            //$location.path(ROLES.ADMIN.PATH);
+                        if ($window.sessionStorage.role == 1) {
                             return $state.go(ROLES.ADMIN.PATH);
                         }
-                        else if (CONFIG.ROL_CURRENT_USER == 2) {
-                            //$location.path(ROLES.REGISTERED.PATH);
+                        else if ($window.sessionStorage.role == 2) {
                             return $state.go(ROLES.REGISTERED.PATH);
                         }
-                        else if (CONFIG.ROL_CURRENT_USER == 3) {
-                            //$location.path(ROLES.GUEST.PATH);
+                        else if ($window.sessionStorage.role == 3) {
                             return $state.go(ROLES.GUEST.PATH);
                         }
 

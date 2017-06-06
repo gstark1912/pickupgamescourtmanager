@@ -9,7 +9,7 @@
     * @description
     * Module for the home section.
     */
-    var app = angular.module('app.core', ['ui.router']);
+    var app = angular.module('app.core', ['ui.router', 'base64']);
 
 
     app
@@ -18,42 +18,45 @@
         })
         .constant('ROLES', {
             ADMIN: {
-                ROL: 1,
-                PATH: "adminlogin"
+                ROL: "1",
+                PATH: "adminHome"
             },
             REGISTERED: {
-                ROL: 2,
+                ROL: "2",
                 PATH: "home"
             },
             GUEST: {
-                ROL: 3,
+                ROL: "3",
                 PATH: "login"
             }
         })
 
     app
         .config(['$httpProvider', function ($httpProvider) {
-            $httpProvider.interceptors.push(['$window', '$location', '$q', function ($window, $location, $q) {
+            $httpProvider.interceptors.push(['$window', '$location', '$q', '$base64', function ($window, $location, $q, $base64) {
                 return {
                     request: function (httpConfig) {
-                        var token = $window.localStorage.token ? $window.localStorage.token : null;
+                        var token = $window.sessionStorage.token ? $window.sessionStorage.token : null;
                         if (token) {
                             httpConfig.headers['Token'] = token;
                         }
+
+                        var username = $window.sessionStorage.adminUser ? $window.sessionStorage.adminUser : null;
+                        var password = $window.sessionStorage.adminPassword ? $window.sessionStorage.adminPassword : null;
+                        if (username) {
+                            var encoded = $base64.encode(username + ':' + password);
+                            var headers = { "Authorization": "Basic " + encoded };
+                        }
+
                         return httpConfig;
                     },
                     responseError: function (response) {
-                        if (response.status === 401 && $window.localStorage.token !== undefined) {
-                            $window.localStorage.removeItem("token");
-                            if (CONFIG.ROL_CURRENT_USER == 1) {
-                                $location.path(ROLES.ADMIN.PATH);
-                            }
-                            else if (CONFIG.ROL_CURRENT_USER == 2) {
-                                $location.path(ROLES.REGISTERED.PATH);
-                            }
-                            else if (CONFIG.ROL_CURRENT_USER == 3) {
-                                $location.path(ROLES.GUEST.PATH);
-                            }
+                        if (response.status === 401 && $window.sessionStorage.token !== undefined) {
+                            $window.sessionStorage.removeItem("token");
+                            $window.sessionStorage.removeItem("adminUser");
+                            $window.sessionStorage.removeItem("password");
+                            $window.sessionStorage.role = 3;
+                            $location.path(ROLES.GUEST.PATH);
                         }
 
                         return response;

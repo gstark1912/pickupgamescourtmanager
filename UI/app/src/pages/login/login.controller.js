@@ -8,15 +8,17 @@
         init();
 
         function init() {
-            if ($window.localStorage.token !== undefined)
+            if ($window.sessionStorage.token !== undefined)
                 $location.path('/home');
         };
 
         $scope.login = function () {
             AuthAPIServices.login($scope.user)
             .then(function (response) {
-                if (response)
+                if (response) {
+                    $window.sessionStorage.role = 2;
                     $location.path('/home');
+                }
                 else
                     $scope.incorrectLogin = true;
             });
