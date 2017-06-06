@@ -8,7 +8,57 @@
             <h1>HOLA CHICOS! COMO VA TANTO TIEMPO?</h1>
             <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
         </div>
-        <h3 ng-repeat="c in clients">{{c.nombre}}</h3>
+        <div class="input-group">
+            <input name="criteria" ng-model="criteria" type="text" class="form-control" placeholder="Escribi el nombre o direccion del cliente y dale a buscar">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="buscar()">Buscar</button>
+            </span>
+        </div><!-- /input-group -->
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Clientes</div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <td>
+                    Nombre
+                </td>
+                <td>
+                    Direccion
+                </td>
+                <td>
+                    Email
+                </td>
+                <td>
+                    Acciones
+                </td>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="c in clients">
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.direccion}}</td>
+                        <td>{{c.email}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation" ng-hide="totalPages==0">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous" ng-click="previousPage()">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li ng-repeat="p in pages" ng-class="{'active':p.active}" ng-click="switchToPage(p.page)"><a href="#">{{p.page}}</a></li>
+                    <li>
+                        <a href="#" aria-label="Next" ng-click="nextPage()">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
     </div><!-- /.container -->
 
 

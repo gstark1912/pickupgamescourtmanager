@@ -72,6 +72,7 @@
     <Compile Include="Common\Enums\InviteStatus.cs" />
     <Compile Include="Common\Enums\MatchStatus.cs" />
     <Compile Include="Common\Enums\MatchTypes.cs" />
+    <Compile Include="Common\SimplePagination\PaginationParameters.cs" />
     <Compile Include="EstadoReserva.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>

@@ -10,5 +10,6 @@ namespace IDAL.Interfaces
     public interface IClienteRepository : IBaseRepository<Cliente>
     {
         Cliente Authenticate(string username, string password);
+        PaginationResult<Cliente> GetAllPaginated(PaginationParameters parameters);
     }
 }

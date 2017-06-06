@@ -107,5 +107,10 @@ namespace BLL.Services
         {
             return _clienteRepository.GetAll();
         }
+
+        public PaginationResult<Cliente> GetClients(PaginationParameters parameters)
+        {
+            return _clienteRepository.GetAllPaginated(parameters);
+        }
     }
 }

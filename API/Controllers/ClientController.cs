@@ -24,9 +24,9 @@ namespace API.Controllers
         [Route("")]
         [AdminApiAuthenticationFilter]
         [OverrideActionFiltersAttribute]
-        public IHttpActionResult GetClientes()
+        public IHttpActionResult GetClientes(PaginationParameters parameters)
         {
-            var clientes = _clienteService.GetClients();
+            var clientes = _clienteService.GetClients(parameters);
             return Ok(clientes);
         }
 

@@ -7,9 +7,9 @@
     function AuthAPIServices($http, configurationLinks) {
 
         return {
-            getClients: function () {
+            getClients: function (data) {
                 var link = configurationLinks.clientsApi;
-                return $http({ method: 'post', url: link });
+                return $http({ method: 'post', url: link, data: data });
                 //.then(function (response) {
                 //    return response;
                 //});

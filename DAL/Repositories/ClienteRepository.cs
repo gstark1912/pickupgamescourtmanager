@@ -19,15 +19,26 @@ namespace DAL.Repositories
 
         public Cliente Authenticate(string username, string password)
         {
-            try
-            {
-                return dbSet.FirstOrDefault(c => c.Email.Equals(username) && c.Password.Equals(password));
-            }
-            catch (Exception ex)
-            {
+            return dbSet.FirstOrDefault(c => c.Email.Equals(username) && c.Password.Equals(password));
+        }
 
-                throw ex;
-            }
+        public PaginationResult<Cliente> GetAllPaginated(PaginationParameters parameters)
+        {
+            PaginationResult<Cliente> result = new PaginationResult<Cliente>();
+            IQueryable<Cliente> query = dbSet
+                .OrderBy(c => c.Nombre)
+                .Where(c => c.Nombre.Contains(parameters.Criteria)
+            || c.Dirección.Contains(parameters.Criteria));
+
+            result.TotalCount = query.Count();
+            result.TotalPages = (int)Math.Ceiling((double)result.TotalCount / parameters.Take);
+            result.Page = parameters.CurrentPage;
+            result.Results = query
+                .Skip((parameters.CurrentPage - 1) * parameters.Take)
+                .Take(parameters.Take)
+                .ToList();
+
+            return result;
         }
     }
 }

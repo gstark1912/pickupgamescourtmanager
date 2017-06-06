@@ -15,5 +15,6 @@ namespace IBLL.Interfaces
         bool Update(Cliente model);
         bool UpdateCourts(int clientId, List<Cancha> courts);
         IEnumerable<Cliente> GetClients();
+        PaginationResult<Cliente> GetClients(PaginationParameters parameters);
     }
 }
