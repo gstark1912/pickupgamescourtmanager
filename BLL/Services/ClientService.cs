@@ -102,5 +102,10 @@ namespace BLL.Services
 
             return true;
         }
+
+        public IEnumerable<Cliente> GetClients()
+        {
+            return _clienteRepository.GetAll();
+        }
     }
 }

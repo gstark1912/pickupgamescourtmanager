@@ -20,6 +20,16 @@ namespace API.Controllers
             _clienteService = clienteService;
         }
 
+        [HttpPost]
+        [Route("")]
+        [AdminApiAuthenticationFilter]
+        [OverrideActionFiltersAttribute]
+        public IHttpActionResult GetClientes()
+        {
+            var clientes = _clienteService.GetClients();
+            return Ok(clientes);
+        }
+
         [HttpGet]
         [Route("{clientId}")]
         public IHttpActionResult GetCliente(int clientId)
@@ -67,7 +77,6 @@ namespace API.Controllers
             else
                 return BadRequest();
         }
-
 
     }
 }

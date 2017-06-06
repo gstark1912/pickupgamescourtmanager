@@ -14,5 +14,6 @@ namespace IBLL.Interfaces
         bool Insert(Cliente model);
         bool Update(Cliente model);
         bool UpdateCourts(int clientId, List<Cancha> courts);
+        IEnumerable<Cliente> GetClients();
     }
 }

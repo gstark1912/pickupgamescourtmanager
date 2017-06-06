@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/// <reference path="configurationLinks.js" />
+(function () {
     var module = angular.module('app.core');
     module.factory('configurationLinks', ConfigurationLinks);
 
