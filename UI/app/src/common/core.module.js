@@ -19,7 +19,7 @@
         .constant('ROLES', {
             ADMIN: {
                 ROL: "1",
-                PATH: "adminHome"
+                PATH: "adminhome"
             },
             REGISTERED: {
                 ROL: "2",

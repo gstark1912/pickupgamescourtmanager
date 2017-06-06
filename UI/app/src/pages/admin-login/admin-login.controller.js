@@ -9,11 +9,10 @@
             AuthAPIServices.loginAdmin($scope.user)
             .then(function (response) {
                 if (response) {
-                    debugger;
-                    $window.sessionStorage.role = 1; // hacer esto pero más lindo
+                    $window.sessionStorage.role = 1;
                     $window.sessionStorage.adminUser = $scope.user.email;
                     $window.sessionStorage.adminPassword = $scope.user.password;
-                    $location.path('adminHome');
+                    $location.path('adminhome');
                 }
                 else {
                     $scope.incorrectLogin = true;
