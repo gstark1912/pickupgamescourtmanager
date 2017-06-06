@@ -13,10 +13,10 @@
         , 'app.admin.login', 'app.admin.home']);
     app
         .run(["$rootScope", "$location", '$state', "$window", "ROLES", function ($rootScope, $location, $state, $window, ROLES) {
-            if ($window.sessionStorage.role == undefined)
-                $window.sessionStorage.role = 3;
             $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
-                debugger;
+                if ($window.sessionStorage.role == undefined)
+                    $window.sessionStorage.role = 3;
+
                 if (toState.data !== undefined && toState.data.authorized !== undefined) {
                     if (toState.data.authorized.indexOf($window.sessionStorage.role) !== -1) {
                         console.log("entró como anoche");
