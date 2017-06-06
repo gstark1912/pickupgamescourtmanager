@@ -43,7 +43,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("")]
+        [Route("new")]
         public IHttpActionResult CreateClient(Cliente model)
         {
             var result = _clienteService.Insert(model);

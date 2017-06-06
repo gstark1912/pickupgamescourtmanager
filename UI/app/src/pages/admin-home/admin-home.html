@@ -8,7 +8,7 @@
             <h1>HOLA CHICOS! COMO VA TANTO TIEMPO?</h1>
             <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
         </div>
-        <h3 ng-for="var c from clients">{{c.Descripcion}}</h3>
+        <h3 ng-repeat="c in clients">{{c.nombre}}</h3>
     </div><!-- /.container -->
 
 

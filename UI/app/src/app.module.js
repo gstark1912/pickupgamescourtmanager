@@ -13,7 +13,7 @@
         , 'app.admin.login', 'app.admin.home']);
     app
         .run(["$rootScope", "$location", '$state', "$window", "ROLES", function ($rootScope, $location, $state, $window, ROLES) {
-            $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
+            $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {                
                 if ($window.sessionStorage.role == undefined)
                     $window.sessionStorage.role = 3;
 

@@ -45,7 +45,7 @@
                         var password = $window.sessionStorage.adminPassword ? $window.sessionStorage.adminPassword : null;
                         if (username) {
                             var encoded = $base64.encode(username + ':' + password);
-                            var headers = { "Authorization": "Basic " + encoded };
+                            httpConfig.headers['Authorization'] = "Basic " + encoded;
                         }
 
                         return httpConfig;
