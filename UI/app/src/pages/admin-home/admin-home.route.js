@@ -9,7 +9,7 @@
     /* @ngInject */
     function configuration($stateProvider, $urlRouterProvider, ROLES) {
         $stateProvider
-          .state('adminHome', {
+          .state('adminhome', {
               url: '/adminhome',
               templateUrl: 'app/src/pages/admin-home/admin-home.html',
               controller: 'AdminMainController',

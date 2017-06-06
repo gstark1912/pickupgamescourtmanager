@@ -9,7 +9,7 @@
 
         function init() {
             if ($window.sessionStorage.token !== undefined)
-                $location.path('/home');
+                $location.path('/');
         };
 
         $scope.login = function () {
@@ -17,7 +17,7 @@
             .then(function (response) {
                 if (response) {
                     $window.sessionStorage.role = 2;
-                    $location.path('/home');
+                    $location.path('/');
                 }
                 else
                     $scope.incorrectLogin = true;

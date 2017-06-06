@@ -10,7 +10,7 @@
     function configuration($stateProvider, $urlRouterProvider, ROLES) {
         $stateProvider
           .state('home', {
-              url: '/home',
+              url: '/',
               templateUrl: 'app/src/pages/home/home.html',
               controller: 'MainController',
               data: {

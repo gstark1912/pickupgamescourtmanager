@@ -10,7 +10,7 @@
     function configuration($stateProvider, $urlRouterProvider, ROLES) {
         $stateProvider
           .state('adminlogin', {
-              url: '/adminLogin',
+              url: '/adminlogin',
               templateUrl: 'app/src/pages/admin-login/admin-login.html',
               controller: 'AdminLoginController',
               data: {
