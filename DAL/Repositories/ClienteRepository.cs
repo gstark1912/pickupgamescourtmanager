@@ -28,7 +28,7 @@ namespace DAL.Repositories
             IQueryable<Cliente> query = dbSet
                 .OrderBy(c => c.Nombre)
                 .Where(c => c.Nombre.Contains(parameters.Criteria)
-            || c.Dirección.Contains(parameters.Criteria));
+            || c.Direccion.Contains(parameters.Criteria));
 
             result.TotalCount = query.Count();
             result.TotalPages = (int)Math.Ceiling((double)result.TotalCount / parameters.Take);

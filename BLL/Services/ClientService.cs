@@ -53,7 +53,7 @@ namespace BLL.Services
                 return false;
 
             entity.Nombre = model.Nombre;
-            entity.Dirección = model.Dirección;
+            entity.Direccion = model.Direccion;
             entity.Coordenadas = model.Coordenadas;
 
             if (!_clienteValidator.Validate(entity).IsValid)

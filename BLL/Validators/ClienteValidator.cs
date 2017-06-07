@@ -15,7 +15,7 @@ namespace BLL.Validators
         {
             RuleFor(c => c.Nombre).NotNull();
             RuleFor(c => c.Email).NotNull();
-            RuleFor(c => c.Dirección).NotNull();
+            RuleFor(c => c.Direccion).NotNull();
             RuleFor(c => c.Coordenadas).NotNull();
             RuleFor(c => c.Password).NotNull();
         }

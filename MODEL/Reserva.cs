@@ -24,7 +24,7 @@ namespace MODEL
         public System.DateTime FechaHora { get; set; }
     
         public virtual Cancha Cancha { get; set; }
-        public virtual Cliente Cliente { get; set; }
         public virtual EstadoReserva EstadoReserva { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }

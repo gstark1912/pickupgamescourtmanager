@@ -31,6 +31,20 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Route("admin/{clientId}")]
+        [AdminApiAuthenticationFilter]
+        [OverrideActionFiltersAttribute]
+        public IHttpActionResult GetClienteForAdmin(int clientId)
+        {
+            var cliente = _clienteService.GetClienteById(clientId);
+
+            if (cliente == null)
+                return NotFound();
+
+            return Ok(cliente);
+        }
+
+        [HttpGet]
         [Route("{clientId}")]
         public IHttpActionResult GetCliente(int clientId)
         {

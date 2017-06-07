@@ -1,8 +1,14 @@
 (function () {
     var module = angular.module('app.admin.home');
-    module.controller('AdminMainController', ['$scope', '$http', 'clientApiService',
-    function ($scope, $http, clientApiService) {
+    module.controller('AdminMainController', ['$scope', '$location', 'clientApiService',
+    function ($scope, $location, clientApiService) {
         $scope.clients = null;
+        $scope.criteria = "";
+        $scope.currentPage = 1;
+        $scope.totalPages = 0;
+        $scope.totalCount = 0;
+        $scope.pages = [];
+
         $scope.buscar = function () {
             $scope.currentPage = 1;
             refreshData();
@@ -29,11 +35,9 @@
             }
         }
 
-        $scope.criteria = "";
-        $scope.currentPage = 1;
-        $scope.totalPages = 0;
-        $scope.totalCount = 0;
-        $scope.pages = [];
+        $scope.editClient = function (c) {
+            $location.path('adminclient/' + c.idCliente);
+        };
 
         init();
 
@@ -63,7 +67,6 @@
                 var aux = { page: i, active: i == $scope.currentPage };
                 pages.push(aux);
             }
-            console.log(pages);
             return pages;
         };
 
