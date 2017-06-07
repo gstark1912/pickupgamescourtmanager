@@ -12,30 +12,30 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class Cliente
+    public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cliente()
+        public Client()
         {
-            this.Cancha = new HashSet<Cancha>();
-            this.HorarioCliente = new HashSet<HorarioCliente>();
-            this.Reserva = new HashSet<Reserva>();
+            this.Court = new HashSet<Court>();
+            this.ClientSchedule = new HashSet<ClientSchedule>();
+            this.Reservation = new HashSet<Reservation>();
             this.Token = new HashSet<Token>();
         }
     
-        public int IDCliente { get; set; }
-        public string Nombre { get; set; }
-        public string Direccion { get; set; }
+        public int IDClient { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Coordenadas { get; set; }
+        public string Coordenates { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cancha> Cancha { get; set; }
+        public virtual ICollection<Court> Court { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HorarioCliente> HorarioCliente { get; set; }
+        public virtual ICollection<ClientSchedule> ClientSchedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reserva> Reserva { get; set; }
+        public virtual ICollection<Reservation> Reservation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Token> Token { get; set; }
     }

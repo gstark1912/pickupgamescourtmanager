@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IBLL.Interfaces
 {
-    public interface IClienteValidator : IValidator<Cliente>
+    public interface ICourtValidator : IValidator<Court>
     {
     }
 }

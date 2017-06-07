@@ -11,31 +11,31 @@ namespace BLL.Services
 {
     public class ClientService : IClientService
     {
-        IClienteRepository _clienteRepository;
-        IClienteValidator _clienteValidator;
+        IClientRepository _clienteRepository;
+        IClientValidator _clienteValidator;
 
-        ICanchaRepository _canchaRepository;
-        ICanchaValidator _canchaValidator;
-        public ClientService(IClienteRepository clienteRepository, IClienteValidator clienteValidator,
-            ICanchaRepository canchaRepository, ICanchaValidator canchaValidator)
+        ICourtRepository _CourtRepository;
+        ICourtValidator _CourtValidator;
+        public ClientService(IClientRepository clienteRepository, IClientValidator clienteValidator,
+            ICourtRepository CourtRepository, ICourtValidator CourtValidator)
         {
             _clienteRepository = clienteRepository;
             _clienteValidator = clienteValidator;
-            _canchaRepository = canchaRepository;
-            _canchaValidator = canchaValidator;
+            _CourtRepository = CourtRepository;
+            _CourtValidator = CourtValidator;
         }
 
-        public Cliente Authenticate(string username, string password)
+        public Client Authenticate(string username, string password)
         {
             return _clienteRepository.Authenticate(username, password);
         }
 
-        public Cliente GetClienteById(int clientId)
+        public Client GetClienteById(int clientId)
         {
             return _clienteRepository.GetByID(clientId);
         }
 
-        public bool Insert(Cliente model)
+        public bool Insert(Client model)
         {
             if (!_clienteValidator.Validate(model).IsValid)
                 return false;
@@ -45,16 +45,16 @@ namespace BLL.Services
             return true;
         }
 
-        public bool Update(Cliente model)
+        public bool Update(Client model)
         {
-            var entity = _clienteRepository.GetByID(model.IDCliente);
+            var entity = _clienteRepository.GetByID(model.IDClient);
 
             if (entity == null)
                 return false;
 
-            entity.Nombre = model.Nombre;
-            entity.Direccion = model.Direccion;
-            entity.Coordenadas = model.Coordenadas;
+            entity.Name = model.Name;
+            entity.Address = model.Address;
+            entity.Coordenates = model.Coordenates;
 
             if (!_clienteValidator.Validate(entity).IsValid)
                 return false;
@@ -64,38 +64,38 @@ namespace BLL.Services
             return true;
         }
 
-        public bool UpdateCourts(int clientId, List<Cancha> courts)
+        public bool UpdateCourts(int clientId, List<Court> courts)
         {
             var entity = _clienteRepository.GetByID(clientId);
 
             if (entity == null)
                 return false;
 
-            var finalCourts = courts.Select(c => c.IDCancha);
-            var existingCourts = entity.Cancha.Where(c => !c.EsFutbol).Select(c => c.IDCancha);
+            var finalCourts = courts.Select(c => c.IDCourt);
+            var existingCourts = entity.Court.Where(c => !c.IsSoccer).Select(c => c.IDCourt);
 
-            foreach (var item in entity.Cancha.Where(c => !c.EsFutbol && finalCourts.Contains(c.IDCancha))) //updates
+            foreach (var item in entity.Court.Where(c => !c.IsSoccer && finalCourts.Contains(c.IDCourt))) //updates
             {
-                var aux = courts.FirstOrDefault(c => c.IDCancha == item.IDCancha);
-                item.Valor1 = aux.Valor1;
-                item.Valor2 = aux.Valor2;
-                item.Valor3 = aux.Valor3;
-                item.Valor4 = aux.Valor4;
-                item.IDTipoCancha = aux.IDTipoCancha;
-                item.Descripcion = aux.Descripcion;
+                var aux = courts.FirstOrDefault(c => c.IDCourt == item.IDCourt);
+                item.Value1 = aux.Value1;
+                item.Value2 = aux.Value2;
+                item.Value3 = aux.Value3;
+                item.Value4 = aux.Value4;
+                item.IDCourtType = aux.IDCourtType;
+                item.Description = aux.Description;
             }
 
-            foreach (var item in courts.Where(c => !existingCourts.Contains(c.IDCancha))) //insert
+            foreach (var item in courts.Where(c => !existingCourts.Contains(c.IDCourt))) //insert
             {
-                if (_canchaValidator.Validate(item).IsValid)
-                    entity.Cancha.Add(item);
+                if (_CourtValidator.Validate(item).IsValid)
+                    entity.Court.Add(item);
                 else
                     throw new Exception("Se rompio todo wacho");//TODO
             }
 
-            foreach (var item in entity.Cancha.Where(c => !c.EsFutbol && !finalCourts.Contains(c.IDCancha))) //delete
+            foreach (var item in entity.Court.Where(c => !c.IsSoccer && !finalCourts.Contains(c.IDCourt))) //delete
             {
-                _canchaRepository.Delete(item.IDCancha);
+                _CourtRepository.Delete(item.IDCourt);
             }
 
             _clienteRepository.SaveChanges();
@@ -103,12 +103,12 @@ namespace BLL.Services
             return true;
         }
 
-        public IEnumerable<Cliente> GetClients()
+        public IEnumerable<Client> GetClients()
         {
             return _clienteRepository.GetAll();
         }
 
-        public PaginationResult<Cliente> GetClients(PaginationParameters parameters)
+        public PaginationResult<Client> GetClients(PaginationParameters parameters)
         {
             return _clienteRepository.GetAllPaginated(parameters);
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IBLL.Interfaces
 {
-    public interface ICanchaValidator : IValidator<Cancha>
+    public interface IClientValidator : IValidator<Client>
     {
     }
 }

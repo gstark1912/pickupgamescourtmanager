@@ -12,19 +12,18 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoCancha
+    public partial class FloorType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoCancha()
+        public FloorType()
         {
-            this.Cancha = new HashSet<Cancha>();
+            this.Court = new HashSet<Court>();
         }
     
-        public int IDTipoCancha { get; set; }
-        public string Descripcion { get; set; }
-        public int CantJugadores { get; set; }
+        public int IDFloorType { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cancha> Cancha { get; set; }
+        public virtual ICollection<Court> Court { get; set; }
     }
 }

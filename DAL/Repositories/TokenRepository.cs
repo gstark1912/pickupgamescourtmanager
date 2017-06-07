@@ -28,12 +28,12 @@ namespace DAL.Repositories
 
         public Token GetTokenByClientId(int clientId)
         {
-            return dbSet.Where(t => t.IDCliente == clientId).FirstOrDefault();
+            return dbSet.Where(t => t.IDClient == clientId).FirstOrDefault();
         }
         
         public IEnumerable<Token> GetTokensByClient(int clientId)
         {
-            return dbSet.Where(t => t.IDCliente == clientId);
+            return dbSet.Where(t => t.IDClient == clientId);
         }
     }
 }

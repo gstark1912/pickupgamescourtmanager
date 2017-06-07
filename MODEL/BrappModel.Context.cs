@@ -25,13 +25,13 @@ namespace MODEL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cancha> Cancha { get; set; }
-        public virtual DbSet<EstadoReserva> EstadoReserva { get; set; }
-        public virtual DbSet<HorarioCliente> HorarioCliente { get; set; }
-        public virtual DbSet<Reserva> Reserva { get; set; }
-        public virtual DbSet<TipoCancha> TipoCancha { get; set; }
-        public virtual DbSet<TipoPiso> TipoPiso { get; set; }
+        public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<ClientSchedule> ClientSchedule { get; set; }
+        public virtual DbSet<Court> Court { get; set; }
+        public virtual DbSet<CourtType> CourtType { get; set; }
+        public virtual DbSet<FloorType> FloorType { get; set; }
+        public virtual DbSet<Reservation> Reservation { get; set; }
+        public virtual DbSet<ReservationStatus> ReservationStatus { get; set; }
         public virtual DbSet<Token> Token { get; set; }
-        public virtual DbSet<Cliente> Cliente { get; set; }
     }
 }

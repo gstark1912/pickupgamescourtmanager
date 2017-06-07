@@ -35,7 +35,7 @@ namespace BLL.Services
             Convert.ToDouble(ConfigurationManager.AppSettings["AuthTokenExpiry"]));
             var tokendomain = new Token
             {
-                IDCliente = clientId,
+                IDClient = clientId,
                 AuthToken = token,
                 IssuedOn = issuedOn,
                 ExpiresOn = expiredOn
@@ -45,7 +45,7 @@ namespace BLL.Services
             _tokenRepository.SaveChanges();
             var tokenModel = new Token()
             {
-                IDCliente = clientId,
+                IDClient = clientId,
                 IssuedOn = issuedOn,
                 ExpiresOn = expiredOn,
                 AuthToken = token

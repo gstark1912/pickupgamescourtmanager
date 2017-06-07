@@ -63,20 +63,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cancha.cs">
+    <Compile Include="Client.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cliente.cs">
+    <Compile Include="ClientSchedule.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Common\Enums\InviteStatus.cs" />
     <Compile Include="Common\Enums\MatchStatus.cs" />
     <Compile Include="Common\Enums\MatchTypes.cs" />
     <Compile Include="Common\SimplePagination\PaginationParameters.cs" />
-    <Compile Include="EstadoReserva.cs">
+    <Compile Include="Court.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HorarioCliente.cs">
+    <Compile Include="CourtType.cs">
+      <DependentUpon>BrappModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FloorType.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,13 +90,10 @@
     <Compile Include="Common\PageData\PagedDataParameters.cs" />
     <Compile Include="Common\PageData\PagedDataResult.cs" />
     <Compile Include="Common\PageData\StrategyPagedData.cs" />
-    <Compile Include="Reserva.cs">
+    <Compile Include="Reservation.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TipoCancha.cs">
-      <DependentUpon>BrappModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TipoPiso.cs">
+    <Compile Include="ReservationStatus.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Token.cs">

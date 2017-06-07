@@ -12,14 +12,19 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class Token
+    public partial class Reservation
     {
-        public int IDToken { get; set; }
+        public int IDReservation { get; set; }
+        public int IDCourt { get; set; }
         public int IDClient { get; set; }
-        public string AuthToken { get; set; }
-        public System.DateTime IssuedOn { get; set; }
-        public System.DateTime ExpiresOn { get; set; }
+        public decimal Price { get; set; }
+        public decimal Reservation1 { get; set; }
+        public int IDReservationStatus { get; set; }
+        public string Name { get; set; }
+        public System.DateTime Datetime { get; set; }
     
         public virtual Client Client { get; set; }
+        public virtual Court Court { get; set; }
+        public virtual ReservationStatus ReservationStatus { get; set; }
     }
 }

@@ -45,8 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ICanchaValidator.cs" />
-    <Compile Include="Interfaces\IClienteValidator.cs" />
+    <Compile Include="Interfaces\ICourtValidator.cs" />
+    <Compile Include="Interfaces\IClientValidator.cs" />
     <Compile Include="Interfaces\IClientService.cs" />
     <Compile Include="Interfaces\ITokenService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

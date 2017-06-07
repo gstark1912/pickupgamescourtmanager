@@ -48,7 +48,7 @@ namespace API.Filters
                 {
                     var basicAuthenticationIdentity = Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity;
                     if (basicAuthenticationIdentity != null)
-                        basicAuthenticationIdentity.UserId = cliente.IDCliente;
+                        basicAuthenticationIdentity.UserId = cliente.IDClient;
                     return true;
                 }
             }

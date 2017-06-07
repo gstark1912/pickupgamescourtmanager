@@ -12,14 +12,14 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class HorarioCliente
+    public partial class ClientSchedule
     {
-        public int IDHorarioCliente { get; set; }
-        public int IDCliente { get; set; }
-        public int Dia { get; set; }
-        public System.DateTime Desde { get; set; }
-        public System.DateTime Hasta { get; set; }
+        public int IDClientSchedule { get; set; }
+        public int IDClient { get; set; }
+        public int Day { get; set; }
+        public System.DateTime From { get; set; }
+        public System.DateTime To { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
+        public virtual Client Client { get; set; }
     }
 }

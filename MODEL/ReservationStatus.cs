@@ -12,18 +12,18 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoPiso
+    public partial class ReservationStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoPiso()
+        public ReservationStatus()
         {
-            this.Cancha = new HashSet<Cancha>();
+            this.Reservation = new HashSet<Reservation>();
         }
     
-        public int IDTipoPiso { get; set; }
-        public string Descripcion { get; set; }
+        public int IDReservationStatus { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cancha> Cancha { get; set; }
+        public virtual ICollection<Reservation> Reservation { get; set; }
     }
 }

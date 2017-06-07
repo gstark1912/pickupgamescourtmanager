@@ -12,18 +12,19 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class EstadoReserva
+    public partial class CourtType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EstadoReserva()
+        public CourtType()
         {
-            this.Reserva = new HashSet<Reserva>();
+            this.Court = new HashSet<Court>();
         }
     
-        public int IDEstadoReserva { get; set; }
-        public string Descripcion { get; set; }
+        public int IDCourtType { get; set; }
+        public string Description { get; set; }
+        public int NumberOfPlayers { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reserva> Reserva { get; set; }
+        public virtual ICollection<Court> Court { get; set; }
     }
 }

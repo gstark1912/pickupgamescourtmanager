@@ -58,7 +58,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("new")]
-        public IHttpActionResult CreateClient(Cliente model)
+        public IHttpActionResult CreateClient(Client model)
         {
             var result = _clienteService.Insert(model);
 
@@ -70,7 +70,7 @@ namespace API.Controllers
 
         [HttpPut]
         [Route("{clientId}")]
-        public IHttpActionResult UpdateClient(Cliente model, int clientId)
+        public IHttpActionResult UpdateClient(Client model, int clientId)
         {
             var result = _clienteService.Update(model);
 
@@ -82,7 +82,7 @@ namespace API.Controllers
 
         [HttpPut]
         [Route("{clientId}/courts/")]
-        public IHttpActionResult CreateClientCourts(int clientId, List<Cancha> courts)
+        public IHttpActionResult CreateClientCourts(int clientId, List<Court> courts)
         {
             var result = _clienteService.UpdateCourts(clientId, courts);
 

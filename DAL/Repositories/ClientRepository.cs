@@ -9,26 +9,26 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class ClienteRepository : BaseRepository<Cliente>, IClienteRepository
+    public class ClientRepository : BaseRepository<Client>, IClientRepository
     {
-        public ClienteRepository(IUnitOfWork uow)
+        public ClientRepository(IUnitOfWork uow)
             : base(uow)
         {
 
         }
 
-        public Cliente Authenticate(string username, string password)
+        public Client Authenticate(string username, string password)
         {
             return dbSet.FirstOrDefault(c => c.Email.Equals(username) && c.Password.Equals(password));
         }
 
-        public PaginationResult<Cliente> GetAllPaginated(PaginationParameters parameters)
+        public PaginationResult<Client> GetAllPaginated(PaginationParameters parameters)
         {
-            PaginationResult<Cliente> result = new PaginationResult<Cliente>();
-            IQueryable<Cliente> query = dbSet
-                .OrderBy(c => c.Nombre)
-                .Where(c => c.Nombre.Contains(parameters.Criteria)
-            || c.Direccion.Contains(parameters.Criteria));
+            PaginationResult<Client> result = new PaginationResult<Client>();
+            IQueryable<Client> query = dbSet
+                .OrderBy(c => c.Name)
+                .Where(c => c.Name.Contains(parameters.Criteria)
+            || c.Address.Contains(parameters.Criteria));
 
             result.TotalCount = query.Count();
             result.TotalPages = (int)Math.Ceiling((double)result.TotalCount / parameters.Take);

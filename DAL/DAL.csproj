@@ -77,8 +77,8 @@
     <Compile Include="Patterns\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patterns\BaseRepository.cs" />
-    <Compile Include="Repositories\CanchaRepository.cs" />
-    <Compile Include="Repositories\ClienteRepository.cs" />
+    <Compile Include="Repositories\CourtRepository.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\TokenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +124,9 @@
       <Project>{68149b20-479d-4998-ac6e-5348fca90d56}</Project>
       <Name>MODEL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="createDatabaseScript.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

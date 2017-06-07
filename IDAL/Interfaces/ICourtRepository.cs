@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IDAL.Interfaces
 {
-    public interface ICanchaRepository : IBaseRepository<Cancha>
+    public interface ICourtRepository : IBaseRepository<Court>
     {
     }
 }

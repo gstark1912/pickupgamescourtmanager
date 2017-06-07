@@ -9,14 +9,14 @@ using IBLL.Interfaces;
 
 namespace BLL.Validators
 {
-    public class ClienteValidator : AbstractValidator<Cliente>, IClienteValidator
+    public class ClientValidator : AbstractValidator<Client>, IClientValidator
     {
-        public ClienteValidator()
+        public ClientValidator()
         {
-            RuleFor(c => c.Nombre).NotNull();
+            RuleFor(c => c.Name).NotNull();
             RuleFor(c => c.Email).NotNull();
-            RuleFor(c => c.Direccion).NotNull();
-            RuleFor(c => c.Coordenadas).NotNull();
+            RuleFor(c => c.Address).NotNull();
+            RuleFor(c => c.Coordenates).NotNull();
             RuleFor(c => c.Password).NotNull();
         }
 

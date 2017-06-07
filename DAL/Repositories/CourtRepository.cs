@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class CanchaRepository : BaseRepository<Cancha>, ICanchaRepository
+    public class CourtRepository : BaseRepository<Court>, ICourtRepository
     {
-        public CanchaRepository(IUnitOfWork unitOfWork)
+        public CourtRepository(IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
 
