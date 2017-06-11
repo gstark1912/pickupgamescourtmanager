@@ -36,7 +36,7 @@
         }
 
         $scope.editClient = function (c) {
-            $location.path('adminclient/' + c.idCliente);
+            $location.path('adminclient/' + c.idClient);
         };
 
         init();

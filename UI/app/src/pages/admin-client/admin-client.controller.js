@@ -10,6 +10,10 @@
             .then(function (response) {
                 $scope.client = response.data;
             });
+
+        $scope.sendForm = function () {
+            console.log($scope.client);
+        }
     }]);
 
 }());

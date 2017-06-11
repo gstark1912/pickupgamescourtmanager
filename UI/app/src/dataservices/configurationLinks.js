@@ -8,7 +8,8 @@
         return {
             authorizationApi: api + "/authentication",
             adminAuthorizationApi: api + "/authentication/admin",
-            clientsApi: api + "/clients"
+            clientsApi: api + "/clients",
+            lookupsApi: api + '/lookup/'
         }
     };
 

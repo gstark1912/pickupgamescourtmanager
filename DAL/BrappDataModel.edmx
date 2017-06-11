@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="IDClientSchedule" />
           </Key>
-          <Property Name="IDClientSchedule" Type="int" Nullable="false" />
+          <Property Name="IDClientSchedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDClient" Type="int" Nullable="false" />
           <Property Name="Day" Type="int" Nullable="false" />
           <Property Name="From" Type="datetime" Nullable="false" />
@@ -45,7 +45,7 @@
           <Key>
             <PropertyRef Name="IDCourtType" />
           </Key>
-          <Property Name="IDCourtType" Type="int" Nullable="false" />
+          <Property Name="IDCourtType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="NumberOfPlayers" Type="int" Nullable="false" />
         </EntityType>
@@ -53,14 +53,14 @@
           <Key>
             <PropertyRef Name="IDFloorType" />
           </Key>
-          <Property Name="IDFloorType" Type="int" Nullable="false" />
+          <Property Name="IDFloorType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
             <PropertyRef Name="IDReservation" />
           </Key>
-          <Property Name="IDReservation" Type="int" Nullable="false" />
+          <Property Name="IDReservation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDCourt" Type="int" Nullable="false" />
           <Property Name="IDClient" Type="int" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="16" Scale="2" Nullable="false" />
@@ -73,7 +73,7 @@
           <Key>
             <PropertyRef Name="IDReservationStatus" />
           </Key>
-          <Property Name="IDReservationStatus" Type="int" Nullable="false" />
+          <Property Name="IDReservationStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Token">
@@ -289,7 +289,7 @@
           <Key>
             <PropertyRef Name="IDClientSchedule" />
           </Key>
-          <Property Name="IDClientSchedule" Type="Int32" Nullable="false" />
+          <Property Name="IDClientSchedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDClient" Type="Int32" Nullable="false" />
           <Property Name="Day" Type="Int32" Nullable="false" />
           <Property Name="From" Type="DateTime" Nullable="false" Precision="3" />
@@ -319,7 +319,7 @@
           <Key>
             <PropertyRef Name="IDCourtType" />
           </Key>
-          <Property Name="IDCourtType" Type="Int32" Nullable="false" />
+          <Property Name="IDCourtType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NumberOfPlayers" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Court" Relationship="BrappDBModel.FK_Cancha_TipoCancha" FromRole="CourtType" ToRole="Court" />
@@ -328,7 +328,7 @@
           <Key>
             <PropertyRef Name="IDFloorType" />
           </Key>
-          <Property Name="IDFloorType" Type="Int32" Nullable="false" />
+          <Property Name="IDFloorType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Court" Relationship="BrappDBModel.FK_Cancha_TipoPiso" FromRole="FloorType" ToRole="Court" />
         </EntityType>
@@ -336,7 +336,7 @@
           <Key>
             <PropertyRef Name="IDReservation" />
           </Key>
-          <Property Name="IDReservation" Type="Int32" Nullable="false" />
+          <Property Name="IDReservation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDCourt" Type="Int32" Nullable="false" />
           <Property Name="IDClient" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
@@ -352,7 +352,7 @@
           <Key>
             <PropertyRef Name="IDReservationStatus" />
           </Key>
-          <Property Name="IDReservationStatus" Type="Int32" Nullable="false" />
+          <Property Name="IDReservationStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Reservation" Relationship="BrappDBModel.FK_Reserva_EstadoReserva" FromRole="ReservationStatus" ToRole="Reservation" />
         </EntityType>

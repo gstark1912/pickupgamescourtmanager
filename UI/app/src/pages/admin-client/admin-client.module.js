@@ -9,5 +9,5 @@
      * @description
      * Module for the home section.
      */
-    angular.module('app.admin.client', ['ui.router', 'app.core']);
+    angular.module('app.admin.client', ['ui.router', 'app.core', 'gs.client.info', 'gs.client.courts']);
 })();

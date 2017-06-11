@@ -257,6 +257,7 @@
     <Content Include="app\src\common\core.module.js" />
     <Content Include="app\src\common\core.html" />
     <Content Include="app\src\dataservices\AuthAPIServices.js" />
+    <Content Include="app\src\dataservices\lookupApiService.js" />
     <Content Include="app\src\dataservices\configurationLinks.js" />
     <Content Include="app\src\index.html" />
     <Content Include="app\src\layout\footer.html" />
@@ -440,6 +441,12 @@
     <Content Include="app\src\pages\login\login.module.js" />
     <Content Include="app\src\pages\login\login.route.js" />
     <Content Include="app\src\pages\login\signin.css" />
+    <Content Include="app\src\widgets\gs-client-courts\gs-client-courts.controller.js" />
+    <Content Include="app\src\widgets\gs-client-courts\gs-client-courts.html" />
+    <Content Include="app\src\widgets\gs-client-courts\gs.client.courts.module.js" />
+    <Content Include="app\src\widgets\gs-client-info\gs-client-info.controller.js" />
+    <Content Include="app\src\widgets\gs-client-info\gs-client-info.html" />
+    <Content Include="app\src\widgets\gs-client-info\gs.client.info.module.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

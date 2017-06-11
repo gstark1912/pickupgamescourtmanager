@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Interfaces\ICourtRepository.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
+    <Compile Include="Interfaces\ICourtTypeRepository.cs" />
+    <Compile Include="Interfaces\IFloorTypeRepository.cs" />
     <Compile Include="Interfaces\ITokenRepository.cs" />
     <Compile Include="Patterns\Interfaces\IBaseRepository.cs" />
     <Compile Include="Patterns\Interfaces\IUnitOfWork.cs" />
