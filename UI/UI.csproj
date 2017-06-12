@@ -447,6 +447,8 @@
     <Content Include="app\src\widgets\gs-client-info\gs-client-info.controller.js" />
     <Content Include="app\src\widgets\gs-client-info\gs-client-info.html" />
     <Content Include="app\src\widgets\gs-client-info\gs.client.info.module.js" />
+    <Content Include="app\src\widgets\gs-client-courts\gs-court-edit.controller.js" />
+    <Content Include="app\src\widgets\gs-client-courts\gs-court-edit.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

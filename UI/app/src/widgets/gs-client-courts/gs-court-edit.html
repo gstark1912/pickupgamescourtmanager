@@ -1,0 +1,40 @@
+﻿
+<div class="panel panel-default">
+    <div class="panel-heading">Editar cancha {{court.idCourtType}}</div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="input" class="form-control" ng-model="court.description" required>
+        </div>
+        <div class="form-group">
+            <label>Tipo de Cancha:</label>
+            <select class="selectpicker" ng-model="court.idCourtType">
+                <option ng-repeat="c in courttypes" title="{{c.description}}" value="{{c.idCourtType}}">{{c.description}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Valor 1:</label>
+            <input type="input" class="form-control" ng-model="court.value1" required>
+        </div>
+        <div class="form-group">
+            <label>Valor 2:</label>
+            <input type="input" class="form-control" ng-model="court.value2" required>
+        </div>
+        <div class="form-group">
+            <label>Valor 3:</label>
+            <input type="input" class="form-control" ng-model="court.value3" required>
+        </div>
+        <div class="form-group">
+            <label>Valor 4:</label>
+            <input type="input" class="form-control" ng-model="court.value4" required>
+        </div>
+        <div class="form-group">
+            <label>Cancha de fútbol?</label>
+            <input type="checkbox" class="form-control" ng-model="court.isSoccer">
+        </div>
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">Cancelar</button>
+            <button type="button" class="btn btn-default">Guardar</button>
+        </div>
+    </div>
+</div>

@@ -28,7 +28,7 @@ namespace API.Controllers
         public IHttpActionResult GetCourtTypes()
         {
             var result = _courtTypeService.GetAll();
-            return Ok(result);
+            return Ok(Mapper.Map<IEnumerable<CourtType>, IEnumerable<CourtTypeViewModel>>(result));
         }
 
         [HttpGet]
@@ -37,7 +37,7 @@ namespace API.Controllers
         {
             var result = _floorTypeService.GetAll();
 
-            return Ok(result);
+            return Ok(Mapper.Map<IEnumerable<FloorType>, IEnumerable<FloorTypeViewModel>>(result));
         }
     }
 }

@@ -19,10 +19,10 @@
         </td>
         </thead>
         <tbody>
-            <tr ng-repeat="c in client.courts">
+            <tr ng-repeat="c in client.court">
                 <td>{{c.description}}</td>
-                <td>{{c.courttype.description}}</td>
-                <td>{{c.floortype.description}}</td>
+                <td>{{c.courtType.description}}</td>
+                <td>{{c.floorType.description}}</td>
                 <td>{{c.isSoccer ? "Sí" : "No"}}</td>
                 <td>
                     <button type="button" class="btn btn-default glyphicon glyphicon-pencil" ng-click="editCourt(c)"></button>
@@ -31,6 +31,6 @@
         </tbody>
     </table>
     <div class="panel-footer">
-        <button type="button" class="btn btn-default">Agregar Cancha</button>
+        <button type="button" class="btn btn-default" ng-click="editCourt()">Agregar Cancha</button>
     </div>
 </div>

@@ -28,7 +28,14 @@ namespace API.Controllers
         [OverrideActionFiltersAttribute]
         public IHttpActionResult GetClientes(PaginationParameters parameters)
         {
-            var clientes = _clienteService.GetClients(parameters);            
+            var clientes = _clienteService.GetClients(parameters);
+            var result = new PaginationResult<ClientViewModel>
+            {
+                TotalCount = clientes.TotalCount,
+                TotalPages = clientes.TotalPages,
+                Page = clientes.Page,
+                Results = Mapper.Map<List<Client>, List<ClientViewModel>>(clientes.Results.ToList())
+            };
             return Ok(clientes);
         }
 
@@ -42,8 +49,7 @@ namespace API.Controllers
 
             if (cliente == null)
                 return NotFound();
-
-            return Ok(cliente);
+            return Ok(Mapper.Map<Client, ClientViewModel>(cliente));
         }
 
         [HttpGet]

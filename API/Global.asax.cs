@@ -1,4 +1,8 @@
-﻿using System;
+﻿using API.App_Start;
+using API.Models;
+using AutoMapper;
+using MODEL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,7 +28,16 @@ namespace API
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             GlobalConfiguration.Configuration.EnsureInitialized();
-
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Client, ClientViewModel>();
+                cfg.CreateMap<Court, CourtViewModel>();
+                cfg.CreateMap<ClientSchedule, ClientScheduleViewModel>();
+                cfg.CreateMap<CourtType, CourtTypeViewModel>();
+                cfg.CreateMap<FloorType, FloorTypeViewModel>();
+                cfg.CreateMap<Reservation, ReservationViewModel>();
+                cfg.CreateMap<ReservationStatus, ReservationStatusViewModel>();
+            });
         }
 
         protected void Application_PostAuthorizeRequest()
