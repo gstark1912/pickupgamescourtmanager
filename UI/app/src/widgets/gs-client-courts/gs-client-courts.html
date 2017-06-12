@@ -1,1 +1,36 @@
-﻿<h2>dale gorda daleee</h2>
+﻿<div class="panel panel-default">
+    <div class="panel-heading">Canchas</div>
+    <table class="table">
+        <thead>
+        <td>
+            Nombre
+        </td>
+        <td>
+            Tipo de Cancha
+        </td>
+        <td>
+            Tipo de Piso
+        </td>
+        <td>
+            Futbol?
+        </td>
+        <td>
+            Acciones
+        </td>
+        </thead>
+        <tbody>
+            <tr ng-repeat="c in client.courts">
+                <td>{{c.description}}</td>
+                <td>{{c.courttype.description}}</td>
+                <td>{{c.floortype.description}}</td>
+                <td>{{c.isSoccer ? "Sí" : "No"}}</td>
+                <td>
+                    <button type="button" class="btn btn-default glyphicon glyphicon-pencil" ng-click="editCourt(c)"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="panel-footer">
+        <button type="button" class="btn btn-default">Agregar Cancha</button>
+    </div>
+</div>

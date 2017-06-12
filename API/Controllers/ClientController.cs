@@ -1,4 +1,6 @@
 ﻿using API.Filters;
+using API.Models;
+using AutoMapper;
 using IBLL.Interfaces;
 using MODEL;
 using System;
@@ -26,7 +28,7 @@ namespace API.Controllers
         [OverrideActionFiltersAttribute]
         public IHttpActionResult GetClientes(PaginationParameters parameters)
         {
-            var clientes = _clienteService.GetClients(parameters);
+            var clientes = _clienteService.GetClients(parameters);            
             return Ok(clientes);
         }
 

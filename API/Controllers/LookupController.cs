@@ -1,4 +1,7 @@
-﻿using IBLL.Interfaces;
+﻿using API.Models;
+using AutoMapper;
+using IBLL.Interfaces;
+using MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +27,17 @@ namespace API.Controllers
         [Route("courttypes")]
         public IHttpActionResult GetCourtTypes()
         {
-            return Ok(_courtTypeService.GetAll());
+            var result = _courtTypeService.GetAll();
+            return Ok(result);
         }
 
         [HttpGet]
         [Route("floortypes")]
         public IHttpActionResult GetFloorTypes()
         {
-            return Ok(_floorTypeService.GetAll());
+            var result = _floorTypeService.GetAll();
+
+            return Ok(result);
         }
     }
 }
