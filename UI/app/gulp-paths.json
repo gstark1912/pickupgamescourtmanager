@@ -1,7 +1,7 @@
 {
   "app": "./src/",
   "index": "../Views/Home/",
-  "js": ["**/*.js"],
-  "css": ["**/*.css"],
+  "js": [ "**/*.js", "!./plugins/**/*.js", "!./assets/**/*.js" ],
+  "css": [ "**/*.css", "!./plugins/**/*.css", "!./assets/**/*.css" ],
   "dist": "./dist/"
 }

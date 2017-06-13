@@ -535,7 +535,6 @@
     <Content Include="app\src\pages\admin-login\admin-login.html" />
     <Content Include="app\src\pages\admin-login\admin-login.module.js" />
     <Content Include="app\src\pages\admin-login\admin-login.route.js" />
-    <Content Include="app\src\pages\admin-login\signin.css" />
     <Content Include="app\src\pages\admin-home\admin-home.controller.js" />
     <Content Include="app\src\pages\admin-home\admin-home.html" />
     <Content Include="app\src\pages\admin-home\admin-home.module.js" />
@@ -548,7 +547,6 @@
     <Content Include="app\src\pages\login\login.html" />
     <Content Include="app\src\pages\login\login.module.js" />
     <Content Include="app\src\pages\login\login.route.js" />
-    <Content Include="app\src\pages\login\signin.css" />
     <Content Include="app\src\plugins\bower_components\Animatedbg\css\component.css" />
     <Content Include="app\src\plugins\bower_components\Animatedbg\css\demo.css" />
     <Content Include="app\src\plugins\bower_components\Animatedbg\css\normalize.css" />
