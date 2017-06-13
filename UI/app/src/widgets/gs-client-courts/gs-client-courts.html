@@ -1,36 +1,32 @@
-﻿<div class="panel panel-default">
-    <div class="panel-heading">Canchas</div>
-    <table class="table">
+﻿<div class="col-md-12">
+    <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-minimap>
         <thead>
-        <td>
-            Nombre
-        </td>
-        <td>
-            Tipo de Cancha
-        </td>
-        <td>
-            Tipo de Piso
-        </td>
-        <td>
-            Futbol?
-        </td>
-        <td>
-            Acciones
-        </td>
-        </thead>
-        <tbody>
-            <tr ng-repeat="c in client.court">
-                <td>{{c.description}}</td>
-                <td>{{c.courtType.description}}</td>
-                <td>{{c.floorType.description}}</td>
-                <td>{{c.isSoccer ? "Sí" : "No"}}</td>
-                <td>
-                    <button type="button" class="btn btn-default glyphicon glyphicon-pencil" ng-click="editCourt(c)"></button>
-                </td>
+            <tr>
+                <th scope="col" data-tablesaw-priority="persist">Nombre</th>
+                <th scope="col" data-tablesaw-priority="3">Tipo de Cancha</th>
+                <th scope="col" data-tablesaw-priority="2">Tipo de piso</th>
+                <th scope="col" data-tablesaw-priority="1">Futbol?</th>
+                <th scope="col" data-tablesaw-priority="0">Acciones</th>
             </tr>
-        </tbody>
+        </thead>
+        <tr ng-repeat="c in client.court">
+            <td>{{c.description}}</td>
+            <td>{{c.courtType.description}}</td>
+            <td>{{c.floorType.description}}</td>
+            <td>{{c.isSoccer ? "Sí" : "No"}}</td>
+            <td>
+                <button type="button" class="btn btn-info glyphicon glyphicon-pencil" ng-click="editCourt(c)"></button>
+            </td>
+        </tr>
     </table>
     <div class="panel-footer">
-        <button type="button" class="btn btn-default" ng-click="editCourt()">Agregar Cancha</button>
+        <button type="button" class="btn btn-success" ng-click="editCourt()">Agregar Cancha</button>
     </div>
 </div>
+
+<!-- jQuery peity -->
+<script src="app/src/plugins/bower_components/tablesaw-master/dist/tablesaw.js"></script>
+<script src="app/src/plugins/bower_components/tablesaw-master/dist/tablesaw-init.js"></script>
+<!--Style Switcher -->
+<link href="app/src/plugins/bower_components/tablesaw-master/dist/tablesaw.css" rel="stylesheet">
+<script src="app/src/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>

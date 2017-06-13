@@ -1,40 +1,87 @@
-﻿
-<div class="panel panel-default">
-    <div class="panel-heading">Editar cancha {{court.idCourtType}}</div>
-    <div class="panel-body">
-        <div class="form-group">
-            <label>Nombre:</label>
-            <input type="input" class="form-control" ng-model="court.description" required>
-        </div>
-        <div class="form-group">
-            <label>Tipo de Cancha:</label>
-            <select class="selectpicker" ng-model="court.idCourtType">
-                <option ng-repeat="c in courttypes" title="{{c.description}}" value="{{c.idCourtType}}">{{c.description}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Valor 1:</label>
-            <input type="input" class="form-control" ng-model="court.value1" required>
-        </div>
-        <div class="form-group">
-            <label>Valor 2:</label>
-            <input type="input" class="form-control" ng-model="court.value2" required>
-        </div>
-        <div class="form-group">
-            <label>Valor 3:</label>
-            <input type="input" class="form-control" ng-model="court.value3" required>
-        </div>
-        <div class="form-group">
-            <label>Valor 4:</label>
-            <input type="input" class="form-control" ng-model="court.value4" required>
-        </div>
-        <div class="form-group">
-            <label>Cancha de fútbol?</label>
-            <input type="checkbox" class="form-control" ng-model="court.isSoccer">
-        </div>
-        <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default">Cancelar</button>
-            <button type="button" class="btn btn-default">Guardar</button>
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">Editar cancha</h4>
+</div>
+
+<form name="courtform" ng-submit="save()" novalidate data-toggle="validator">
+    <div class="modal-body">
+        <div class="form-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="inputEmail" class="control-label">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input name="courtdescription" class="form-control" type="text" class="form-control" ng-model="court.description" data-error="Bruh, that email address is invalid" required="">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tipo de Cancha:</label>
+                        <select name="court.idCourtType" class="form-control" ng-model="court.idCourtType" ng-options="c.idCourtType as c.description for c in courttypes" required></select>
+                        <div ng-show="court.idCourtType.$invalid && !court.idCourtType.$pristine" class="help-block with-errors"><ul class="list-unstyled"><li>Campo Requerido</li></ul></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tipo de Piso:</label>
+                        <select name="court.idFloorType" class="form-control" ng-model="court.idFloorType" ng-options="c.idFloorType as c.description for c in floortypes" required></select>
+                        <div ng-show="court.idFloorType.$invalid && !court.idFloorType.$pristine" class="help-block with-errors"><ul class="list-unstyled"><li>Campo Requerido</li></ul></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Valor 1:</label>
+                        <input type="input" class="form-control" ng-model="court.value1" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Valor 2:</label>
+                        <input type="input" class="form-control" ng-model="court.value2" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Valor 3:</label>
+                        <input type="input" class="form-control" ng-model="court.value3" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Valor 4:</label>
+                        <input type="input" class="form-control" ng-model="court.value4" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="checkbox checkbox-success">
+                            <input id="checkbox34" type="checkbox" ng-model="court.isSoccer">
+                            <label for="checkbox34">Cancha de fútbol?</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal" ng-click="leave()">Cancelar</button>
+        <button type="submit" class="btn btn-danger waves-effect waves-light">Guardar</button>
+    </div>
+</form>

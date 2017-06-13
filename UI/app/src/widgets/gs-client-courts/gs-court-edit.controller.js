@@ -5,5 +5,15 @@
         $scope.court = court;
         $scope.floortypes = floortypes;
         $scope.courttypes = courttypes;
+        $scope.leave = function () {
+            //$uibModalInstance.dismiss('cancel');
+            console.log($scope.courtform.courtdescription.$invalid && !$scope.courtform.courtdescription.$pristine);
+        };
+
+        $scope.save = function () {
+            if ($scope.courtform.$valid) {
+                $uibModalInstance.close(court);
+            }
+        };
     }]);
 }());

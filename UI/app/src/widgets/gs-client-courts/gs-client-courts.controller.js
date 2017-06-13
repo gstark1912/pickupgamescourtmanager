@@ -10,42 +10,59 @@
             link: function (scope, element, attrs) {
                 var list = element.find("ul");
             },
-            controller: ['$scope', 'lookupApiService', '$uibModal', function ($scope, lookupApiService, $uibModal) {
+            controller: ['$scope', 'lookupApiService', '$uibModal', '$filter', function ($scope, lookupApiService, $uibModal, $filter) {
                 $scope.floortypes = null;
                 $scope.courttypes = null;
 
                 $scope.editCourt = function (c) {
+                    if (c === undefined) {
+                        c = {
+                            idClient: $scope.client.idClient,
+                            idCourtType: 1,
+                            idFloorType: 1
+                        };
+                    }
                     var modalInstance = $uibModal.open({
                         animation: $scope.animationsEnabled,
                         templateUrl: 'app/src/widgets/gs-client-courts/gs-court-edit.html',
                         controller: 'CourtEditController',
                         size: 'lg',
                         resolve: {
-                            court: function () { return c; },
+                            court: function () { return angular.copy(c); },
                             floortypes: function () { return $scope.floortypes },
                             courttypes: function () { return $scope.courttypes }
                         }
                     });
 
                     modalInstance.result.then(function (result) {
-                        console.log(result);
+                        var index = $scope.client.court.map(function (v) { return v.idCourt }).indexOf(result.idCourt);
+                        if (!~index)
+                            result.idCourt = assignNewId();
+                        $scope.client.court[~index ? index : $scope.client.court.length] = result
                     });
                 };
 
                 lookupApiService
                     .getCourtTypes()
                     .then(function (response) {
-                        console.log(response);
-                        $scope.floortypes = response.data;
+                        console.log("floor", response);
+                        $scope.courttypes = response.data;
                     });
 
 
                 lookupApiService
                     .getFloorTypes()
                     .then(function (response) {
-                        console.log(response);
-                        $scope.courttypes = response.data;
+                        console.log("court", response);
+                        $scope.floortypes = response.data;
                     });
+
+                function assignNewId() {
+                    var length = ($scope.client.court.length) * -1;
+                    while (~($scope.client.court.map(function (v) { return v.idCourt }).indexOf(length)))
+                        length--;
+                    return length;
+                }
             }]
         };
     });

@@ -16,25 +16,23 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">Clientes</div>
                 <!-- Table -->
-                <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
+                <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-minimap>
                     <thead>
                         <tr>
-                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Nombre</th>
-                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Direccion</th>
-                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Email</th>
-                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">Acciones</th>
+                            <th scope="col" data-tablesaw-priority="persist">Nombre</th>
+                            <th scope="col" data-tablesaw-priority="2">Direccion</th>
+                            <th scope="col" data-tablesaw-priority="3">Email</th>
+                            <th scope="col" data-tablesaw-priority="4">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr ng-repeat="c in clients">
-                            <td>{{c.name}}</td>
-                            <td>{{c.address}}</td>
-                            <td>{{c.email}}</td>
-                            <td>
-                                <button type="button" class="btn btn-default glyphicon glyphicon-pencil" ng-click="editClient(c)"></button>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tr ng-repeat="c in clients">
+                        <td>{{c.name}}</td>
+                        <td>{{c.address}}</td>
+                        <td>{{c.email}}</td>
+                        <td>
+                            <button type="button" class="btn btn-default glyphicon glyphicon-pencil" ng-click="editClient(c)"></button>
+                        </td>
+                    </tr>
                 </table>
                 <nav aria-label="Page navigation" ng-hide="totalPages==0">
                     <ul class="pagination">
@@ -55,3 +53,9 @@
         </div>
     </div>
 </div>
+<!-- jQuery peity -->
+<script src="app/src/plugins/bower_components/tablesaw-master/dist/tablesaw.js"></script>
+<script src="app/src/plugins/bower_components/tablesaw-master/dist/tablesaw-init.js"></script>
+<!--Style Switcher -->
+<link href="app/src/plugins/bower_components/tablesaw-master/dist/tablesaw.css" rel="stylesheet">
+<script src="app/src/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
