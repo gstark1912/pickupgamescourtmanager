@@ -1,5 +1,13 @@
-﻿<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+﻿<script>
+
+    (function () {
+        $('.modal-dialog').find('form').validator('destroy').validator()
+    }());
+
+</script>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="leave()">×</button>
     <h4 class="modal-title">Editar cancha</h4>
 </div>
 
@@ -9,17 +17,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="inputEmail" class="control-label">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
                         <label>Nombre:</label>
-                        <input name="courtdescription" class="form-control" type="text" class="form-control" ng-model="court.description" data-error="Bruh, that email address is invalid" required="">
+                        <input name="courtdescription" class="form-control" type="text" class="form-control" ng-model="court.description" data-error="La descripcion es obligatoria" required="">
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
@@ -28,15 +27,15 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Tipo de Cancha:</label>
-                        <select name="court.idCourtType" class="form-control" ng-model="court.idCourtType" ng-options="c.idCourtType as c.description for c in courttypes" required></select>
-                        <div ng-show="court.idCourtType.$invalid && !court.idCourtType.$pristine" class="help-block with-errors"><ul class="list-unstyled"><li>Campo Requerido</li></ul></div>
+                        <select name="court.idCourtType" class="form-control" ng-model="court.idCourtType" ng-options="c.idCourtType as c.description for c in courttypes" required data-error="El tipo de cancha es obligatorio"></select>
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Tipo de Piso:</label>
-                        <select name="court.idFloorType" class="form-control" ng-model="court.idFloorType" ng-options="c.idFloorType as c.description for c in floortypes" required></select>
-                        <div ng-show="court.idFloorType.$invalid && !court.idFloorType.$pristine" class="help-block with-errors"><ul class="list-unstyled"><li>Campo Requerido</li></ul></div>
+                        <select name="court.idFloorType" class="form-control" ng-model="court.idFloorType" ng-options="c.idFloorType as c.description for c in floortypes" required data-error="El tipo de piso es obligatorio"></select>
+                        <div class="help-block with-errors"></div>
                     </div>
                 </div>
             </div>
@@ -44,13 +43,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Valor 1:</label>
-                        <input type="input" class="form-control" ng-model="court.value1" required>
+                        <input type="input" class="form-control" ng-model="court.value1">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Valor 2:</label>
-                        <input type="input" class="form-control" ng-model="court.value2" required>
+                        <input type="input" class="form-control" ng-model="court.value2">
                     </div>
                 </div>
             </div>
@@ -58,13 +57,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Valor 3:</label>
-                        <input type="input" class="form-control" ng-model="court.value3" required>
+                        <input type="input" class="form-control" ng-model="court.value3">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Valor 4:</label>
-                        <input type="input" class="form-control" ng-model="court.value4" required>
+                        <input type="input" class="form-control" ng-model="court.value4">
                     </div>
                 </div>
             </div>

@@ -6,8 +6,7 @@
         $scope.floortypes = floortypes;
         $scope.courttypes = courttypes;
         $scope.leave = function () {
-            //$uibModalInstance.dismiss('cancel');
-            console.log($scope.courtform.courtdescription.$invalid && !$scope.courtform.courtdescription.$pristine);
+            $uibModalInstance.dismiss('cancel');
         };
 
         $scope.save = function () {

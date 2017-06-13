@@ -42,6 +42,11 @@
                     });
                 };
 
+                $scope.removeCourt = function (c) {
+                    var index = $scope.client.court.map(function (v) { return v.idCourt }).indexOf(c.idCourt);
+                    $scope.client.court.splice(index, 1);
+                }
+
                 lookupApiService
                     .getCourtTypes()
                     .then(function (response) {
