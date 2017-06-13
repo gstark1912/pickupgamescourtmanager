@@ -22,7 +22,6 @@
     "bootstrap": {
       "main": [
         "dist/js/bootstrap.js",
-        "dist/css/bootstrap.css",
         "less/bootstrap.less",
         "dist/angular-jwt.min.js"
       ]

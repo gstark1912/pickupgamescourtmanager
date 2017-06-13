@@ -9,7 +9,7 @@
     /* @ngInject */
     function configuration($stateProvider, $urlRouterProvider, ROLES) {
         $stateProvider
-          .state('adminclient', {
+          .state('admin.client', {
               url: '/adminclient/:idClient',
               templateUrl: 'app/src/pages/admin-client/admin-client.html',
               controller: 'AdminClientController',

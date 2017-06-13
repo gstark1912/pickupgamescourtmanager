@@ -1,24 +1,89 @@
-<!-- Custom styles for this template -->
-<link href="signin.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="app/src/plugins/images/favicon.png">
+    <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="app/src/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="app/src/assets/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="app/src/assets/css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="app/src/assets/css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
+</head>
 <body>
-    <div class="container">
-
-        <form class="form-signin">
-            <h2 class="form-signin-heading">Hola chicos, logueen tranqui :)</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input name="user.email" ng-model="user.email" type="input" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input name="user.password" ng-model="user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <section id="wrapper" class="new-login-register">
+        <div class="lg-info-panel">
+            <div class="inner-panel">
+                <a href="javascript:void(0)" class="p-20 di"><img src="app/src/plugins/images/admin-logo.png"></a>
+                <div class="lg-content">
+                    <h2>AGUANTE TODO VIEJA SOMOS LO MAS</h2>
+                    <p class="text-muted">Y aca escribimos cosas re copadas que nos recuerdan lo mortales que eramos antes de volvernos millonarios con esto</p>
+                    <a href="http:\\www.google.com" class="btn btn-rounded btn-danger p-l-20 p-r-20"> Ir a google</a>
+                </div>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()">Sign in</button>
-            <div ng-if="incorrectLogin" class="alert alert-danger">Login incorrecto</div>
-        </form>
+        </div>
+        <div class="new-login-box">
+            <div class="white-box">
+                <h3 class="box-title m-b-0">Canchitas Ya - ADMIN</h3>
+                <small>Ingresa tus datos</small>
+                <div ng-if="incorrectLogin" class="alert alert-danger">Login incorrecto</div>
+                <form class="form-horizontal new-lg-form" id="loginform">
 
-    </div> <!-- /container -->
+                    <div class="form-group  m-t-20">
+                        <div class="col-xs-12">
+                            <label>Usuario</label>
+                            <input class="form-control" type="text" required="" placeholder="usuario" name="user.email" ng-model="user.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label>Password</label>
+                            <input class="form-control" type="password" required="" placeholder="password" name="user.password" ng-model="user.password">
+                        </div>
+                    </div>
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" ng-click="login()">Log in</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- jQuery -->
+    <script src="app/src/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="app/src/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="app/src/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+
+    <!--slimscroll JavaScript -->
+    <script src="app/src/assets/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="app/src/assets/js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="app/src/assets/js/custom.min.js"></script>
+    <!--Style Switcher -->
+    <script src="app/src/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
+</html>

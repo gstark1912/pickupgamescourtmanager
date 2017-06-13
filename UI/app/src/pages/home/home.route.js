@@ -19,7 +19,7 @@
               }
           });
 
-        //$urlRouterProvider.otherwise('/home');
+        //$urlRouterProvider.otherwise('/');
     }
 
     /* @ngInject */
