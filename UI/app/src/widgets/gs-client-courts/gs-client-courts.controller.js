@@ -50,7 +50,6 @@
                 lookupApiService
                     .getCourtTypes()
                     .then(function (response) {
-                        console.log("floor", response);
                         $scope.courttypes = response.data;
                     });
 
@@ -58,7 +57,6 @@
                 lookupApiService
                     .getFloorTypes()
                     .then(function (response) {
-                        console.log("court", response);
                         $scope.floortypes = response.data;
                     });
 
