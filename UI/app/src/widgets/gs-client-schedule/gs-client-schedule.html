@@ -1,10 +1,39 @@
 ﻿<div class="modal-body">
     <div class="form-body">
+        <div class="row" ng-show="client.clientSchedule.length==0">
+            <h3>Sin horarios especificados</h3>
+        </div>
+        <div class="row" ng-repeat="c in client.clientSchedule">
+
+        </div>
         <div class="row">
-            <div class="col-md-12">
-                <h3 class="box-title">Remove double decoration</h3>
-                <div range-slider min="0" max="100" model-min="demo1.min" model-max="demo1.max" attach-handle-values="true"></div>
-            </div>
+            <!--<label class="m-t-40">Auto close Clock Picker</label>
+            <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
+                <input type="text" class="form-control" value="13:14"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+            </div>-->
+            <button type="button" class="btn btn-success" ng-click="editSchedule()">Agregar Horario</button>
         </div>
     </div>
 </div>
+<!-- Page plugins css -->
+<link href="app/src/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+<!-- Color picker plugins css -->
+<link href="app/src/plugins/bower_components/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
+<!-- Date picker plugins css -->
+<link href="app/src/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+<!-- Daterange picker plugins css -->
+<link href="app/src/plugins/bower_components/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="app/src/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+<!-- Plugin JavaScript -->
+<script src="app/src/plugins/bower_components/moment/moment.js"></script>
+<!-- Clock Plugin JavaScript -->
+<script src="app/src/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js"></script>
+<!-- Color Picker Plugin JavaScript -->
+<script src="app/src/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+<script src="app/src/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+<script src="app/src/plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+<!-- Date Picker Plugin JavaScript -->
+<script src="app/src/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<!-- Date range Plugin JavaScript -->
+<script src="app/src/plugins/bower_components/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="app/src/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>

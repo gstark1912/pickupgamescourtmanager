@@ -2423,6 +2423,8 @@
     <Content Include="app\src\widgets\gs-client-courts\gs.client.courts.module.js" />
     <Content Include="app\src\widgets\gs-client-schedule\gs-client-schedule.controller.js" />
     <Content Include="app\src\widgets\gs-client-schedule\gs-client-schedule.html" />
+    <Content Include="app\src\widgets\gs-client-schedule\gs-schedule-edit.controller.js" />
+    <Content Include="app\src\widgets\gs-client-schedule\gs-schedule-edit.html" />
     <Content Include="app\src\widgets\gs-client-schedule\gs.client.schedule.module.js" />
     <Content Include="app\src\widgets\gs-client-info\gs-client-info.controller.js" />
     <Content Include="app\src\widgets\gs-client-info\gs-client-info.html" />
