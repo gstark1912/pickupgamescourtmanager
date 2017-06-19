@@ -1,10 +1,30 @@
 ﻿<div class="modal-body">
     <div class="form-body">
+        <div class="row">
+            <div class="col-md-3"><h4>Día</h4></div>
+            <div class="col-md-3"><h4>Horario #1</h4></div>
+            <div class="col-md-3"><h4>Horario #2</h4></div>
+            <div class="col-md-3"><h4>Acciones</h4></div>
+        </div>
         <div class="row" ng-show="client.clientSchedule.length==0">
             <h3>Sin horarios especificados</h3>
         </div>
         <div class="row" ng-repeat="c in client.clientSchedule">
-
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select class="form-control" ng-model="c.idDay" ng-options="co.value as co.label for co in days" disabled></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h3> {{c.startTime}} - {{c.endTime}}</h3>
+            </div>
+            <div class="col-md-3">
+                <h3 ng-if="c.startTimeBreak">{{c.startTimeBreak}} - {{c.endTimeBreak}}</h3>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-info glyphicon glyphicon-pencil" ng-click="editSchedule(c)"></button>
+                <button type="button" class="btn btn-danger glyphicon glyphicon-remove" ng-click="removeSchedule(c)"></button>
+            </div>
         </div>
         <div class="row">
             <!--<label class="m-t-40">Auto close Clock Picker</label>
@@ -37,3 +57,8 @@
 <!-- Date range Plugin JavaScript -->
 <script src="app/src/plugins/bower_components/timepicker/bootstrap-timepicker.min.js"></script>
 <script src="app/src/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<style>
+    .clockpicker-popover {
+        z-index: 999999 !important;
+    }
+</style>

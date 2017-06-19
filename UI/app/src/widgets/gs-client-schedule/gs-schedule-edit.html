@@ -1,62 +1,83 @@
-﻿<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="leave()">×</button>
-    <h4 class="modal-title">Editar horario</h4>
-</div>
+﻿<script>
+    $('.clockpicker').clockpicker({
+        donetext: 'Done',
+        afterShow: function () {
+            debugger;
+            $(".clockpicker-popover").css("z-index", "1100");
+        }
+    });
+</script>
 
-<div class="modal-body">
-    <div class="form-body">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="form-group" ng-repeat="d in days">
-                        <div class="col-md-12">
-                            <div class="checkbox checkbox-success">
-                                <input type="checkbox">
-                                <label>{{d}}</label>
+<form name="scheduleform" ng-submit="save()" novalidate data-toggle="validator">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="leave()">×</button>
+        <h4 class="modal-title">Editar horario</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="form-body">
+            <div class="row" ng-if="!schedule.idDay">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2" ng-repeat="d in days">
+                            <div class="form-group">
+                                <div class="checkbox checkbox-success">
+                                    <input type="checkbox" ng-model="d.enabled">
+                                    <label>{{d.label}}</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                <input type="text" class="form-control" value="08:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h3 class="box-title">Abre a las</h3>
+                                <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
+                                    <input type="text" class="form-control" name="startTime" ng-model="schedule.startTime" data-error="La hora de inicio es obligatoria" required> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h3 class="box-title">Hasta las</h3>
+                                <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
+                                    <input type="text" class="form-control" name="endTime" ng-model="schedule.endTime" data-error="La hora de fin es obligatoria" required> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                                    <div class="help-block with-errors"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="row">
                         <div class="form-group">
-                            <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                <input type="text" class="form-control" value="00:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                            <div class="col-md-12">
+                                <div class="checkbox checkbox-success">
+                                    <input type="checkbox" ng-model="schedule.noonbreak">
+                                    <label>¿Corte al mediodía?</label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="checkbox checkbox-success">
-                                <input type="checkbox" ng-model="noonBreak">
-                                <label>¿Corte al mediodía?</label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h3 class="box-title">Abre a las</h3>
+                                <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
+                                    <input ng-disabled="!schedule.noonbreak" ng-model="schedule.startTimeBreak" type="text" class="form-control"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                <input ng-disabled="!noonBreak" type="text" class="form-control" value="08:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                <input ng-disabled="!noonBreak" type="text" class="form-control" value="00:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h3 class="box-title">Hasta las</h3>
+                                <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
+                                    <input ng-disabled="!schedule.noonbreak" ng-model="schedule.endTimeBreak" type="text" class="form-control"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,23 +85,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal" ng-click="leave()">Cancelar</button>
-    <button type="submit" class="btn btn-danger waves-effect waves-light">Guardar</button>
-</div>
-
-<script>
-    $('.clockpicker').clockpicker({
-        donetext: 'Done'
-    });
-
-
-
-</script>
-
-<style>
-    .popover {
-        z-index: 1100;
-    }
-</style>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal" ng-click="leave()">Cancelar</button>
+        <button type="submit" class="btn btn-danger waves-effect waves-light">Guardar</button>
+    </div>
+</form>

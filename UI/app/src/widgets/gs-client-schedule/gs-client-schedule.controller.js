@@ -12,6 +12,17 @@
             },
             controller: ['$scope', '$uibModal', function ($scope, $uibModal) {
 
+                $scope.days = [
+                    { "label": 'Lunes', "value": 1, "enabled": false },
+                    { "label": 'Martes', "value": 2, "enabled": false },
+                    { "label": 'Miercoles', "value": 3, "enabled": false },
+                    { "label": 'Jueves', "value": 4, "enabled": false },
+                    { "label": 'Viernes', "value": 5, "enabled": false },
+                    { "label": 'Sabado', "value": 6, "enabled": false },
+                    { "label": 'Domingo', "value": 7, "enabled": false },
+                    { "label": 'Feriados', "value": 8, "enabled": false }
+                ];
+
                 $scope.editSchedule = function (c) {
                     if (c === undefined) {
                         c = {
@@ -25,28 +36,38 @@
                         size: 'lg',
                         resolve: {
                             schedule: function () { return angular.copy(c); },
+                            days: function () { return angular.copy($scope.days); }
                         }
                     });
 
                     modalInstance.result.then(function (result) {
-                        var index = $scope.client.clientSchedule.map(function (v) { return v.idClientSchedule }).indexOf(result.idClientSchedule);
-                        if (!~index)
-                            result.idClientSchedule = assignNewId();
-                        $scope.client.clientSchedule[~index ? index : $scope.client.clientSchedule.length] = result
+                        var list = [];
+                        if (result.length > 0)
+                            list = result;
+                        else
+                            list.push(result);
+
+                        angular.forEach(list, function (value, key) {
+                            var index = $scope.client.clientSchedule.map(function (v) { return v.idDay }).indexOf(value.idDay);
+                            if (!~index)
+                                value.idClientSchedule = assignNewId();
+                            $scope.client.clientSchedule[~index ? index : $scope.client.clientSchedule.length] = value;
+                        });
+                        console.log($scope.client.clientSchedule);
                     });
                 };
 
                 $scope.removeSchedule = function (c) {
-                    var index = $scope.client.clientSchedule.map(function (v) { return v.idSchedule }).indexOf(c.idClientSchedule);
+                    var index = $scope.client.clientSchedule.map(function (v) { return v.idDay }).indexOf(c.idDay);
                     $scope.client.clientSchedule.splice(index, 1);
                 }
 
                 function assignNewId() {
-                    var length = ($scope.client.clientSchedule.length) * -1;
+                    var length = ($scope.client.clientSchedule.length + 1) * -1;
                     while (~($scope.client.clientSchedule.map(function (v) { return v.idClientSchedule }).indexOf(length)))
                         length--;
                     return length;
-                }
+                };
             }]
         };
     });
