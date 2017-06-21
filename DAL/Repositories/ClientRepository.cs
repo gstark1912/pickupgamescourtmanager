@@ -17,6 +17,15 @@ namespace DAL.Repositories
 
         }
 
+        public Client GetClientById(int idClient)
+        {
+            return dbSet
+                .Include("ClientSchedule")
+                .Include("Court")
+                .First(c => c.IDClient == idClient);
+
+        }
+
         public Client Authenticate(string username, string password)
         {
             return dbSet.FirstOrDefault(c => c.Email.Equals(username) && c.Password.Equals(password));

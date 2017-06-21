@@ -16,9 +16,12 @@ namespace MODEL
     {
         public int IDClientSchedule { get; set; }
         public int IDClient { get; set; }
-        public int Day { get; set; }
+        public int IDDay { get; set; }
         public System.DateTime From { get; set; }
         public System.DateTime To { get; set; }
+        public Nullable<System.DateTime> FromBreak { get; set; }
+        public Nullable<System.DateTime> ToBreak { get; set; }
+        public bool NoonBreak { get; set; }
     
         public virtual Client Client { get; set; }
     }

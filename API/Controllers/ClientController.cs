@@ -52,6 +52,20 @@ namespace API.Controllers
             return Ok(Mapper.Map<Client, ClientViewModel>(cliente));
         }
 
+        [HttpPut]
+        [Route("admin/{clientId}")]
+        [AdminApiAuthenticationFilter]
+        [OverrideActionFiltersAttribute]
+        public IHttpActionResult UpdateClienteForAdmin(ClientViewModel model)
+        {
+            var cliente = _clienteService.UpdateAsAdmin(Mapper.Map<ClientViewModel, Client>(model));
+
+            if (!cliente)
+                return BadRequest("There was a problem with your request");
+
+            return Ok();
+        }
+
         [HttpGet]
         [Route("{clientId}")]
         public IHttpActionResult GetCliente(int clientId)
@@ -80,7 +94,7 @@ namespace API.Controllers
         [Route("{clientId}")]
         public IHttpActionResult UpdateClient(Client model, int clientId)
         {
-            var result = _clienteService.Update(model);
+            var result = _clienteService.UpdateAsAdmin(model);
 
             if (result)
                 return Ok();
@@ -92,12 +106,12 @@ namespace API.Controllers
         [Route("{clientId}/courts/")]
         public IHttpActionResult CreateClientCourts(int clientId, List<Court> courts)
         {
-            var result = _clienteService.UpdateCourts(clientId, courts);
+            //var result = _clienteService.UpdateCourts(clientId, courts);
 
-            if (result)
-                return Ok();
-            else
-                return BadRequest();
+            //if (result)
+            return Ok();
+            //else
+            //return BadRequest();
         }
 
     }

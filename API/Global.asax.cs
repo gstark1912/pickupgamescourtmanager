@@ -30,13 +30,13 @@ namespace API
             GlobalConfiguration.Configuration.EnsureInitialized();
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Client, ClientViewModel>();
-                cfg.CreateMap<Court, CourtViewModel>();
-                cfg.CreateMap<ClientSchedule, ClientScheduleViewModel>();
-                cfg.CreateMap<CourtType, CourtTypeViewModel>();
-                cfg.CreateMap<FloorType, FloorTypeViewModel>();
-                cfg.CreateMap<Reservation, ReservationViewModel>();
-                cfg.CreateMap<ReservationStatus, ReservationStatusViewModel>();
+                cfg.CreateMap<Client, ClientViewModel>().ReverseMap();
+                cfg.CreateMap<Court, CourtViewModel>().ReverseMap();
+                cfg.CreateMap<ClientSchedule, ClientScheduleViewModel>().ReverseMap();
+                cfg.CreateMap<CourtType, CourtTypeViewModel>().ReverseMap();
+                cfg.CreateMap<FloorType, FloorTypeViewModel>().ReverseMap();
+                cfg.CreateMap<Reservation, ReservationViewModel>().ReverseMap();
+                cfg.CreateMap<ReservationStatus, ReservationStatusViewModel>().ReverseMap();
             });
         }
 

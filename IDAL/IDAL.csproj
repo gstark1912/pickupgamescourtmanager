@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IClientScheduleRepository.cs" />
     <Compile Include="Interfaces\ICourtRepository.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\ICourtTypeRepository.cs" />

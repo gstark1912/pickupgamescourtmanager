@@ -38,7 +38,7 @@
                             <div class="form-group">
                                 <h3 class="box-title">Abre a las</h3>
                                 <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                    <input type="text" class="form-control" name="startTime" ng-model="schedule.startTime" data-error="La hora de inicio es obligatoria" required> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                                    <input type="text" class="form-control" name="startTime" ng-model="schedule.from" data-error="La hora de inicio es obligatoria" required> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <h3 class="box-title">Hasta las</h3>
                                 <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                    <input type="text" class="form-control" name="endTime" ng-model="schedule.endTime" data-error="La hora de fin es obligatoria" required> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                                    <input type="text" class="form-control" name="endTime" ng-model="schedule.to" data-error="La hora de fin es obligatoria" required> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <h3 class="box-title">Abre a las</h3>
                                 <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                    <input ng-disabled="!schedule.noonbreak" ng-model="schedule.startTimeBreak" type="text" class="form-control"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                                    <input ng-disabled="!schedule.noonbreak" ng-model="schedule.fromBreak" type="text" class="form-control"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                             <div class="form-group">
                                 <h3 class="box-title">Hasta las</h3>
                                 <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                    <input ng-disabled="!schedule.noonbreak" ng-model="schedule.endTimeBreak" type="text" class="form-control"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+                                    <input ng-disabled="!schedule.noonbreak" ng-model="schedule.toBreak" type="text" class="form-control"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
                                 </div>
                             </div>
                         </div>

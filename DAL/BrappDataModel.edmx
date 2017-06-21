@@ -22,9 +22,12 @@
           </Key>
           <Property Name="IDClientSchedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDClient" Type="int" Nullable="false" />
-          <Property Name="Day" Type="int" Nullable="false" />
+          <Property Name="IDDay" Type="int" Nullable="false" />
           <Property Name="From" Type="datetime" Nullable="false" />
           <Property Name="To" Type="datetime" Nullable="false" />
+          <Property Name="FromBreak" Type="datetime" />
+          <Property Name="ToBreak" Type="datetime" />
+          <Property Name="NoonBreak" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Court">
           <Key>
@@ -230,7 +233,6 @@
       <Schema Namespace="BrappDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BrappContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Client" EntityType="BrappDBModel.Client" />
-          <EntitySet Name="ClientSchedule" EntityType="BrappDBModel.ClientSchedule" />
           <EntitySet Name="Court" EntityType="BrappDBModel.Court" />
           <EntitySet Name="CourtType" EntityType="BrappDBModel.CourtType" />
           <EntitySet Name="FloorType" EntityType="BrappDBModel.FloorType" />
@@ -240,10 +242,6 @@
           <AssociationSet Name="FK_Cancha_Cliente" Association="BrappDBModel.FK_Cancha_Cliente">
             <End Role="Client" EntitySet="Client" />
             <End Role="Court" EntitySet="Court" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HorarioCliente_Cliente" Association="BrappDBModel.FK_HorarioCliente_Cliente">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="ClientSchedule" EntitySet="ClientSchedule" />
           </AssociationSet>
           <AssociationSet Name="FK_Reserva_Cliente" Association="BrappDBModel.FK_Reserva_Cliente">
             <End Role="Client" EntitySet="Client" />
@@ -269,6 +267,11 @@
             <End Role="ReservationStatus" EntitySet="ReservationStatus" />
             <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
+          <EntitySet Name="ClientSchedule" EntityType="BrappDBModel.ClientSchedule" />
+          <AssociationSet Name="FK_HorarioCliente_Cliente" Association="BrappDBModel.FK_HorarioCliente_Cliente">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientSchedule" EntitySet="ClientSchedule" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Client">
           <Key>
@@ -281,20 +284,9 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="Coordenates" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Court" Relationship="BrappDBModel.FK_Cancha_Cliente" FromRole="Client" ToRole="Court" />
-          <NavigationProperty Name="ClientSchedule" Relationship="BrappDBModel.FK_HorarioCliente_Cliente" FromRole="Client" ToRole="ClientSchedule" />
           <NavigationProperty Name="Reservation" Relationship="BrappDBModel.FK_Reserva_Cliente" FromRole="Client" ToRole="Reservation" />
           <NavigationProperty Name="Token" Relationship="BrappDBModel.FK_Token_Cliente" FromRole="Client" ToRole="Token" />
-        </EntityType>
-        <EntityType Name="ClientSchedule">
-          <Key>
-            <PropertyRef Name="IDClientSchedule" />
-          </Key>
-          <Property Name="IDClientSchedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDClient" Type="Int32" Nullable="false" />
-          <Property Name="Day" Type="Int32" Nullable="false" />
-          <Property Name="From" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="To" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Client" Relationship="BrappDBModel.FK_HorarioCliente_Cliente" FromRole="ClientSchedule" ToRole="Client" />
+          <NavigationProperty Name="ClientSchedule" Relationship="BrappDBModel.FK_HorarioCliente_Cliente" FromRole="Client" ToRole="ClientSchedule" />
         </EntityType>
         <EntityType Name="Court">
           <Key>
@@ -379,18 +371,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HorarioCliente_Cliente">
-          <End Type="BrappDBModel.Client" Role="Client" Multiplicity="1" />
-          <End Type="BrappDBModel.ClientSchedule" Role="ClientSchedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Client">
-              <PropertyRef Name="IDClient" />
-            </Principal>
-            <Dependent Role="ClientSchedule">
-              <PropertyRef Name="IDClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Reserva_Cliente">
           <End Type="BrappDBModel.Client" Role="Client" Multiplicity="1" />
           <End Type="BrappDBModel.Reservation" Role="Reservation" Multiplicity="*" />
@@ -463,6 +443,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ClientSchedule">
+          <Key>
+            <PropertyRef Name="IDClientSchedule" />
+          </Key>
+          <Property Name="IDClientSchedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDClient" Type="Int32" Nullable="false" />
+          <Property Name="IDDay" Type="Int32" Nullable="false" />
+          <Property Name="From" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="To" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FromBreak" Type="DateTime" Precision="3" />
+          <Property Name="ToBreak" Type="DateTime" Precision="3" />
+          <Property Name="NoonBreak" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="BrappDBModel.FK_HorarioCliente_Cliente" FromRole="ClientSchedule" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_HorarioCliente_Cliente">
+          <End Type="BrappDBModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="BrappDBModel.ClientSchedule" Role="ClientSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IDClient" />
+            </Principal>
+            <Dependent Role="ClientSchedule">
+              <PropertyRef Name="IDClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -478,17 +484,6 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IDClient" ColumnName="IDClient" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ClientSchedule">
-            <EntityTypeMapping TypeName="BrappDBModel.ClientSchedule">
-              <MappingFragment StoreEntitySet="ClientSchedule">
-                <ScalarProperty Name="To" ColumnName="To" />
-                <ScalarProperty Name="From" ColumnName="From" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
-                <ScalarProperty Name="IDClientSchedule" ColumnName="IDClientSchedule" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -555,6 +550,20 @@
                 <ScalarProperty Name="AuthToken" ColumnName="AuthToken" />
                 <ScalarProperty Name="IDClient" ColumnName="IDClient" />
                 <ScalarProperty Name="IDToken" ColumnName="IDToken" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSchedule">
+            <EntityTypeMapping TypeName="BrappDBModel.ClientSchedule">
+              <MappingFragment StoreEntitySet="ClientSchedule">
+                <ScalarProperty Name="NoonBreak" ColumnName="NoonBreak" />
+                <ScalarProperty Name="ToBreak" ColumnName="ToBreak" />
+                <ScalarProperty Name="FromBreak" ColumnName="FromBreak" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="IDDay" ColumnName="IDDay" />
+                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
+                <ScalarProperty Name="IDClientSchedule" ColumnName="IDClientSchedule" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

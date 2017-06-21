@@ -13,6 +13,11 @@
 
         $scope.sendForm = function () {
             console.log($scope.client);
+            clientApiService
+                .updateClientAsAdmin($scope.client)
+                .then(function (response) {
+                    console.log(response);
+                });
         }
     }]);
 

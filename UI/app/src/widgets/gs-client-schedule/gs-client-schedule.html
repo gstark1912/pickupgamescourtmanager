@@ -9,17 +9,17 @@
         <div class="row" ng-show="client.clientSchedule.length==0">
             <h3>Sin horarios especificados</h3>
         </div>
-        <div class="row" ng-repeat="c in client.clientSchedule">
+        <div class="row" ng-repeat="c in client.clientSchedule | orderBy:'idDay'">
             <div class="col-md-3">
                 <div class="form-group">
                     <select class="form-control" ng-model="c.idDay" ng-options="co.value as co.label for co in days" disabled></select>
                 </div>
             </div>
             <div class="col-md-3">
-                <h3> {{c.startTime}} - {{c.endTime}}</h3>
+                <h3> {{c.from | date :  "HH:mm"}} - {{c.to | date :  "HH:mm"}}</h3>
             </div>
             <div class="col-md-3">
-                <h3 ng-if="c.startTimeBreak">{{c.startTimeBreak}} - {{c.endTimeBreak}}</h3>
+                <h3 ng-if="c.fromBreak">{{c.fromBreak | date :  "HH:mm"}} - {{c.toBreak | date :  "HH:mm"}}</h3>
             </div>
             <div class="col-md-3">
                 <button type="button" class="btn btn-info glyphicon glyphicon-pencil" ng-click="editSchedule(c)"></button>

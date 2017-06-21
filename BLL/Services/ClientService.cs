@@ -14,15 +14,18 @@ namespace BLL.Services
         IClientRepository _clienteRepository;
         IClientValidator _clienteValidator;
 
-        ICourtRepository _CourtRepository;
-        ICourtValidator _CourtValidator;
+        ICourtRepository _courtRepository;
+        ICourtValidator _courtValidator;
+
+        IClientScheduleRepository _clientScheduleRepository;
         public ClientService(IClientRepository clienteRepository, IClientValidator clienteValidator,
-            ICourtRepository CourtRepository, ICourtValidator CourtValidator)
+            ICourtRepository CourtRepository, ICourtValidator CourtValidator, IClientScheduleRepository clientScheduleRepository)
         {
             _clienteRepository = clienteRepository;
             _clienteValidator = clienteValidator;
-            _CourtRepository = CourtRepository;
-            _CourtValidator = CourtValidator;
+            _courtRepository = CourtRepository;
+            _courtValidator = CourtValidator;
+            _clientScheduleRepository = clientScheduleRepository;
         }
 
         public Client Authenticate(string username, string password)
@@ -45,9 +48,9 @@ namespace BLL.Services
             return true;
         }
 
-        public bool Update(Client model)
+        public bool UpdateAsAdmin(Client model)
         {
-            var entity = _clienteRepository.GetByID(model.IDClient);
+            var entity = _clienteRepository.GetClientById(model.IDClient);
 
             if (entity == null)
                 return false;
@@ -55,15 +58,48 @@ namespace BLL.Services
             entity.Name = model.Name;
             entity.Address = model.Address;
             entity.Coordenates = model.Coordenates;
+            entity.Email = model.Email;
+
+            entity.Court = UpdateCourts(entity, model.Court);
+            UpdateSchedules(entity, model.ClientSchedule);
 
             if (!_clienteValidator.Validate(entity).IsValid)
                 return false;
 
             _clienteRepository.Update(entity);
             _clienteRepository.SaveChanges();
+            _clientScheduleRepository.SaveChanges();
             return true;
         }
 
+        private void UpdateSchedules(Client entity, ICollection<ClientSchedule> clientSchedule)
+        {
+            var result = entity.ClientSchedule.ToList();
+            var initialDays = result.Select(s => s.IDDay).ToList();
+            var finalDays = clientSchedule.Select(s => s.IDDay).ToList();
+
+            result.Where(x => !finalDays.Contains(x.IDDay)).ToList().ForEach(s => _clientScheduleRepository.Delete(s));
+            clientSchedule.Where(s => !initialDays.Contains(s.IDDay)).ToList().ForEach(s => s.IDClientSchedule = 0);
+            clientSchedule.Where(s => !initialDays.Contains(s.IDDay)).ToList().ForEach(s => _clientScheduleRepository.Insert(s));
+
+            foreach (var item in clientSchedule.Where(s => initialDays.Contains(s.IDDay)))
+            {
+                var aux = result.First(r => r.IDDay == item.IDDay);
+                aux.From = item.From;
+                aux.To = item.To;
+                aux.FromBreak = item.FromBreak;
+                aux.ToBreak = item.ToBreak;
+                aux.NoonBreak = item.NoonBreak;
+            }            
+        }
+
+        private ICollection<Court> UpdateCourts(Client entity, ICollection<Court> court)
+        {
+            var result = entity.Court;
+            return result;
+        }
+
+        /*
         public bool UpdateCourts(int clientId, List<Court> courts)
         {
             var entity = _clienteRepository.GetByID(clientId);
@@ -102,7 +138,7 @@ namespace BLL.Services
 
             return true;
         }
-
+        */
         public IEnumerable<Client> GetClients()
         {
             return _clienteRepository.GetAll();

@@ -1,22 +1,26 @@
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
-using Unity.WebApi;
-using System.Linq;
+using Unity.Mvc4;
 using IDAL.Context.Interfaces;
-using IDAL;
-using DAL.Context;
 using IBLL.Interfaces;
+using DAL.Context;
 using BLL.Services;
-using DAL.Repositories;
-using IDAL.Interfaces;
-using BLL.Validators;
-using System.Web.Compilation;
-using System.Reflection;
+using System.Linq;
+using System.Web;
 
 namespace INFRA
 {
     public static class IoCResolver
     {
+        public static IUnityContainer Initialise()
+        {
+            var container = BuildUnityContainer();
+
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+
+            return container;
+        }
+
         public static IUnityContainer BuildUnityContainer()
         {
             var container = new UnityContainer();
@@ -30,7 +34,7 @@ namespace INFRA
             return container;
         }
 
-        private static void RegisterTypes(IUnityContainer container)
+        public static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IUnitOfWork, UnitOfWork>(new TransientLifetimeManager());
             container.RegisterType<IClientService, ClientService>(); //forcing to load BLL Assembly
@@ -52,7 +56,6 @@ namespace INFRA
                 WithMappings.FromMatchingInterface,
                 WithName.Default,
                 WithLifetime.ContainerControlled);
-
 
         }
     }

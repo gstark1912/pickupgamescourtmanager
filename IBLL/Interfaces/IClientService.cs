@@ -12,8 +12,7 @@ namespace IBLL.Interfaces
         Client Authenticate(string username, string password);
         Client GetClienteById(int clientId);
         bool Insert(Client model);
-        bool Update(Client model);
-        bool UpdateCourts(int clientId, List<Court> courts);
+        bool UpdateAsAdmin(Client model);
         IEnumerable<Client> GetClients();
         PaginationResult<Client> GetClients(PaginationParameters parameters);
     }

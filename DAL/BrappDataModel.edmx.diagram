@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d355a2288b48475c9c996e9de1ce05f1" Name="Diagram1" ZoomLevel="79">
         <EntityTypeShape EntityType="BrappDBModel.Client" Width="1.5" PointX="0.75" PointY="4.625" />
-        <EntityTypeShape EntityType="BrappDBModel.ClientSchedule" Width="1.5" PointX="3" PointY="10.875" />
         <EntityTypeShape EntityType="BrappDBModel.Court" Width="1.5" PointX="6" PointY="4.25" />
         <EntityTypeShape EntityType="BrappDBModel.CourtType" Width="1.5" PointX="3.75" PointY="7.375" />
         <EntityTypeShape EntityType="BrappDBModel.FloorType" Width="1.5" PointX="3.75" PointY="1" />
@@ -14,13 +13,14 @@
         <EntityTypeShape EntityType="BrappDBModel.ReservationStatus" Width="1.5" PointX="6" PointY="1.25" />
         <EntityTypeShape EntityType="BrappDBModel.Token" Width="1.5" PointX="3" PointY="3.5" />
         <AssociationConnector Association="BrappDBModel.FK_Cancha_Cliente" />
-        <AssociationConnector Association="BrappDBModel.FK_HorarioCliente_Cliente" />
         <AssociationConnector Association="BrappDBModel.FK_Reserva_Cliente" />
         <AssociationConnector Association="BrappDBModel.FK_Token_Cliente" />
         <AssociationConnector Association="BrappDBModel.FK_Cancha_TipoCancha" />
         <AssociationConnector Association="BrappDBModel.FK_Cancha_TipoPiso" />
         <AssociationConnector Association="BrappDBModel.FK_Reserva_Cancha" />
         <AssociationConnector Association="BrappDBModel.FK_Reserva_EstadoReserva" />
+        <EntityTypeShape EntityType="BrappDBModel.ClientSchedule" Width="1.5" PointX="3" PointY="10.75" />
+        <AssociationConnector Association="BrappDBModel.FK_HorarioCliente_Cliente" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

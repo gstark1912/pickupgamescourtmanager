@@ -6,14 +6,14 @@
         $scope.days = days;
 
         if (schedule.startTime === undefined) {
-            $scope.schedule.startTime = "08:00";
-            $scope.schedule.endTime = "00:00";
-            $scope.schedule.startTimeBreak = undefined;
-            $scope.schedule.endTimeBreak = undefined;
+            $scope.schedule.from = "08:00";
+            $scope.schedule.to = "00:00";
+            $scope.schedule.toBreak = undefined;
+            $scope.schedule.fromBreak = undefined;
             $scope.schedule.noonbreak = false;
         }
         else {
-            if (schedule.startTimeBreak != undefined)
+            if (schedule.fromBreak != undefined)
                 $scope.schedule.noonbreak = true;
         }
 
@@ -25,8 +25,8 @@
         $scope.save = function () {
             if ($scope.scheduleform.$valid) {
                 if (!$scope.schedule.noonbreak) {
-                    $scope.schedule.startTimeBreak = undefined;
-                    $scope.schedule.endTimeBreak = undefined;
+                    $scope.schedule.fromBreak = undefined;
+                    $scope.schedule.toBreak = undefined;
                 }
 
                 if ($scope.schedule.idDay === undefined) {
