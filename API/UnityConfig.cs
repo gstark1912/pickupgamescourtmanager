@@ -14,10 +14,10 @@ namespace API
     {
         public static IUnityContainer Initialise()
         {
-            IUnityContainer container = IoCResolver.BuildUnityContainer();
-            GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
+            return IoCResolver.BuildUnityContainer();
+            //GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
             //DependencyResolver.SetResolver(new UnityDependencyResolver(container));
-            return container;
+            //return container;
         }
     }
 }

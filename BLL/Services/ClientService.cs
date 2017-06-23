@@ -60,7 +60,7 @@ namespace BLL.Services
             entity.Coordenates = model.Coordenates;
             entity.Email = model.Email;
 
-            entity.Court = UpdateCourts(entity, model.Court);
+            UpdateCourts(entity, model.Court);
             UpdateSchedules(entity, model.ClientSchedule);
 
             if (!_clienteValidator.Validate(entity).IsValid)
@@ -90,13 +90,30 @@ namespace BLL.Services
                 aux.FromBreak = item.FromBreak;
                 aux.ToBreak = item.ToBreak;
                 aux.NoonBreak = item.NoonBreak;
-            }            
+            }
         }
 
-        private ICollection<Court> UpdateCourts(Client entity, ICollection<Court> court)
+        private void UpdateCourts(Client entity, ICollection<Court> court)
         {
-            var result = entity.Court;
-            return result;
+            var result = entity.Court.ToList();
+            var initialCourts = result.Select(s => s.IDCourt).ToList();
+            var finalCourts = court.Select(s => s.IDCourt).ToList();
+
+            result.Where(x => !finalCourts.Contains(x.IDCourt)).ToList().ForEach(s => _courtRepository.Delete(s));
+            court.Where(s => !initialCourts.Contains(s.IDCourt)).ToList().ForEach(s => s.IDCourt = 0);
+            court.Where(s => !initialCourts.Contains(s.IDCourt)).ToList().ForEach(s => _courtRepository.Insert(s));
+
+            foreach (var item in court.Where(s => initialCourts.Contains(s.IDCourt)))
+            {
+                var aux = result.First(r => r.IDCourt == item.IDCourt);
+                aux.IDCourtType = item.IDCourtType;
+                aux.IDFloorType = item.IDFloorType;
+                aux.Description = item.Description;
+                aux.Value1 = item.Value1;
+                aux.Value2 = item.Value2;
+                aux.Value3 = item.Value3;
+                aux.Value4 = item.Value4;
+            }
         }
 
         /*

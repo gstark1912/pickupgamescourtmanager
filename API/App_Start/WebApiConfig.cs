@@ -6,13 +6,26 @@ using System.Linq;
 using System.Web.Http;
 using API.App_Start;
 using API.Infraestructure;
+using System.Web.Http.Dispatcher;
+using System.Web.Http.Controllers;
+using Microsoft.Practices.Unity;
+using System.Reflection;
 
 namespace API
 {
     public static class WebApiConfig
     {
-        public static void Register(HttpConfiguration config)
+        public static void Register(HttpConfiguration config, IUnityContainer container)
         {
+            config.DependencyResolver = new UnityDependencyResolver(container);
+            container.RegisterInstance<IHttpControllerActivator>(new UnityHttpControllerActivator(container));
+            foreach (var type in
+                Assembly.GetExecutingAssembly().GetExportedTypes().
+                            Where(x => x.GetInterface(typeof(IHttpController).Name) != null))
+            {
+                container.RegisterType(type);
+            }
+
             // Attribute routing enabled
             config.MapHttpAttributeRoutes();
 
