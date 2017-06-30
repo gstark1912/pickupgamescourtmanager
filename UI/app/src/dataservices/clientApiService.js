@@ -13,7 +13,7 @@
             getClient: function (id) {
                 return $http({ method: 'get', url: link + '/admin/' + id });
             },
-            updateClientAsAdmin(data) {
+            updateClientAsAdmin: function (data) {
                 return $http({ method: 'put', url: link + '/admin/' + data.idClient, data: data });
             }
         };
