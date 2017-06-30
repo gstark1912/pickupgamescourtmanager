@@ -12,19 +12,19 @@ namespace MODEL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class BrappContext : DbContext
     {
         public BrappContext()
             : base("name=BrappContext")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<ClientSchedule> ClientSchedule { get; set; }
         public virtual DbSet<Court> Court { get; set; }
