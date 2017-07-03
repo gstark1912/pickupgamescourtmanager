@@ -2421,6 +2421,9 @@
     <Content Include="app\src\widgets\gs-client-courts\gs-client-courts.controller.js" />
     <Content Include="app\src\widgets\gs-client-courts\gs-client-courts.html" />
     <Content Include="app\src\widgets\gs-client-courts\gs.client.courts.module.js" />
+    <Content Include="app\src\widgets\gs-client-notes\gs-client-notes.controller.js" />
+    <Content Include="app\src\widgets\gs-client-notes\gs-client-notes.html" />
+    <Content Include="app\src\widgets\gs-client-notes\gs.client.notes.module.js" />
     <Content Include="app\src\widgets\gs-client-schedule\gs-client-schedule.controller.js" />
     <Content Include="app\src\widgets\gs-client-schedule\gs-client-schedule.html" />
     <Content Include="app\src\widgets\gs-client-schedule\gs-schedule-edit.controller.js" />

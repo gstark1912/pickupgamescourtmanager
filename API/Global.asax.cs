@@ -48,6 +48,7 @@ namespace API
                 cfg.CreateMap<FloorType, FloorTypeViewModel>().ReverseMap();
                 cfg.CreateMap<Reservation, ReservationViewModel>().ReverseMap();
                 cfg.CreateMap<ReservationStatus, ReservationStatusViewModel>().ReverseMap();
+                cfg.CreateMap<ClientNotes, ClientNotesViewModel>().ReverseMap();
             });
         }
 

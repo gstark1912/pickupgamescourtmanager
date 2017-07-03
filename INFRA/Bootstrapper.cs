@@ -36,7 +36,7 @@ namespace INFRA
 
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IUnitOfWork, UnitOfWork>(new PerRequestLifetimeManager());
+            container.RegisterType<IUnitOfWork, UnitOfWork>(new ContainerControlledLifetimeManager());
             container.RegisterType<IClientService, ClientService>(); //forcing to load BLL Assembly
 
             container.RegisterTypes(AllClasses.FromLoadedAssemblies()

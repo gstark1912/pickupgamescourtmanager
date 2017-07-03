@@ -21,6 +21,7 @@ namespace MODEL
             this.Reservation = new HashSet<Reservation>();
             this.Token = new HashSet<Token>();
             this.ClientSchedule = new HashSet<ClientSchedule>();
+            this.ClientNotes = new HashSet<ClientNotes>();
         }
     
         public int IDClient { get; set; }
@@ -38,5 +39,7 @@ namespace MODEL
         public virtual ICollection<Token> Token { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientSchedule> ClientSchedule { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientNotes> ClientNotes { get; set; }
     }
 }

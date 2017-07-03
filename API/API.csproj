@@ -205,6 +205,7 @@
     <Compile Include="Filters\GenericAuthenticationFilter.cs" />
     <Compile Include="Infraestructure\CamelCaseExceptDictionaryKeysResolver.cs" />
     <Compile Include="Infraestructure\PreflightRequestsHandler.cs" />
+    <Compile Include="Models\ClientNotesViewModel.cs" />
     <Compile Include="Models\ClientScheduleViewModel.cs" />
     <Compile Include="Models\ClientViewModel.cs" />
     <Compile Include="Models\CourtTypeViewModel.cs" />

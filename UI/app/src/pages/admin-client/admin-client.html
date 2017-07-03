@@ -13,6 +13,7 @@
                         <li class="active"> <a data-target="#navpills-1" data-toggle="tab" aria-expanded="false">Principal</a> </li>
                         <li class=""> <a data-target="#navpills-2" data-toggle="tab" aria-expanded="false">Canchas</a> </li>
                         <li class=""> <a data-target="#navpills-3" data-toggle="tab" aria-expanded="true">Horarios</a> </li>
+                        <li class=""> <a data-target="#navpills-4" data-toggle="tab" aria-expanded="true">Notas</a> </li>
                     </ul>
                     <div class="tab-content br-n pn">
                         <div id="navpills-1" class="tab-pane active">
@@ -28,6 +29,11 @@
                         <div id="navpills-3" class="tab-pane">
                             <div class="row">
                                 <gs-client-schedule client="client"></gs-client-schedule>
+                            </div>
+                        </div>
+                        <div id="navpills-4" class="tab-pane">
+                            <div class="row">
+                                <gs-client-notes client="client"></gs-client-notes>
                             </div>
                         </div>
                     </div>

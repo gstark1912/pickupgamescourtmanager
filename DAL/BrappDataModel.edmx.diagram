@@ -21,6 +21,8 @@
         <AssociationConnector Association="BrappDBModel.FK_Reserva_EstadoReserva" />
         <EntityTypeShape EntityType="BrappDBModel.ClientSchedule" Width="1.5" PointX="3" PointY="10.75" />
         <AssociationConnector Association="BrappDBModel.FK_HorarioCliente_Cliente" />
+        <EntityTypeShape EntityType="BrappDBModel.ClientNotes" Width="1.5" PointX="3" PointY="14.25" />
+        <AssociationConnector Association="BrappDBModel.FK_ClientNotes_Client" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

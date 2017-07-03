@@ -63,6 +63,12 @@ namespace BLL.Services
             UpdateCourts(entity, model.Court);
             UpdateSchedules(entity, model.ClientSchedule);
 
+            var initialNotes = entity.ClientNotes.Select(cn => cn.IDClientNotes).ToList();
+            foreach (var item in model.ClientNotes.Where(n => !initialNotes.Contains(n.IDClientNotes)))
+            {
+                entity.ClientNotes.Add(item);
+            }
+
             if (!_clienteValidator.Validate(entity).IsValid)
                 return false;
 

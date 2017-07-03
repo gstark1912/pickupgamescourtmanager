@@ -66,6 +66,9 @@
     <Compile Include="Client.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClientNotes.cs">
+      <DependentUpon>BrappModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ClientSchedule.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>

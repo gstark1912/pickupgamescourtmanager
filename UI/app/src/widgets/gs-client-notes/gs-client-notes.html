@@ -1,0 +1,20 @@
+﻿<h2>Notas</h2>
+<div class="modal-body">
+    <div class="form-body">
+        <div class="media" ng-repeat="n in client.clientNotes">
+            <div class="media-body">
+                <h4 class="media-heading">Fecha y Hora:</h4>
+                {{n.text}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-12">Nuevo comentario</label>
+            <div class="col-md-12">
+                <textarea ng-model="text" class="form-control" rows="10" placeholder="Ingrese aquí algún comentario que desee agregar"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" ng-click="addComment()">Agregar Comentario</button>
+        </div>
+    </div>
+</div>

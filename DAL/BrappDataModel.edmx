@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BrappDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BrappDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="IDClient" />
@@ -15,6 +15,14 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="Coordenates" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ClientNotes">
+          <Key>
+            <PropertyRef Name="IDClientNotes" />
+          </Key>
+          <Property Name="IDClientNotes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDClient" Type="int" Nullable="false" />
+          <Property Name="Text" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="ClientSchedule">
           <Key>
@@ -125,6 +133,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ClientNotes_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientNotes" Type="Self.ClientNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IDClient" />
+            </Principal>
+            <Dependent Role="ClientNotes">
+              <PropertyRef Name="IDClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HorarioCliente_Cliente">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="ClientSchedule" Type="Self.ClientSchedule" Multiplicity="*" />
@@ -187,6 +207,7 @@
         </Association>
         <EntityContainer Name="BrappDBModelStoreContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientNotes" EntityType="Self.ClientNotes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientSchedule" EntityType="Self.ClientSchedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Court" EntityType="Self.Court" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CourtType" EntityType="Self.CourtType" Schema="dbo" store:Type="Tables" />
@@ -205,6 +226,10 @@
           <AssociationSet Name="FK_Cancha_TipoPiso" Association="Self.FK_Cancha_TipoPiso">
             <End Role="FloorType" EntitySet="FloorType" />
             <End Role="Court" EntitySet="Court" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientNotes_Client" Association="Self.FK_ClientNotes_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientNotes" EntitySet="ClientNotes" />
           </AssociationSet>
           <AssociationSet Name="FK_HorarioCliente_Cliente" Association="Self.FK_HorarioCliente_Cliente">
             <End Role="Client" EntitySet="Client" />
@@ -272,6 +297,11 @@
             <End Role="Client" EntitySet="Client" />
             <End Role="ClientSchedule" EntitySet="ClientSchedule" />
           </AssociationSet>
+          <EntitySet Name="ClientNotes" EntityType="BrappDBModel.ClientNotes" />
+          <AssociationSet Name="FK_ClientNotes_Client" Association="BrappDBModel.FK_ClientNotes_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientNotes" EntitySet="ClientNotes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Client">
           <Key>
@@ -287,6 +317,7 @@
           <NavigationProperty Name="Reservation" Relationship="BrappDBModel.FK_Reserva_Cliente" FromRole="Client" ToRole="Reservation" />
           <NavigationProperty Name="Token" Relationship="BrappDBModel.FK_Token_Cliente" FromRole="Client" ToRole="Token" />
           <NavigationProperty Name="ClientSchedule" Relationship="BrappDBModel.FK_HorarioCliente_Cliente" FromRole="Client" ToRole="ClientSchedule" />
+          <NavigationProperty Name="ClientNotes" Relationship="BrappDBModel.FK_ClientNotes_Client" FromRole="Client" ToRole="ClientNotes" />
         </EntityType>
         <EntityType Name="Court">
           <Key>
@@ -469,6 +500,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ClientNotes">
+          <Key>
+            <PropertyRef Name="IDClientNotes" />
+          </Key>
+          <Property Name="IDClientNotes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDClient" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Client" Relationship="BrappDBModel.FK_ClientNotes_Client" FromRole="ClientNotes" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_ClientNotes_Client">
+          <End Type="BrappDBModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="BrappDBModel.ClientNotes" Role="ClientNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IDClient" />
+            </Principal>
+            <Dependent Role="ClientNotes">
+              <PropertyRef Name="IDClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -564,6 +616,15 @@
                 <ScalarProperty Name="IDDay" ColumnName="IDDay" />
                 <ScalarProperty Name="IDClient" ColumnName="IDClient" />
                 <ScalarProperty Name="IDClientSchedule" ColumnName="IDClientSchedule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientNotes">
+            <EntityTypeMapping TypeName="BrappDBModel.ClientNotes">
+              <MappingFragment StoreEntitySet="ClientNotes">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
+                <ScalarProperty Name="IDClientNotes" ColumnName="IDClientNotes" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

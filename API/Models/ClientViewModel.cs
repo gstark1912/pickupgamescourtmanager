@@ -15,5 +15,6 @@ namespace API.Models
         public string Coordenates { get; set; }
         public IEnumerable<ClientScheduleViewModel> ClientSchedule { get; set; }
         public IEnumerable<CourtViewModel> Court { get; set; }
+        public IEnumerable<ClientNotesViewModel> ClientNotes { get; set; }
     }
 }
