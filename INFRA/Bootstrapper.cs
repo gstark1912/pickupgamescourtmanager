@@ -1,12 +1,12 @@
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
-using Unity.Mvc4;
 using IDAL.Context.Interfaces;
 using IBLL.Interfaces;
 using DAL.Context;
 using BLL.Services;
 using System.Linq;
 using System.Web;
+using Unity.WebApi;
 
 namespace INFRA
 {
@@ -36,7 +36,7 @@ namespace INFRA
 
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IUnitOfWork, UnitOfWork>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IUnitOfWork, UnitOfWork>(new PerRequestLifetimeManager());
             container.RegisterType<IClientService, ClientService>(); //forcing to load BLL Assembly
 
             container.RegisterTypes(AllClasses.FromLoadedAssemblies()
