@@ -11,7 +11,8 @@
                 var list = element.find("ul");
             },
             controller: ['$scope', 'uiGmapGoogleMapApi', '$geolocation', function ($scope, uiGmapGoogleMapApi, $geolocation) {
-                $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 15 };
+                //$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 15 };
+                $scope.map = { center: { latitude: -34.6076282, longitude: -58.4530358 }, zoom: 13 };
                 $scope.markers = [];
                 $scope.mapevents = {
                     click: function (mapModel, eventName, originalEventArgs) {
@@ -28,17 +29,8 @@
                 }
 
                 uiGmapGoogleMapApi.then(function (maps) {
-                    var coord = $scope.client.coordenates;
-                    if (coord === undefined) {
-                        $geolocation.getCurrentPosition({
-                            timeout: 60000,
-                            maximumAge: 250,
-                            enableHighAccuracy: true
-                        }).then(function (position) {
-                            $scope.myPosition = $geolocation.position;
-                        });
-                    }
-                    else {
+                    if ($scope.client.coordenates != null) {
+                        var coord = $scope.client.coordenates;
                         $scope.map.center.latitude = parseFloat(coord.split(',')[0]);
                         $scope.map.center.longitude = parseFloat(coord.split(',')[1]);
                         $scope.map.zoom = 15;
@@ -49,21 +41,9 @@
                                 longitude: parseFloat(coord.split(',')[1])
                             }
                         }];
-
                     }
                 });
 
-                $scope.$watch('myPosition.coords', function (newValue, oldValue) {
-                    if (newValue != undefined) {
-                        $scope.map = {
-                            center: {
-                                latitude: newValue.latitude,
-                                longitude: newValue.longitude
-                            },
-                            zoom: 13
-                        };
-                    }
-                }, true);
             }]
         };
     });

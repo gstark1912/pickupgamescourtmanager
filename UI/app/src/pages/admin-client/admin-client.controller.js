@@ -3,13 +3,15 @@
     module.controller('AdminClientController', ['$scope', '$location', '$stateParams', 'clientApiService',
     function ($scope, $location, $stateParams, clientApiService) {
         $scope.idClient = $stateParams.idClient;
-        $scope.client = null;
+        $scope.client = {};
 
-        clientApiService
-            .getClient($scope.idClient)
-            .then(function (response) {
-                $scope.client = response.data;
-            });
+        if ($scope.idClient !== "") {
+            clientApiService
+                .getClient($scope.idClient)
+                .then(function (response) {
+                    $scope.client = response.data;
+                });
+        }
 
         $scope.sendForm = function () {
             console.log($scope.client);

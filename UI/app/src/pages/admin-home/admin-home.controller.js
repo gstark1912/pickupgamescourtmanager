@@ -36,7 +36,8 @@
         }
 
         $scope.editClient = function (c) {
-            $location.path('adminclient/' + c.idClient);
+            var id = c === undefined ? "" : c.idClient;
+            $location.path('adminclient/' + id);
         };
 
         init();
