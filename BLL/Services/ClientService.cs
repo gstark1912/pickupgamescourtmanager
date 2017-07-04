@@ -1,4 +1,5 @@
-﻿using IBLL.Interfaces;
+﻿using FluentValidation.Results;
+using IBLL.Interfaces;
 using IDAL.Interfaces;
 using MODEL;
 using System;
@@ -38,22 +39,42 @@ namespace BLL.Services
             return _clienteRepository.GetByID(clientId);
         }
 
-        public bool Insert(Client model)
+        public CATValidationResult Insert(Client model)
         {
-            if (!_clienteValidator.Validate(model).IsValid)
-                return false;
+            var validationResult = _clienteValidator.Validate(model);
+            if (!validationResult.IsValid)
+                return new CATValidationResult(validationResult.Errors);
 
             _clienteRepository.Insert(model);
             _clienteRepository.SaveChanges();
-            return true;
+            return new CATValidationResult(validationResult.Errors);
         }
 
-        public bool UpdateAsAdmin(Client model)
+        public CATValidationResult InsertAsAdmin(Client model)
+        {
+            Client entity = new Client();
+
+            entity.Name = model.Name;
+            entity.Address = model.Address;
+            entity.Coordenates = model.Coordenates;
+            entity.Email = model.Email;
+
+            entity.Court = model.Court;
+            entity.ClientSchedule = model.ClientSchedule;
+            entity.ClientNotes = model.ClientNotes;
+
+            var validationResult = _clienteValidator.Validate(entity);
+            if (!validationResult.IsValid)
+                return new CATValidationResult(validationResult.Errors);
+
+            _clienteRepository.Insert(entity);
+            _clienteRepository.SaveChanges();
+            return new CATValidationResult(validationResult.Errors);
+        }
+
+        public CATValidationResult UpdateAsAdmin(Client model)
         {
             var entity = _clienteRepository.GetClientById(model.IDClient);
-
-            if (entity == null)
-                return false;
 
             entity.Name = model.Name;
             entity.Address = model.Address;
@@ -62,20 +83,25 @@ namespace BLL.Services
 
             UpdateCourts(entity, model.Court);
             UpdateSchedules(entity, model.ClientSchedule);
+            UpdateClientNotes(entity, model.ClientNotes);
 
-            var initialNotes = entity.ClientNotes.Select(cn => cn.IDClientNotes).ToList();
-            foreach (var item in model.ClientNotes.Where(n => !initialNotes.Contains(n.IDClientNotes)))
-            {
-                entity.ClientNotes.Add(item);
-            }
-
-            if (!_clienteValidator.Validate(entity).IsValid)
-                return false;
+            var validationResult = _clienteValidator.Validate(entity);
+            if (!validationResult.IsValid)
+                return new CATValidationResult(validationResult.Errors);
 
             _clienteRepository.Update(entity);
             _clienteRepository.SaveChanges();
             _clientScheduleRepository.SaveChanges();
-            return true;
+            return new CATValidationResult(validationResult.Errors);
+        }
+
+        private void UpdateClientNotes(Client entity, ICollection<ClientNotes> clientNotes)
+        {
+            var initialNotes = entity.ClientNotes.Select(cn => cn.IDClientNotes).ToList();
+            foreach (var item in clientNotes.Where(n => !initialNotes.Contains(n.IDClientNotes)))
+            {
+                entity.ClientNotes.Add(item);
+            }
         }
 
         private void UpdateSchedules(Client entity, ICollection<ClientSchedule> clientSchedule)
@@ -107,6 +133,7 @@ namespace BLL.Services
 
             result.Where(x => !finalCourts.Contains(x.IDCourt)).ToList().ForEach(s => _courtRepository.Delete(s));
             court.Where(s => !initialCourts.Contains(s.IDCourt)).ToList().ForEach(s => s.IDCourt = 0);
+            court.Where(s => !initialCourts.Contains(s.IDCourt)).Count();
             court.Where(s => !initialCourts.Contains(s.IDCourt)).ToList().ForEach(s => _courtRepository.Insert(s));
 
             foreach (var item in court.Where(s => initialCourts.Contains(s.IDCourt)))
@@ -122,46 +149,6 @@ namespace BLL.Services
             }
         }
 
-        /*
-        public bool UpdateCourts(int clientId, List<Court> courts)
-        {
-            var entity = _clienteRepository.GetByID(clientId);
-
-            if (entity == null)
-                return false;
-
-            var finalCourts = courts.Select(c => c.IDCourt);
-            var existingCourts = entity.Court.Where(c => !c.IsSoccer).Select(c => c.IDCourt);
-
-            foreach (var item in entity.Court.Where(c => !c.IsSoccer && finalCourts.Contains(c.IDCourt))) //updates
-            {
-                var aux = courts.FirstOrDefault(c => c.IDCourt == item.IDCourt);
-                item.Value1 = aux.Value1;
-                item.Value2 = aux.Value2;
-                item.Value3 = aux.Value3;
-                item.Value4 = aux.Value4;
-                item.IDCourtType = aux.IDCourtType;
-                item.Description = aux.Description;
-            }
-
-            foreach (var item in courts.Where(c => !existingCourts.Contains(c.IDCourt))) //insert
-            {
-                if (_CourtValidator.Validate(item).IsValid)
-                    entity.Court.Add(item);
-                else
-                    throw new Exception("Se rompio todo wacho");//TODO
-            }
-
-            foreach (var item in entity.Court.Where(c => !c.IsSoccer && !finalCourts.Contains(c.IDCourt))) //delete
-            {
-                _CourtRepository.Delete(item.IDCourt);
-            }
-
-            _clienteRepository.SaveChanges();
-
-            return true;
-        }
-        */
         public IEnumerable<Client> GetClients()
         {
             return _clienteRepository.GetAll();
@@ -171,5 +158,6 @@ namespace BLL.Services
         {
             return _clienteRepository.GetAllPaginated(parameters);
         }
+
     }
 }

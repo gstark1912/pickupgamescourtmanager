@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MODEL.Common.ExtensionMethods;
 
 namespace DAL.Repositories
 {
@@ -20,8 +21,9 @@ namespace DAL.Repositories
         public Client GetClientById(int idClient)
         {
             return dbSet
-                .Include("ClientSchedule")
-                .Include("Court")
+                .IncludeMultiple(c => c.ClientSchedule)
+                .IncludeMultiple(c => c.Court)
+                .IncludeMultiple(c => c.ClientNotes)
                 .First(c => c.IDClient == idClient);
 
         }

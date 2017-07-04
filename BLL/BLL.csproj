@@ -53,6 +53,7 @@
     <Compile Include="Services\CourtTypeService.cs" />
     <Compile Include="Services\FloorTypeService.cs" />
     <Compile Include="Services\TokenService.cs" />
+    <Compile Include="Validators\ClientScheduleValidator.cs" />
     <Compile Include="Validators\CourtValidator.cs" />
     <Compile Include="Validators\ClientValidator.cs" />
   </ItemGroup>

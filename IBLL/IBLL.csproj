@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IClientScheduleValidator.cs" />
     <Compile Include="Interfaces\IFloorTypeService.cs" />
     <Compile Include="Interfaces\ICourtTypeService.cs" />
     <Compile Include="Interfaces\ICourtValidator.cs" />

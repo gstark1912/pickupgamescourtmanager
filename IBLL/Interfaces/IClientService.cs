@@ -1,4 +1,5 @@
-﻿using MODEL;
+﻿using FluentValidation.Results;
+using MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,10 @@ namespace IBLL.Interfaces
     {
         Client Authenticate(string username, string password);
         Client GetClienteById(int clientId);
-        bool Insert(Client model);
-        bool UpdateAsAdmin(Client model);
+        CATValidationResult Insert(Client model);
+        CATValidationResult UpdateAsAdmin(Client model);
         IEnumerable<Client> GetClients();
         PaginationResult<Client> GetClients(PaginationParameters parameters);
+        CATValidationResult InsertAsAdmin(Client client);
     }
 }

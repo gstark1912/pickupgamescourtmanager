@@ -3,7 +3,11 @@
     module.controller('AdminClientController', ['$scope', '$location', '$stateParams', 'clientApiService',
     function ($scope, $location, $stateParams, clientApiService) {
         $scope.idClient = $stateParams.idClient;
-        $scope.client = {};
+        $scope.client = {
+            court: [],
+            clientSchedule: []
+        };
+        $scope.errors = [];
 
         if ($scope.idClient !== "") {
             clientApiService
@@ -14,11 +18,18 @@
         }
 
         $scope.sendForm = function () {
-            console.log($scope.client);
-            clientApiService
-                .updateClientAsAdmin($scope.client)
+            $scope.errors = [];
+            var saveFunction;
+            if ($scope.idClient === "")
+                saveFunction = clientApiService.insertClientAsAdmin;
+            else
+                saveFunction = clientApiService.updateClientAsAdmin;
+
+            saveFunction($scope.client)
                 .then(function (response) {
-                    console.log(response);
+                    if (response.status === 400) {
+                        $scope.errors = response.data.errors;
+                    }
                 });
         }
     }]);

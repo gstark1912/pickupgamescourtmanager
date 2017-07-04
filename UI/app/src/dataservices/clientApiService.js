@@ -13,12 +13,15 @@
             getClient: function (id) {
                 return $http({ method: 'get', url: link + '/admin/' + id });
             },
+            insertClientAsAdmin: function (data) {
+                return $http({ method: 'post', url: link + '/admin/', data: data });
+            },
             updateClientAsAdmin: function (data) {
                 return $http({ method: 'put', url: link + '/admin/' + data.idClient, data: data });
             }
-        };
+    };
 
 
-    }
+}
 }
 ());

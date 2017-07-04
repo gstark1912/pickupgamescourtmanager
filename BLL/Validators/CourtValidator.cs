@@ -13,11 +13,27 @@ namespace BLL.Validators
     {
         public CourtValidator()
         {
-            RuleFor(c => c.Description).NotEmpty();
-            RuleFor(c => c.Value1).NotEmpty().GreaterThanOrEqualTo(0);
-            RuleFor(c => c.Value2).NotEmpty().GreaterThanOrEqualTo(0);
-            RuleFor(c => c.Value3).NotEmpty().GreaterThanOrEqualTo(0);
-            RuleFor(c => c.Value4).NotEmpty().GreaterThanOrEqualTo(0);
+            RuleFor(c => c.Description).NotNull().Length(1, 100).WithMessage("El nombre de cancha es requerido");
+            RuleFor(c => c.Value1)
+                .NotEmpty()
+                .WithMessage("Debe definir un precio para cada tipo de horario de cancha")
+                .GreaterThanOrEqualTo(0)
+                .WithMessage("Debe definir un precio para cada tipo de horario de cancha");
+            RuleFor(c => c.Value2)
+                .NotEmpty()
+                .WithMessage("Debe definir un precio para cada tipo de horario de cancha")
+                .GreaterThanOrEqualTo(0)
+                .WithMessage("Debe definir un precio para cada tipo de horario de cancha");
+            RuleFor(c => c.Value3)
+                .NotEmpty()
+                .WithMessage("Debe definir un precio para cada tipo de horario de cancha")
+                .GreaterThanOrEqualTo(0)
+                .WithMessage("Debe definir un precio para cada tipo de horario de cancha");
+            RuleFor(c => c.Value4)
+                .NotEmpty()
+                .WithMessage("Debe definir un precio para cada tipo de horario de cancha")
+                .GreaterThanOrEqualTo(0)
+                .WithMessage("Debe definir un precio para cada tipo de horario de cancha");
         }
     }
 }

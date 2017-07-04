@@ -52,6 +52,20 @@ namespace API.Controllers
             return Ok(Mapper.Map<Client, ClientViewModel>(cliente));
         }
 
+        [HttpPost]
+        [Route("admin")]
+        [AdminApiAuthenticationFilter]
+        [OverrideActionFiltersAttribute]
+        public IHttpActionResult InsertClienteForAdmin(ClientViewModel model)
+        {
+            var cliente = _clienteService.InsertAsAdmin(Mapper.Map<ClientViewModel, Client>(model));
+
+            if (!cliente.IsValid)
+                return Content(HttpStatusCode.BadRequest, cliente);
+
+            return Ok();
+        }
+
         [HttpPut]
         [Route("admin/{clientId}")]
         [AdminApiAuthenticationFilter]
@@ -60,8 +74,8 @@ namespace API.Controllers
         {
             var cliente = _clienteService.UpdateAsAdmin(Mapper.Map<ClientViewModel, Client>(model));
 
-            if (!cliente)
-                return BadRequest("There was a problem with your request");
+            if (!cliente.IsValid)
+                return Content(HttpStatusCode.BadRequest, cliente);
 
             return Ok();
         }
@@ -84,7 +98,7 @@ namespace API.Controllers
         {
             var result = _clienteService.Insert(model);
 
-            if (result)
+            if (result.IsValid)
                 return Ok();
             else
                 return BadRequest();
@@ -94,12 +108,12 @@ namespace API.Controllers
         [Route("{clientId}")]
         public IHttpActionResult UpdateClient(Client model, int clientId)
         {
-            var result = _clienteService.UpdateAsAdmin(model);
+            var cliente = _clienteService.UpdateAsAdmin(model);
 
-            if (result)
+            if (cliente.IsValid)
                 return Ok();
             else
-                return BadRequest();
+                return Content(HttpStatusCode.BadRequest, cliente);
         }
 
         [HttpPut]

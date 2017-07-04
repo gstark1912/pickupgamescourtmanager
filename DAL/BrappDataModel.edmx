@@ -23,6 +23,7 @@
           <Property Name="IDClientNotes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDClient" Type="int" Nullable="false" />
           <Property Name="Text" Type="text" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ClientSchedule">
           <Key>
@@ -508,6 +509,7 @@
           <Property Name="IDClient" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Client" Relationship="BrappDBModel.FK_ClientNotes_Client" FromRole="ClientNotes" ToRole="Client" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_ClientNotes_Client">
           <End Type="BrappDBModel.Client" Role="Client" Multiplicity="1" />
@@ -622,6 +624,7 @@
           <EntitySetMapping Name="ClientNotes">
             <EntityTypeMapping TypeName="BrappDBModel.ClientNotes">
               <MappingFragment StoreEntitySet="ClientNotes">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="IDClient" ColumnName="IDClient" />
                 <ScalarProperty Name="IDClientNotes" ColumnName="IDClientNotes" />

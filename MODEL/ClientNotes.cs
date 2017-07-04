@@ -17,6 +17,7 @@ namespace MODEL
         public int IDClientNotes { get; set; }
         public int IDClient { get; set; }
         public string Text { get; set; }
+        public System.DateTime Timestamp { get; set; }
     
         public virtual Client Client { get; set; }
     }
