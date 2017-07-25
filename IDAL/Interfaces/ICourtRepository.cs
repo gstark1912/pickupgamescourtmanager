@@ -9,5 +9,7 @@ namespace IDAL.Interfaces
 {
     public interface ICourtRepository : IBaseRepository<Court>
     {
+        Court GetCourtByID(int id);
+        ICollection<Court> GetCourtsByClient(int iDClient);
     }
 }

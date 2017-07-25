@@ -3,15 +3,25 @@
         <div class="form-body">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{'has-error':(infoform.name.$dirty && infoform.name.$invalid)}">
                         <label for="email">Nombre:</label>
-                        <input type="text" class="form-control" ng-model="client.name" required>
+                        <input type="text" class="form-control" ng-model="client.name" name="name" required>
+                        <div class="help-block with-errors" ng-show="infoform.name.$dirty && infoform.name.$invalid">
+                            <ul class="list-unstyled">
+                                <li>El nombre del complejo es requerido</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{'has-error':(infoform.address.$dirty && infoform.address.$invalid)}">
                         <label for="email">Direccion:</label>
-                        <input type="text" class="form-control" ng-model="client.address" required>
+                        <input type="text" class="form-control" ng-model="client.address" name="address" required>
+                        <div class="help-block with-errors" ng-show="infoform.address.$dirty && infoform.address.$invalid">
+                            <ul class="list-unstyled">
+                                <li>La dirección del complejo es requerida</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -20,6 +30,14 @@
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="text" class="form-control" ng-model="client.email">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="email">tu hermana:</label>
+                        <button ng-click="pepe()">lalala</button>
                     </div>
                 </div>
             </div>

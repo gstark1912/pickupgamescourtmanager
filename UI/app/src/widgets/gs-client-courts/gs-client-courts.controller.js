@@ -11,6 +11,7 @@
                 var list = element.find("ul");
             },
             controller: ['$scope', 'lookupApiService', '$uibModal', '$filter', function ($scope, lookupApiService, $uibModal, $filter) {
+
                 $scope.floortypes = null;
                 $scope.courttypes = null;
 

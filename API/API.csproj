@@ -208,6 +208,7 @@
     <Compile Include="Models\ClientNotesViewModel.cs" />
     <Compile Include="Models\ClientScheduleViewModel.cs" />
     <Compile Include="Models\ClientViewModel.cs" />
+    <Compile Include="Models\CourtPriceViewModel.cs" />
     <Compile Include="Models\CourtTypeViewModel.cs" />
     <Compile Include="Models\CourtViewModel.cs" />
     <Compile Include="Models\FloorTypeViewModel.cs" />

@@ -16,5 +16,15 @@ namespace DAL.Repositories
         {
 
         }
+
+        public Court GetCourtByID(int id)
+        {
+            return dbSet.Include("CourtPrice").FirstOrDefault(x => x.IDCourt == id);
+        }
+
+        public ICollection<Court> GetCourtsByClient(int iDClient)
+        {
+            return dbSet.Include("CourtPrice").Where(x => x.IDClient == iDClient).ToList();
+        }
     }
 }

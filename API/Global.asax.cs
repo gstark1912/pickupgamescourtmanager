@@ -33,7 +33,7 @@ namespace API
 
             _container = Bootstrapper.Initialise();
             _unityGuid = Guid.NewGuid();
-            AreaRegistration.RegisterAllAreas();            
+            AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration, _container);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -44,6 +44,7 @@ namespace API
                 cfg.CreateMap<Client, ClientViewModel>().ReverseMap();
                 cfg.CreateMap<Court, CourtViewModel>().ReverseMap();
                 cfg.CreateMap<ClientSchedule, ClientScheduleViewModel>().ReverseMap();
+                cfg.CreateMap<CourtPrice, CourtPriceViewModel>().ReverseMap();
                 cfg.CreateMap<CourtType, CourtTypeViewModel>().ReverseMap();
                 cfg.CreateMap<FloorType, FloorTypeViewModel>().ReverseMap();
                 cfg.CreateMap<Reservation, ReservationViewModel>().ReverseMap();

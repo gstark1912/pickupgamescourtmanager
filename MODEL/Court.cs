@@ -17,6 +17,7 @@ namespace MODEL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Court()
         {
+            this.CourtPrice = new HashSet<CourtPrice>();
             this.Reservation = new HashSet<Reservation>();
         }
     
@@ -25,15 +26,12 @@ namespace MODEL
         public int IDCourtType { get; set; }
         public int IDFloorType { get; set; }
         public int IDClient { get; set; }
-        public Nullable<decimal> Value1 { get; set; }
-        public Nullable<decimal> Value2 { get; set; }
-        public Nullable<decimal> Value3 { get; set; }
-        public Nullable<decimal> Value4 { get; set; }
-        public bool IsSoccer { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual CourtType CourtType { get; set; }
         public virtual FloorType FloorType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourtPrice> CourtPrice { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservation { get; set; }
     }

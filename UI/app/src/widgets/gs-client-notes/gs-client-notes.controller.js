@@ -11,6 +11,7 @@
                 var list = element.find("ul");
             },
             controller: ['$scope', '$uibModal', function ($scope) {
+
                 $scope.text = "";
 
                 $scope.addComment = function () {

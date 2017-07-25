@@ -19,6 +19,11 @@
 
         $scope.sendForm = function () {
             $scope.errors = [];
+
+            //$scope.validInfo();
+            //$scope.validSchedule();
+            //$scope.validNotes();
+            //$scope.validCourts();
             var saveFunction;
             if ($scope.idClient === "")
                 saveFunction = clientApiService.insertClientAsAdmin;

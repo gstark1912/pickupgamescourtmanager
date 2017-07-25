@@ -36,7 +36,9 @@ namespace BLL.Services
 
         public Client GetClienteById(int clientId)
         {
-            return _clienteRepository.GetByID(clientId);
+            var cliente = _clienteRepository.GetByID(clientId);
+            cliente.Court = _courtRepository.GetCourtsByClient(clientId);
+            return cliente;
         }
 
         public CATValidationResult Insert(Client model)
@@ -75,7 +77,7 @@ namespace BLL.Services
         public CATValidationResult UpdateAsAdmin(Client model)
         {
             var entity = _clienteRepository.GetClientById(model.IDClient);
-
+            entity.Court = _courtRepository.GetCourtsByClient(model.IDClient);
             entity.Name = model.Name;
             entity.Address = model.Address;
             entity.Coordenates = model.Coordenates;
@@ -141,11 +143,8 @@ namespace BLL.Services
                 var aux = result.First(r => r.IDCourt == item.IDCourt);
                 aux.IDCourtType = item.IDCourtType;
                 aux.IDFloorType = item.IDFloorType;
-                aux.Description = item.Description;
-                aux.Value1 = item.Value1;
-                aux.Value2 = item.Value2;
-                aux.Value3 = item.Value3;
-                aux.Value4 = item.Value4;
+                aux.Description = item.Description;                
+                //price
             }
         }
 

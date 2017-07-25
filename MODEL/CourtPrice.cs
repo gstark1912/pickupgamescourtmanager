@@ -12,19 +12,15 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class Reservation
+    public partial class CourtPrice
     {
-        public int IDReservation { get; set; }
+        public int IDCourtPrice { get; set; }
         public int IDCourt { get; set; }
-        public int IDClient { get; set; }
+        public int IDDay { get; set; }
+        public int From { get; set; }
+        public int To { get; set; }
         public decimal Price { get; set; }
-        public decimal Reservation1 { get; set; }
-        public int IDReservationStatus { get; set; }
-        public string Name { get; set; }
-        public System.DateTime Datetime { get; set; }
     
-        public virtual Client Client { get; set; }
-        public virtual ReservationStatus ReservationStatus { get; set; }
         public virtual Court Court { get; set; }
     }
 }

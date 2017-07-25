@@ -47,11 +47,17 @@
           <Property Name="IDCourtType" Type="int" Nullable="false" />
           <Property Name="IDFloorType" Type="int" Nullable="false" />
           <Property Name="IDClient" Type="int" Nullable="false" />
-          <Property Name="Value1" Type="decimal" Precision="16" Scale="2" />
-          <Property Name="Value2" Type="decimal" Precision="16" Scale="2" />
-          <Property Name="Value3" Type="decimal" Precision="16" Scale="2" />
-          <Property Name="Value4" Type="decimal" Precision="16" Scale="2" />
-          <Property Name="IsSoccer" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourtPrice">
+          <Key>
+            <PropertyRef Name="IDCourtPrice" />
+          </Key>
+          <Property Name="IDCourtPrice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCourt" Type="int" Nullable="false" />
+          <Property Name="IDDay" Type="int" Nullable="false" />
+          <Property Name="From" Type="int" Nullable="false" />
+          <Property Name="To" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="16" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="CourtType">
           <Key>
@@ -146,6 +152,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CourtPrice_Court">
+          <End Role="Court" Type="Self.Court" Multiplicity="1" />
+          <End Role="CourtPrice" Type="Self.CourtPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Court">
+              <PropertyRef Name="IDCourt" />
+            </Principal>
+            <Dependent Role="CourtPrice">
+              <PropertyRef Name="IDCourt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HorarioCliente_Cliente">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="ClientSchedule" Type="Self.ClientSchedule" Multiplicity="*" />
@@ -211,6 +229,7 @@
           <EntitySet Name="ClientNotes" EntityType="Self.ClientNotes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientSchedule" EntityType="Self.ClientSchedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Court" EntityType="Self.Court" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourtPrice" EntityType="Self.CourtPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CourtType" EntityType="Self.CourtType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FloorType" EntityType="Self.FloorType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
@@ -231,6 +250,10 @@
           <AssociationSet Name="FK_ClientNotes_Client" Association="Self.FK_ClientNotes_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="ClientNotes" EntitySet="ClientNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourtPrice_Court" Association="Self.FK_CourtPrice_Court">
+            <End Role="Court" EntitySet="Court" />
+            <End Role="CourtPrice" EntitySet="CourtPrice" />
           </AssociationSet>
           <AssociationSet Name="FK_HorarioCliente_Cliente" Association="Self.FK_HorarioCliente_Cliente">
             <End Role="Client" EntitySet="Client" />
@@ -259,16 +282,11 @@
       <Schema Namespace="BrappDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BrappContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Client" EntityType="BrappDBModel.Client" />
-          <EntitySet Name="Court" EntityType="BrappDBModel.Court" />
           <EntitySet Name="CourtType" EntityType="BrappDBModel.CourtType" />
           <EntitySet Name="FloorType" EntityType="BrappDBModel.FloorType" />
           <EntitySet Name="Reservation" EntityType="BrappDBModel.Reservation" />
           <EntitySet Name="ReservationStatus" EntityType="BrappDBModel.ReservationStatus" />
           <EntitySet Name="Token" EntityType="BrappDBModel.Token" />
-          <AssociationSet Name="FK_Cancha_Cliente" Association="BrappDBModel.FK_Cancha_Cliente">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="Court" EntitySet="Court" />
-          </AssociationSet>
           <AssociationSet Name="FK_Reserva_Cliente" Association="BrappDBModel.FK_Reserva_Cliente">
             <End Role="Client" EntitySet="Client" />
             <End Role="Reservation" EntitySet="Reservation" />
@@ -276,18 +294,6 @@
           <AssociationSet Name="FK_Token_Cliente" Association="BrappDBModel.FK_Token_Cliente">
             <End Role="Client" EntitySet="Client" />
             <End Role="Token" EntitySet="Token" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cancha_TipoCancha" Association="BrappDBModel.FK_Cancha_TipoCancha">
-            <End Role="CourtType" EntitySet="CourtType" />
-            <End Role="Court" EntitySet="Court" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cancha_TipoPiso" Association="BrappDBModel.FK_Cancha_TipoPiso">
-            <End Role="FloorType" EntitySet="FloorType" />
-            <End Role="Court" EntitySet="Court" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reserva_Cancha" Association="BrappDBModel.FK_Reserva_Cancha">
-            <End Role="Court" EntitySet="Court" />
-            <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
           <AssociationSet Name="FK_Reserva_EstadoReserva" Association="BrappDBModel.FK_Reserva_EstadoReserva">
             <End Role="ReservationStatus" EntitySet="ReservationStatus" />
@@ -303,6 +309,28 @@
             <End Role="Client" EntitySet="Client" />
             <End Role="ClientNotes" EntitySet="ClientNotes" />
           </AssociationSet>
+          <EntitySet Name="Court" EntityType="BrappDBModel.Court" />
+          <EntitySet Name="CourtPrice" EntityType="BrappDBModel.CourtPrice" />
+          <AssociationSet Name="FK_Cancha_Cliente" Association="BrappDBModel.FK_Cancha_Cliente">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Court" EntitySet="Court" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cancha_TipoCancha" Association="BrappDBModel.FK_Cancha_TipoCancha">
+            <End Role="CourtType" EntitySet="CourtType" />
+            <End Role="Court" EntitySet="Court" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cancha_TipoPiso" Association="BrappDBModel.FK_Cancha_TipoPiso">
+            <End Role="FloorType" EntitySet="FloorType" />
+            <End Role="Court" EntitySet="Court" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourtPrice_Court" Association="BrappDBModel.FK_CourtPrice_Court">
+            <End Role="Court" EntitySet="Court" />
+            <End Role="CourtPrice" EntitySet="CourtPrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Cancha" Association="BrappDBModel.FK_Reserva_Cancha">
+            <End Role="Court" EntitySet="Court" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Client">
           <Key>
@@ -314,30 +342,11 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="Coordenates" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Court" Relationship="BrappDBModel.FK_Cancha_Cliente" FromRole="Client" ToRole="Court" />
           <NavigationProperty Name="Reservation" Relationship="BrappDBModel.FK_Reserva_Cliente" FromRole="Client" ToRole="Reservation" />
           <NavigationProperty Name="Token" Relationship="BrappDBModel.FK_Token_Cliente" FromRole="Client" ToRole="Token" />
           <NavigationProperty Name="ClientSchedule" Relationship="BrappDBModel.FK_HorarioCliente_Cliente" FromRole="Client" ToRole="ClientSchedule" />
           <NavigationProperty Name="ClientNotes" Relationship="BrappDBModel.FK_ClientNotes_Client" FromRole="Client" ToRole="ClientNotes" />
-        </EntityType>
-        <EntityType Name="Court">
-          <Key>
-            <PropertyRef Name="IDCourt" />
-          </Key>
-          <Property Name="IDCourt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="IDCourtType" Type="Int32" Nullable="false" />
-          <Property Name="IDFloorType" Type="Int32" Nullable="false" />
-          <Property Name="IDClient" Type="Int32" Nullable="false" />
-          <Property Name="Value1" Type="Decimal" Precision="16" Scale="2" />
-          <Property Name="Value2" Type="Decimal" Precision="16" Scale="2" />
-          <Property Name="Value3" Type="Decimal" Precision="16" Scale="2" />
-          <Property Name="Value4" Type="Decimal" Precision="16" Scale="2" />
-          <Property Name="IsSoccer" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Client" Relationship="BrappDBModel.FK_Cancha_Cliente" FromRole="Court" ToRole="Client" />
-          <NavigationProperty Name="CourtType" Relationship="BrappDBModel.FK_Cancha_TipoCancha" FromRole="Court" ToRole="CourtType" />
-          <NavigationProperty Name="FloorType" Relationship="BrappDBModel.FK_Cancha_TipoPiso" FromRole="Court" ToRole="FloorType" />
-          <NavigationProperty Name="Reservation" Relationship="BrappDBModel.FK_Reserva_Cancha" FromRole="Court" ToRole="Reservation" />
+          <NavigationProperty Name="Court" Relationship="BrappDBModel.FK_Cancha_Cliente" FromRole="Client" ToRole="Court" />
         </EntityType>
         <EntityType Name="CourtType">
           <Key>
@@ -369,8 +378,8 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Client" Relationship="BrappDBModel.FK_Reserva_Cliente" FromRole="Reservation" ToRole="Client" />
-          <NavigationProperty Name="Court" Relationship="BrappDBModel.FK_Reserva_Cancha" FromRole="Reservation" ToRole="Court" />
           <NavigationProperty Name="ReservationStatus" Relationship="BrappDBModel.FK_Reserva_EstadoReserva" FromRole="Reservation" ToRole="ReservationStatus" />
+          <NavigationProperty Name="Court" Relationship="BrappDBModel.FK_Reserva_Cancha" FromRole="Reservation" ToRole="Court" />
         </EntityType>
         <EntityType Name="ReservationStatus">
           <Key>
@@ -391,18 +400,6 @@
           <Property Name="ExpiresOn" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Client" Relationship="BrappDBModel.FK_Token_Cliente" FromRole="Token" ToRole="Client" />
         </EntityType>
-        <Association Name="FK_Cancha_Cliente">
-          <End Type="BrappDBModel.Client" Role="Client" Multiplicity="1" />
-          <End Type="BrappDBModel.Court" Role="Court" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Client">
-              <PropertyRef Name="IDClient" />
-            </Principal>
-            <Dependent Role="Court">
-              <PropertyRef Name="IDClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Reserva_Cliente">
           <End Type="BrappDBModel.Client" Role="Client" Multiplicity="1" />
           <End Type="BrappDBModel.Reservation" Role="Reservation" Multiplicity="*" />
@@ -424,42 +421,6 @@
             </Principal>
             <Dependent Role="Token">
               <PropertyRef Name="IDClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cancha_TipoCancha">
-          <End Type="BrappDBModel.CourtType" Role="CourtType" Multiplicity="1" />
-          <End Type="BrappDBModel.Court" Role="Court" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CourtType">
-              <PropertyRef Name="IDCourtType" />
-            </Principal>
-            <Dependent Role="Court">
-              <PropertyRef Name="IDCourtType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cancha_TipoPiso">
-          <End Type="BrappDBModel.FloorType" Role="FloorType" Multiplicity="1" />
-          <End Type="BrappDBModel.Court" Role="Court" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FloorType">
-              <PropertyRef Name="IDFloorType" />
-            </Principal>
-            <Dependent Role="Court">
-              <PropertyRef Name="IDFloorType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Reserva_Cancha">
-          <End Type="BrappDBModel.Court" Role="Court" Multiplicity="1" />
-          <End Type="BrappDBModel.Reservation" Role="Reservation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Court">
-              <PropertyRef Name="IDCourt" />
-            </Principal>
-            <Dependent Role="Reservation">
-              <PropertyRef Name="IDCourt" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -523,6 +484,93 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Court">
+          <Key>
+            <PropertyRef Name="IDCourt" />
+          </Key>
+          <Property Name="IDCourt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IDCourtType" Type="Int32" Nullable="false" />
+          <Property Name="IDFloorType" Type="Int32" Nullable="false" />
+          <Property Name="IDClient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="BrappDBModel.FK_Cancha_Cliente" FromRole="Court" ToRole="Client" />
+          <NavigationProperty Name="CourtType" Relationship="BrappDBModel.FK_Cancha_TipoCancha" FromRole="Court" ToRole="CourtType" />
+          <NavigationProperty Name="FloorType" Relationship="BrappDBModel.FK_Cancha_TipoPiso" FromRole="Court" ToRole="FloorType" />
+          <NavigationProperty Name="CourtPrice" Relationship="BrappDBModel.FK_CourtPrice_Court" FromRole="Court" ToRole="CourtPrice" />
+          <NavigationProperty Name="Reservation" Relationship="BrappDBModel.FK_Reserva_Cancha" FromRole="Court" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="CourtPrice">
+          <Key>
+            <PropertyRef Name="IDCourtPrice" />
+          </Key>
+          <Property Name="IDCourtPrice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCourt" Type="Int32" Nullable="false" />
+          <Property Name="IDDay" Type="Int32" Nullable="false" />
+          <Property Name="From" Type="Int32" Nullable="false" />
+          <Property Name="To" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <NavigationProperty Name="Court" Relationship="BrappDBModel.FK_CourtPrice_Court" FromRole="CourtPrice" ToRole="Court" />
+        </EntityType>
+        <Association Name="FK_Cancha_Cliente">
+          <End Type="BrappDBModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="BrappDBModel.Court" Role="Court" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IDClient" />
+            </Principal>
+            <Dependent Role="Court">
+              <PropertyRef Name="IDClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cancha_TipoCancha">
+          <End Type="BrappDBModel.CourtType" Role="CourtType" Multiplicity="1" />
+          <End Type="BrappDBModel.Court" Role="Court" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourtType">
+              <PropertyRef Name="IDCourtType" />
+            </Principal>
+            <Dependent Role="Court">
+              <PropertyRef Name="IDCourtType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cancha_TipoPiso">
+          <End Type="BrappDBModel.FloorType" Role="FloorType" Multiplicity="1" />
+          <End Type="BrappDBModel.Court" Role="Court" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FloorType">
+              <PropertyRef Name="IDFloorType" />
+            </Principal>
+            <Dependent Role="Court">
+              <PropertyRef Name="IDFloorType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourtPrice_Court">
+          <End Type="BrappDBModel.Court" Role="Court" Multiplicity="1" />
+          <End Type="BrappDBModel.CourtPrice" Role="CourtPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Court">
+              <PropertyRef Name="IDCourt" />
+            </Principal>
+            <Dependent Role="CourtPrice">
+              <PropertyRef Name="IDCourt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Cancha">
+          <End Type="BrappDBModel.Court" Role="Court" Multiplicity="1" />
+          <End Type="BrappDBModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Court">
+              <PropertyRef Name="IDCourt" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="IDCourt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -538,22 +586,6 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IDClient" ColumnName="IDClient" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Court">
-            <EntityTypeMapping TypeName="BrappDBModel.Court">
-              <MappingFragment StoreEntitySet="Court">
-                <ScalarProperty Name="IsSoccer" ColumnName="IsSoccer" />
-                <ScalarProperty Name="Value4" ColumnName="Value4" />
-                <ScalarProperty Name="Value3" ColumnName="Value3" />
-                <ScalarProperty Name="Value2" ColumnName="Value2" />
-                <ScalarProperty Name="Value1" ColumnName="Value1" />
-                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
-                <ScalarProperty Name="IDFloorType" ColumnName="IDFloorType" />
-                <ScalarProperty Name="IDCourtType" ColumnName="IDCourtType" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IDCourt" ColumnName="IDCourt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -628,6 +660,29 @@
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="IDClient" ColumnName="IDClient" />
                 <ScalarProperty Name="IDClientNotes" ColumnName="IDClientNotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Court">
+            <EntityTypeMapping TypeName="BrappDBModel.Court">
+              <MappingFragment StoreEntitySet="Court">
+                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
+                <ScalarProperty Name="IDFloorType" ColumnName="IDFloorType" />
+                <ScalarProperty Name="IDCourtType" ColumnName="IDCourtType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IDCourt" ColumnName="IDCourt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourtPrice">
+            <EntityTypeMapping TypeName="BrappDBModel.CourtPrice">
+              <MappingFragment StoreEntitySet="CourtPrice">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="IDDay" ColumnName="IDDay" />
+                <ScalarProperty Name="IDCourt" ColumnName="IDCourt" />
+                <ScalarProperty Name="IDCourtPrice" ColumnName="IDCourtPrice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

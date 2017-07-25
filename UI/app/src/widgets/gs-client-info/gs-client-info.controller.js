@@ -11,7 +11,10 @@
                 var list = element.find("ul");
             },
             controller: ['$scope', 'uiGmapGoogleMapApi', '$geolocation', function ($scope, uiGmapGoogleMapApi, $geolocation) {
-                //$scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 15 };
+                $scope.pepe = function () {
+                    debugger;
+                    var a = 1;
+                }
                 $scope.map = { center: { latitude: -34.6076282, longitude: -58.4530358 }, zoom: 13 };
                 $scope.markers = [];
                 $scope.mapevents = {

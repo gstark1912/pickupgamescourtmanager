@@ -14,6 +14,7 @@ namespace BLL.Validators
         public CourtValidator()
         {
             RuleFor(c => c.Description).NotNull().Length(1, 100).WithMessage("El nombre de cancha es requerido");
+            /*
             RuleFor(c => c.Value1)
                 .NotEmpty()
                 .WithMessage("Debe definir un precio para cada tipo de horario de cancha")
@@ -34,6 +35,7 @@ namespace BLL.Validators
                 .WithMessage("Debe definir un precio para cada tipo de horario de cancha")
                 .GreaterThanOrEqualTo(0)
                 .WithMessage("Debe definir un precio para cada tipo de horario de cancha");
+                */
         }
     }
 }

@@ -85,6 +85,9 @@
     <Compile Include="Court.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CourtPrice.cs">
+      <DependentUpon>BrappModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CourtType.cs">
       <DependentUpon>BrappModel.tt</DependentUpon>
     </Compile>
